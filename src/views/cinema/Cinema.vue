@@ -1,22 +1,20 @@
 <template>
   <div class="movie-main">
-      这是movie-main页面
+    <router-link :to="{name:'details'}" class="cart">点击</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Movie',
+  name: "Movie",
 
-  data () {
-    return {
-    }
+  data() {
+    return {};
   },
 
   methods: {}
-}
+};
 </script>
 
 <style lang='scss' scoped>
-
 </style>
