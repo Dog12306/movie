@@ -3,7 +3,7 @@
     <!-- 头部 -->
     <div class="bg">
       <div class="head">
-        <img src="@assets/imgs/details/Left.png" alt class="left"@click="$router.go(-1)">
+        <img src="@assets/imgs/details/Left.png" alt class="left" @click="$router.go(-1)">
         <p class="cent">耀莱成龙影城（建业店）</p>
         <img src="@assets/imgs/details/icon1.png" alt class="right">
       </div>
@@ -15,12 +15,19 @@
       <p class="add-top">金水区中州大道建业置地</p>
 
       <!-- 轮播 -->
-      <swiper class="banner" :options="swiperOption" ref="mySwiper" v-if="data.length>0" @someSwiperEvent="callback">
+      <swiper
+        class="banner"
+        :options="swiperOption"
+        ref="mySwiper"
+        v-if="data.length>0"
+        @someSwiperEvent="callback"
+      >
         <swiper-slide v-for="img in data" :key="img.id">
           <img :src="'https://images.weserv.nl/?url='+img.images.small">
         </swiper-slide>
       </swiper>
     </div>
+    <List></List>
   </div>
 </template>
 
@@ -29,12 +36,14 @@
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import axios from "axios";
+import List from "@/views/cinema/components/List.vue";
 
 export default {
   name: "details",
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    List
   },
   data() {
     return {
@@ -73,8 +82,7 @@ export default {
     callback() {}
   },
 
-  computed: {
-  }
+  computed: {}
 };
 </script>
 

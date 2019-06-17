@@ -1,18 +1,13 @@
-import mock from 'mockjs'
-const Random = mock.Random;
+import lists from '@/mock/list.js'
 
-function getList() {
-    var list = {
-        
-    }
-
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(stock)
-        }, 200)
-    })
-}
-
-export default {
-    getList
-}
+	function getLists(){
+		var list= lists.lylist();
+		var promise = new Promise((resolve,reject)=>{
+			resolve(list);
+		})
+		return promise;
+	}
+	
+	export default{
+		getLists
+	}
