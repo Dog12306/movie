@@ -1,7 +1,9 @@
 <template>
     <div class="main-main">
         <h1>这是main</h1>
-        <v-icon style="color:red;height:30px;" name="sync" spin></v-icon>    
+        <v-icon style="color:red;height:30px;" name="sync" spin></v-icon>  
+        <router-link tag="div" class="login" to="/login">登录</router-link>  
+        <router-link tag="div" class="comment" to="/comment">影评</router-link>  
     </div>
 </template>
 <script>
@@ -15,6 +17,10 @@ export default {
 }
 </script>
 <style scoped>
-
+    .login,.comment{
+        font-size: 18px;
+        line-height: 30px;
+        color: rgba(255, 255, 255, .6);
+    }
 </style>
 
