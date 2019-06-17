@@ -3,7 +3,7 @@
     <!-- 头部 -->
     <div class="bg">
       <div class="head">
-        <img src="@assets/imgs/details/Left.png" alt class="left">
+        <img src="@assets/imgs/details/Left.png" alt class="left"@click="$router.go(-1)">
         <p class="cent">耀莱成龙影城（建业店）</p>
         <img src="@assets/imgs/details/icon1.png" alt class="right">
       </div>
@@ -15,27 +15,9 @@
       <p class="add-top">金水区中州大道建业置地</p>
 
       <!-- 轮播 -->
-      <swiper class="banner" :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
-        <!-- slides -->
-        <swiper-slide>
-          <img src="@assets/imgs/details/dianying1-1.png" alt>
-          <p></p>
-        </swiper-slide>
-        <swiper-slide>
-          <img src="@assets/imgs/details/dianying2-1.png" alt>
-          <p></p>
-        </swiper-slide>
-        <swiper-slide>
-          <img src="@assets/imgs/details/dianying3-1.png" alt>
-          <p></p>
-        </swiper-slide>
-        <swiper-slide>
-          <img src="@assets/imgs/details/dianying4-1.png" alt>
-          <p></p>
-        </swiper-slide>
-        <swiper-slide>
-          <img src="@assets/imgs/details/dianying5-1.png" alt>
-          <p></p>
+      <swiper class="banner" :options="swiperOption" ref="mySwiper" v-if="data.length>0" @someSwiperEvent="callback">
+        <swiper-slide v-for="img in data" :key="img.id">
+          <img :src="'https://images.weserv.nl/?url='+img.images.small">
         </swiper-slide>
       </swiper>
     </div>
@@ -46,6 +28,7 @@
 //引入swiper
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+import axios from "axios";
 
 export default {
   name: "details",
@@ -55,6 +38,8 @@ export default {
   },
   data() {
     return {
+      url: "http://59.110.138.169/api/douban/movie/coming_soon?limit=5",
+      data: [],
       swiperOption: {
         effect: "coverflow",
         grabCursor: true,
@@ -64,6 +49,7 @@ export default {
         loopedSlides: 3,
         slidesPerView: 3,
         slideToClickedSlide: true,
+
         coverflowEffect: {
           rotate: 0,
           stretch: 0,
@@ -74,14 +60,20 @@ export default {
       }
     };
   },
-
+  created() {
+    axios.get(this.url).then(res => {
+      this.data = res.data.data;
+      console.log(this.data);
+    });
+  },
+  updated() {
+    console.log("App.vue finish re-render");
+  },
   methods: {
     callback() {}
   },
+
   computed: {
-    swiper() {
-      return this.$refs.mySwiper.swiper;
-    }
   }
 };
 </script>
