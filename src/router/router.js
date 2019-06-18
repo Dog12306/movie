@@ -44,12 +44,46 @@ export default new Router({
       component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/Cinema.vue'),
     },
     {
+      path: '/cinema/map/:id',
+      name: 'cinemaMap',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/components/CinemaMap.vue'),
+    },
+    {
+      path: '/cinema/detail/:id/seat/:id',
+      name: 'chooseSeat',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/components/ChooseSeat.vue'),
+    },
+    {
+      path: '/order/confirm',
+      name: 'confirmOrder',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "order" */ '@/views/order/ConfirmOrder.vue'),
+    },
+    {
       path: '/main',
       name: 'main',
       meta: {
         footShow: true
       },
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
+    },
+    {
+      path: '/mymessage',
+      name: 'mymessage',
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
+    },
+    {
+      path: '/set',
+      name: 'set',
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/set/Set.vue'),
     },
     {
       path: '/login',
@@ -72,8 +106,8 @@ export default new Router({
       name: 'location',
       meta: {
         footShow: false
+    
       },
-      component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
     },
     {
       path: '*',
