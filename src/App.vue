@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <keep-alive include="home,movie,ticket,cinema">
        <router-view class="router-view"></router-view>
     </keep-alive>
    
