@@ -81,28 +81,34 @@
         </li>
       </ul>
     </div>
+    <div class="footer">
+      特惠选座
+    </div>
   </div>
 </template>
 <script>
 export default {
   name: "comment",
-  computed: {
-    list() {
-      return this.$store.state.list;
+  data(){
+    return{
+      list:[],
     }
   },
+ created(){
+   this.list = this.$store.state.list;
+ },
   methods:{
       time(){
-         this.$store.commit('time'); 
+        this.list =  this.$store.getters.time; 
       },
       all(){
-        this.$store.commit('all'); 
+       this.list = this.$store.state.list;
       },
       good(){
-        this.$store.commit('good');   
+         this.list =  this.$store.getters.good; 
       },
       negative(){
-          this.$store.commit('negative'); 
+        this.list =  this.$store.getters.negative; 
       }
   }
 };
@@ -291,6 +297,18 @@ export default {
         }
       }
     }
+  }
+  .footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    font-size: 18px;
+    line-height: 48px;
+    background: linear-gradient(150deg,rgba(242,91,134,1) 0%,rgba(241,172,94,1) 100%);
+    box-shadow:0px 0px 4px 1px rgba(242,109,125,0.18);
+    // border-radius:6px;
   }
 }
 </style>    

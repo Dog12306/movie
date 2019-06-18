@@ -68,6 +68,14 @@ export default new Router({
       component: () => import(/* webpackChunkName: "comment" */ '@/views/comment/Comment.vue'),
     },
     {
+      path: '/location',
+      name: 'location',
+      meta: {
+        footShow: false
+      },
+      component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
+    },
+    {
       path: '*',
       redirect: '/home'
     }
