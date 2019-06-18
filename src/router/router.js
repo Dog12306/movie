@@ -106,8 +106,8 @@ export default new Router({
       name: 'location',
       meta: {
         footShow: false
-    
       },
+      component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
     },
     {
       path: '*',
