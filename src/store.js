@@ -59,9 +59,7 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    all(state) {
-      state.list = state.list2;
-    }
+   
   },
   actions: {
 
