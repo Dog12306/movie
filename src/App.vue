@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-
-    </keep-alive>
-   
     <foot-bar v-show="$route.meta.footShow"></foot-bar>
   </div>
 </template>
