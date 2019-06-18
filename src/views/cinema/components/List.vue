@@ -1,4 +1,5 @@
 <template>
+  <!-- 购票子组件 -->
   <div class="list">
     <div class="lit" v-for="list in data">
       <div class="lit-left">
@@ -29,6 +30,7 @@ export default {
     this.getList();
   },
   methods: {
+    // 调用豆瓣接口
     getList() {
       listApi.getLists().then(res => {
         this.data = res;

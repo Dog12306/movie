@@ -44,6 +44,14 @@ export default new Router({
       component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/Cinema.vue'),
     },
     {
+      path: '/cinema/details/:id',
+      name: 'details',
+      meta: {
+        footShow: true
+      },
+      component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/details/Details.vue'),
+    },
+    {
       path: '/main',
       name: 'main',
       meta: {
@@ -52,17 +60,16 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
     {
-      path: '*',
-      redirect: '/home'
-    },
-    ,
-    {
-      path: '/cinema/details/:id',
-      name: 'details',
+      path: '/main/order/:id',
+      name: 'order',
       meta: {
         footShow: true
       },
-      component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/details/Details.vue'),
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/order/Order.vue'),
+    },
+    {
+      path: '*',
+      redirect: '/home'
     },
 
   ]
