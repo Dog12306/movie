@@ -52,6 +52,16 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
     {
+      path:'/mymessage',
+      name: 'mymessage',
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
+    },
+    {
+      path:'/set',
+      name: 'set',
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/set/Set.vue'),
+    },
+    {
       path: '*',
       redirect: '/home'
     }
