@@ -357,17 +357,6 @@ export default {
             height: 80px;
         }
     }   
-    
 }
-<<<<<<< HEAD
-=======
-</script>
-<style scoped>
-    .login,.comment,.location{
-        font-size: 18px;
-        line-height: 30px;
-        color: rgba(255, 255, 255, .6);
-    }
->>>>>>> 216daeddc252f042b29a5f854aecf51d927a4910
 </style>
 
