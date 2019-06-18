@@ -68,6 +68,14 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/order/Order.vue'),
     },
     {
+      path: '/main/order/:id/tick/:id',
+      name: 'tick',
+      meta: {
+        footShow: false
+      },
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/tick/tick.vue'),
+    },
+    {
       path: '*',
       redirect: '/home'
     },

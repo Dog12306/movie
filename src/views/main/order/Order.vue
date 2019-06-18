@@ -1,17 +1,23 @@
 <template>
   <div class="order">
     <div class="head">
-      <img class="left" src="@assets/imgs/order/left.png" alt>
+      <img class="left" src="@assets/imgs/order/left.png"  alt>
       <p class="cent">我的订单</p>
       <p class="right">编辑</p>
     </div>
     <div class="nav">
-      <li :class="{ 'active': type === 'all'}" @click="allname('all')">全部</li>
+      <li :class="{ 'active': type === 'all'}" @click="alltype('all')">全部</li>
       <li :class="{ 'active': type === 'fay'}">待付款</li>
       <li :class="{ 'active': type === 'eva'}">待评价</li>
       <li :class="{ 'active': type === 'ret'}">退款</li>
     </div>
-    <div class="tic" v-for="tic in all">
+    <router-link
+      tag="div"
+      class="tic"
+      v-for="tic in all"
+      :key="tic.id"
+      :to="{name:'tick',params:{id:tic.id}}"
+    >
       <div class="tic-top">
         <p class="cine">{{tic.cine}}</p>
         <img class="right" src="@assets/imgs/order/right.png" alt>
@@ -25,31 +31,29 @@
         <p class="hall">{{tic.hall}}</p>
       </div>
       <div class="mosh">总价:{{tic.moth}}元</div>
-    </div>
+    </router-link>
   </div>
 </template>
 
 <script>
-import allApi from "@/api/all.js";
 export default {
   name: "order",
 
   data() {
     return {
-      type: "",
+      type: "all",
       all: []
     };
   },
 
   methods: {
-    allname(type) {
+    alltype(type) {    
       this.type = type;
-      console.log(this.type);
-      allApi.getall().then(res => {
-        console.log(res);
-        this.all = res;
-      });
+      this.all = this.$store.state.tick.tick;
     }
+  },
+  created() {
+    this.alltype(this.type)
   }
 };
 </script>

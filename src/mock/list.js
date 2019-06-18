@@ -3,6 +3,7 @@ const Random = Mock.Random
 
 function lylist() {
     var list = [{
+        id: Random.id(),
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -10,6 +11,7 @@ function lylist() {
         moth: Random.integer(20, 50),
     },
     {
+        id: Random.id(),
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -17,6 +19,7 @@ function lylist() {
         moth: Random.integer(20, 50),
     },
     {
+        id: Random.id(),
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -24,6 +27,7 @@ function lylist() {
         moth: Random.integer(20, 50),
     },
     {
+        id: Random.id(),
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -31,6 +35,7 @@ function lylist() {
         moth: Random.integer(20, 50),
     },
     {
+        id: Random.id(),
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -38,6 +43,7 @@ function lylist() {
         moth: Random.integer(20, 50),
     },
     {
+        id: Random.id(),
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
