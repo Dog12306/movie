@@ -66,9 +66,11 @@
                     <img class="bound-img" src="@/assets/imgs/main/mine/zoujtx.png" alt>
                 </div>
             </div>
-            <div class="container-login">
-                <p class="login-p" >退出登陆</p>
-            </div>
+             <router-link tag="div" class="login" to="/login">
+                <div class="container-login">
+                    <p class="login-p" >退出登陆</p>
+                </div>
+             </router-link>        
         </div>
     </div>
 </template>

@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      meta:{
+      meta: {
         footShow: true
       },
       // route level code-splitting
@@ -22,42 +22,42 @@ export default new Router({
     {
       path: '/movie',
       name: 'movie',
-      meta:{
-        footShow:true
+      meta: {
+        footShow: true
       },
       component: () => import(/* webpackChunkName: "movie" */ '@/views/movie/Movie.vue'),
     },
     {
       path: '/ticket',
       name: 'ticket',
-      meta:{
-        footShow:true
+      meta: {
+        footShow: true
       },
       component: () => import(/* webpackChunkName: "ticket" */ '@/views/ticket/Ticket.vue'),
     },
     {
       path: '/cinema',
       name: 'cinema',
-      meta:{
-        footShow:true
+      meta: {
+        footShow: true
       },
       component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/Cinema.vue'),
     },
     {
       path: '/main',
       name: 'main',
-      meta:{
-        footShow:true
+      meta: {
+        footShow: true
       },
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
     {
-      path:'/mymessage',
+      path: '/mymessage',
       name: 'mymessage',
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
     },
     {
-      path:'/set',
+      path: '/set',
       name: 'set',
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/set/Set.vue'),
     },
@@ -65,7 +65,7 @@ export default new Router({
       path: '*',
       redirect: '/home'
     }
-    
+
 
   ]
 })

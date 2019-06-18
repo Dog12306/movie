@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <keep-alive>
-       <router-view class="router-view"></router-view>
+       <router-view class="router-view"></router-view >
     </keep-alive>
    
     <foot-bar v-show="$route.meta.footShow"></foot-bar>
