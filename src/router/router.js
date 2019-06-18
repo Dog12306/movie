@@ -52,6 +52,30 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
     {
+      path: 'coupon',
+      name: 'coupon',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "coupon" */ '@/views/main/coupon/coupon.vue'),
+    },
+    {
+      path: 'card',
+      name: 'card',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "card" */ '@/views/main/card/card.vue'),
+    },
+    {
+      path: 'buy',
+      name: 'buy',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "buy" */ '@/views/main/buy/buy.vue'),
+    },
+    {
       path: '*',
       redirect: '/home'
     }
