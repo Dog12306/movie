@@ -71,10 +71,10 @@ export default {
   },
   computed: {
     hotCity() {
-      return this.$store.state.hotCity;
+      return this.$store.state.location.hotCity;
     },
     sideList() {
-      return this.$store.state.sideList;
+      return this.$store.state.location.sideList;
     }
   },
   created() {
@@ -145,7 +145,7 @@ header {
 .location {
   width: 100%;
   height: 100%;
-  padding-top: 300px;
+  padding-top: 280px;
   .top {
     position: relative;
     width: 100%;

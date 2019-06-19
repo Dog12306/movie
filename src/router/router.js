@@ -195,7 +195,16 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
     },
-    
-
+    {
+      path: '*',
+      name: 'home',
+      meta: {
+        footShow: true
+      },
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: Home
+    },
   ]
 })
