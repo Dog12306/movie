@@ -27,6 +27,7 @@ var hotCity = [
   { id: Random.guid(), name: '南京' },
   { id: Random.guid(), name: '西安' },
 ]
+var sideList = ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','S','T','W','X','Y','Z']
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -36,7 +37,8 @@ export default new Vuex.Store({
     hotCity: hotCity,
     aa: '',
     bb: '',
-    cc: ''
+    cc: '',
+    sideList:sideList
   },
   getters: {
     time(state) {
