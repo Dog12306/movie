@@ -56,7 +56,7 @@ export default {
     }
   },
   methods: {
-    getOne(id) {
+    getOne(id) {   
       this.$store.commit("tick/getOne", id);
     }
   }

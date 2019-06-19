@@ -1,7 +1,7 @@
 <template>
   <div class="order">
     <div class="head">
-      <img class="left" src="@assets/imgs/order/left.png"  alt>
+      <img class="left" src="@assets/imgs/order/left.png" @click="$router.go(-1)" alt>
       <p class="cent">我的订单</p>
       <p class="right">编辑</p>
     </div>
@@ -11,27 +11,29 @@
       <li :class="{ 'active': type === 'eva'}">待评价</li>
       <li :class="{ 'active': type === 'ret'}">退款</li>
     </div>
-    <router-link
-      tag="div"
-      class="tic"
-      v-for="tic in all"
-      :key="tic.id"
-      :to="{name:'tick',params:{id:tic.id}}"
-    >
-      <div class="tic-top">
-        <p class="cine">{{tic.cine}}</p>
-        <img class="right" src="@assets/imgs/order/right.png" alt>
-        <p class="inf">{{tic.Inf}}</p>
-      </div>
-      <div class="tic-cent">
-        <img class="imgs" :src="tic.url" alt>
-        <p class="tit">{{tic.title}}</p>
-        <p class="page">{{tic.page}}张</p>
-        <p class="data">{{tic.time}} {{tic.time1}}</p>
-        <p class="hall">{{tic.hall}}</p>
-      </div>
-      <div class="mosh">总价:{{tic.moth}}元</div>
-    </router-link>
+    <!-- <keep-alive include="tick"> -->
+      <router-link
+        tag="div"
+        class="tic"
+        v-for="tic in all"
+        :key="tic.id"
+        :to="{name:'tick',params:{id:tic.id}}"
+      >
+        <div class="tic-top">
+          <p class="cine">{{tic.cine}}</p>
+          <img class="right" src="@assets/imgs/order/right.png" alt>
+          <p class="inf">{{tic.Inf}}</p>
+        </div>
+        <div class="tic-cent">
+          <img class="imgs" :src="tic.url" alt>
+          <p class="tit">{{tic.title}}</p>
+          <p class="page">{{tic.page}}张</p>
+          <p class="data">{{tic.time}} {{tic.time1}}</p>
+          <p class="hall">{{tic.hall}}</p>
+        </div>
+        <div class="mosh">总价:{{tic.moth}}元</div>
+      </router-link>
+    <!-- </keep-alive> -->
   </div>
 </template>
 
@@ -47,13 +49,12 @@ export default {
   },
 
   methods: {
-    alltype(type) {    
+    alltype(type) {
       this.type = type;
-      this.all = this.$store.state.tick.tick;
     }
   },
   created() {
-    this.alltype(this.type)
+    this.all = this.$store.state.tick.tick;
   }
 };
 </script>

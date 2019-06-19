@@ -4,6 +4,7 @@ const Random = Mock.Random
 function all() {
     var alls = [{
         id: Random.id(),
+        type:'all',
         add: '地址: 云龙广场',
         km: Random.integer(1, 10),
         lang: '(中文3D)',

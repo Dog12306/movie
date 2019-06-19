@@ -60,7 +60,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
     {
-      path: '/main/order/:id',
+      path: '/main/order/Order',
       name: 'order',
       meta: {
         footShow: true
@@ -68,10 +68,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/order/Order.vue'),
     },
     {
-      path: '/main/order/:id/tick/:id',
+      path: '/main/order/Order/tick/:id',
       name: 'tick',
       meta: {
-        footShow: false
+        footShow: false,
+        keepAlive: false // 不需要缓存
       },
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/tick/tick.vue'),
     },

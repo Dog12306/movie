@@ -13,8 +13,7 @@ var getters = {
 }
 var mutations = {
     getOne(state, id) {
-        console.log('hello',id)
-        console.log(state.tick)
+        console.log(id)
         state.getone = state.tick.find(item => item.id == id);
         console.log(state.getone);
     }
