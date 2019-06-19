@@ -1,9 +1,19 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <keep-alive include="Home,">
+=======
+
+    <keep-alive include="home,movie,ticket,cinema">
+>>>>>>> 3673f08b54994831cd866b917e6aa6b79222d244
        <router-view class="router-view"></router-view>
+
+  
+     
+
     </keep-alive>
    
+
     <foot-bar v-show="$route.meta.footShow"></foot-bar>
   </div>
 </template>
