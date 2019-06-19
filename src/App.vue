@@ -1,7 +1,13 @@
 <template>
   <div id="app">
 
+
+ 
+
+
     <keep-alive include="home,movie,ticket,cinema">
+
+
        <router-view class="router-view"></router-view>
 
   
@@ -16,6 +22,7 @@
 <script>
 import FootBar from '@components/FootBar.vue'
 export default {
+	name:'app',
   components:{
     FootBar
   }
