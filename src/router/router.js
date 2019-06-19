@@ -20,6 +20,17 @@ export default new Router({
       component: Home
     },
     {
+      path: '/home/signin',
+      name: 'signin',
+      meta:{
+        // footShow: true
+      },
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "movie" */ '@/views/home/sign-in/signIn.vue'),
+    },
+    {
       path: '/movie',
       name: 'movie',
       meta: {
@@ -211,6 +222,7 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "details" */ '@/views/movie/moviedetails/Details.vue'),
     },
+    //ddd
     {
       path: '/main/order/Order',
       name: 'order',
