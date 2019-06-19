@@ -1,15 +1,33 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <keep-alive include="Home,Movie,Ticket,Cinema">
        <router-view class="router-view"></router-view>
+=======
+
+
+ 
+
+
+    <keep-alive include="home,movie,ticket,cinema">
+
+
+       <router-view class="router-view"></router-view>
+
+  
+     
+
+>>>>>>> 154798ec126bfa3f9e5770b897dbb0c11d59035b
     </keep-alive>
    
+
     <foot-bar v-show="$route.meta.footShow"></foot-bar>
   </div>
 </template>
 <script>
 import FootBar from '@components/FootBar.vue'
 export default {
+	name:'app',
   components:{
     FootBar
   }
