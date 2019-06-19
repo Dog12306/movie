@@ -1,12 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import signIn from './signIn'
+import signIn from './modules/signIn'
+import tick from './modules/tick';
 
+import mess from './modules/mess'
+import order from './modules/order'
+import location from './modules/location'
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  // 保存共享的数据
-  modules:{
+const store = new Vuex.Store({
+  modules: {
+    mess,
+    order,
+    location,
+    tick,
     signIn
   }
 })
+
+export default store;
