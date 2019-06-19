@@ -211,6 +211,7 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "details" */ '@/views/movie/moviedetails/Details.vue'),
     },
+    //ddd
     {
       path: '/main/order/Order',
       name: 'order',
@@ -232,9 +233,5 @@ export default new Router({
       path: '*',
       redirect: '/home'
     },
-<<<<<<< HEAD
-
-=======
->>>>>>> 5ffe1961f7931ee4c6652e753f9be6d3383b8010
   ]
 })

@@ -46,7 +46,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-<<<<<<< HEAD
 .main-header {
   position: relative;
   width: 375px;
@@ -97,10 +96,5 @@ export default {
       background: rgba(51, 54, 61, 1);
     }
   }
-=======
-a{
-	color: red;
-	font-size: 20px;
->>>>>>> b612ea25cc2559bb6fb63e99512216d4a1d08a01
 }
 </style>
