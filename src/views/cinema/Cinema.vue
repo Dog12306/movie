@@ -72,36 +72,32 @@
 					</div>
 			 </div>
 	</div>
-	<div class="du">我在: 金水区绿地新都会</div>
+	<div class="du" >我在: 金水区绿地新都会</div>
 	<div class="movie-card">
-		<ul>
-			<li v-for="stu in studios" :ket="stu.id">
-				<p class="pn">{{stu.name}}</p>
-				<p class="pt">{{stu.title}}</p>
-				<span class="ph-hui">惠</span><p class="ph">{{stu.hui}}</p>
-				<span class="pg-guan">观</span><p class="pg">{{stu.guan}}</p>
-				<span class="pk-kai">卡</span><p class="pk">{{stu.kai}}</p>
-				<span class="spj">{{stu.price}}起</span>
-				<span class="spdi">{{stu.distance}}</span>
-			</li>
-		</ul>
+		
+			<router-link tag="ul" to="/cinema/details">
+				<li v-for="stu in studios" :ket="stu.id">
+					
+					<p class="pn">{{stu.name}}</p>
+					<p class="pt">{{stu.title}}</p>
+					<span class="ph-hui">惠</span><p class="ph">{{stu.hui}}</p>
+					<span class="pg-guan">观</span><p class="pg">{{stu.guan}}</p>
+					<span class="pk-kai">卡</span><p class="pk">{{stu.kai}}</p>
+					<span class="spj">{{stu.price}}起</span>
+					<span class="spdi">{{stu.distance}}</span>
+				</li>
+			</router-link>
+		
 	</div>
->>>>>>> 5ffe1961f7931ee4c6652e753f9be6d3383b8010
+
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-export default {
-  name: "Movie",
-
-  data() {
-    return {};
-=======
 	import city from "../../../cityData.json"
 	import BScroll from 'better-scroll'
 export default {	
-  name: 'Movie',
+  name: 'cinema',
   data () {
     return {
 			users: {
@@ -316,8 +312,7 @@ export default {
   　　this.users = city;
 		this.acc =  this.users.hot
 		this.loadData();
->>>>>>> 5ffe1961f7931ee4c6652e753f9be6d3383b8010
-  },
+	},
 	mounted() {
 		
 		delete this.users.hot;
@@ -342,20 +337,14 @@ export default {
 // 			}
 //		}
 
-<<<<<<< HEAD
-  methods: {}
-};
-</script>
+ 
+	}
 
-<style lang='scss' scoped>
-=======
-	},
-	
 }
 </script>
 
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 	.clearfix:after {
 		content: ".";
 		display: block;
@@ -622,5 +611,4 @@ export default {
 		}
 	}
 	
->>>>>>> 5ffe1961f7931ee4c6652e753f9be6d3383b8010
 </style>
