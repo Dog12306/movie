@@ -98,7 +98,6 @@
 
 <script>
 	import city from "../../../cityData.json"
-	import BScroll from 'better-scroll'
 	export default {
 		name: 'Cinema',
 		data() {

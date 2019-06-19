@@ -2,7 +2,7 @@
   <div class="main-main">
     <div class="header-bar">
       <div class="bar-box">
-        <router-link tag="div" to="/mymessage" class="head-portrait">
+        <router-link tag="div" :to="{name:'mymessage'}" class="head-portrait">
           <img src="@/assets/imgs/main/mine/touxiangx.png" alt>
         </router-link>
         <p class="user-name">yujian1130</p>
@@ -20,7 +20,7 @@
           </router-link>
         </div>
 
-        <router-link tag="div" to="/mymessage" class="box-img">
+        <router-link tag="div" :to="{name:'mymessage'}" class="box-img">
           <img src="@/assets/imgs/main/mine/zoujt.png" alt>
         </router-link>
       </div>
@@ -54,18 +54,19 @@
               <img class="li-img" src="@/assets/imgs/main/mine/bianji4.png" alt>
               <p class="li-p">未消费</p>
             </li>
-            <li class="item-li">
+			<router-link tag="li" :to="{name:'order'}" class="item-li">
               <img class="li-img" src="@/assets/imgs/main/mine/bianji.png" alt>
               <p class="li-p">待付款</p>
-            </li>
-            <li class="item-li">
+			</router-link>
+			<router-link tag="li" :to="{name:'order'}" class="item-li">
               <img class="li-img" src="@/assets/imgs/main/mine/bianji2.png" alt>
               <p class="li-p">待评价</p>
-            </li>
-            <li class="item-li">
+            </router-link>
+			<router-link tag="li" :to="{name:'order'}" class="item-li">
+            <!-- <li class="item-li"> -->
               <img class="li-img" src="@/assets/imgs/main/mine/bianji3.png" alt>
               <p class="li-p">待评价</p>
-            </li>
+			</router-link>  
           </ul>
         </div>
       </div>

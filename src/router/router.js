@@ -181,9 +181,14 @@ export default new Router({
         footShow:false
       },
       component: () => import(/* webpackChunkName: "buy" */ '@/views/main/buy/buy.vue'),
-      // path: '/mymessage',
-      // name: 'mymessage',
-      // component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
+			},
+			{
+      path: '/main/mymessage',
+      name: 'mymessage',
+			 meta:{
+			  footShow:false
+			},
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
     },
     {
       path: '/set',

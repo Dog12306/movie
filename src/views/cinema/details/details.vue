@@ -43,6 +43,7 @@ import axios from "axios";
 import List from "@/views/cinema/components/List.vue";
 
 export default {
+	
   name: "details",
   components: {
     swiper,
