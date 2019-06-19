@@ -51,6 +51,38 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
+		{
+		  path: '/main/message',
+		  name: 'message',
+		  meta:{
+		    footShow:true
+		  },
+		  component: () => import(/* webpackChunkName: "message" */ '@/views/main/message/message.vue'),
+		},
+		{
+		  path: '/main/message/chat/:id',
+		  name: 'chat',
+		  meta:{
+		    footShow:false
+		  },
+		  component: () => import(/* webpackChunkName: "chat" */ '@/views/main/message/chat.vue'),
+		},
+		{
+		  path: '/myorder',
+		  name: 'myorder',
+		  meta:{
+		    footShow:false
+		  },
+		  component: () => import(/* webpackChunkName: "myorder" */ '@/views/main/myorder/myorder.vue'),
+		},
+		{
+		  path: '/myorder/tickets/:id',
+		  name: 'tickets',
+		  meta:{
+		    footShow:false
+		  },
+		  component: () => import(/* webpackChunkName: "tickets" */ '@/views/main/myorder/tickets.vue'),
+		},
     {
       path: '*',
       redirect: '/home'
