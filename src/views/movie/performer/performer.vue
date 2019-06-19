@@ -290,7 +290,7 @@
 		width: $widths;
 		position: relative;
 		margin: 25px auto;
-		height: 230px;
+		height: 200px;
 		z-index: 999;
 		.po{
 			display: block;

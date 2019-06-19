@@ -20,6 +20,17 @@ export default new Router({
       component: Home
     },
     {
+      path: '/home/signin',
+      name: 'signin',
+      meta:{
+        // footShow: true
+      },
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "movie" */ '@/views/home/sign-in/signIn.vue'),
+    },
+    {
       path: '/movie',
       name: 'movie',
       meta: {
@@ -39,7 +50,7 @@ export default new Router({
 		 path: '/movie/release/performer',
 		 name: 'performer',
 		 meta:{
-		   footShow:true
+		   footShow:false
 		 },
 		 component: () => import(/* webpackChunkName: "performer" */ '@/views/movie/performer/performer.vue'),
 	},
@@ -74,6 +85,14 @@ export default new Router({
         footShow: true
       },
       component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/Cinema.vue'),
+    },
+    {
+      path: '/cinema/details',
+      name: 'details',
+      meta: {
+        footShow: true
+      },
+      component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/details/Details.vue'),
     },
     {
       path: '/cinema/map/:id',
@@ -196,15 +215,34 @@ export default new Router({
     //   component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
     // },
     {
-      path: '*',
-      name: 'home',
+      path: '/movie/Details',
+      name: 'Details',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "details" */ '@/views/movie/moviedetails/Details.vue'),
+    },
+    //ddd
+    {
+      path: '/main/order/Order',
+      name: 'order',
       meta: {
         footShow: true
       },
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: Home
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/order/Order.vue'),
+    },
+    {
+      path: '/main/order/Order/tick/:id',
+      name: 'tick',
+      meta: {
+        footShow: false,
+        keepAlive: false // 不需要缓存
+      },
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/tick/tick.vue'),
+    },
+    {
+      path: '*',
+      redirect: '/home'
     },
   ]
 })
