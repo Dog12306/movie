@@ -4,7 +4,7 @@ const Random = Mock.Random
 function all() {
     var alls = [{
         id: Random.id(),
-        type:'all',
+        type: 'payment',
         add: '地址: 云龙广场',
         km: Random.integer(1, 10),
         lang: '(中文3D)',
@@ -22,6 +22,7 @@ function all() {
     },
     {
         id: Random.id(),
+        type: 'await',
         add: '地址: 二七万达',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),
@@ -39,6 +40,7 @@ function all() {
     },
     {
         id: Random.id(),
+        type: 'all',
         add: '地址: 国贸大厦',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),
@@ -56,6 +58,7 @@ function all() {
     },
     {
         id: Random.id(),
+        type:'all',
         add: '地址: 国贸大厦',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),
@@ -73,6 +76,7 @@ function all() {
     },
     {
         id: Random.id(),
+        type:'remain',
         add: '地址: 二七万达',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),
@@ -90,6 +94,7 @@ function all() {
     },
     {
         id: Random.id(),
+        type: 'payment',
         add: '地址: 中原万达',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),
@@ -107,6 +112,7 @@ function all() {
     },
     {
         id: Random.id(),
+        type: 'await',
         add: '地址: 绿地新都会',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),
@@ -124,6 +130,7 @@ function all() {
     },
     {
         id: Random.id(),
+        type: 'await',
         add: '地址: 绿地新都会',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),
@@ -136,11 +143,12 @@ function all() {
         title: '大鱼海棠',
         hall: '二号厅  2排1座',
         page: 1,
-        Inf: '已完成',
+        Inf: '等待退款',
         moth: Random.integer(20, 50),
     },
     {
         id: Random.id(),
+        type: 'payment',
         add: '地址: 绿地新都会',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),
@@ -153,11 +161,12 @@ function all() {
         title: '星空',
         hall: '七号厅  5排9座',
         page: 1,
-        Inf: '已完成',
+        Inf: '待付款',
         moth: Random.integer(20, 50),
     },
     {
         id: Random.id(),
+        type: 'remain',
         add: '地址: 绿地新都会',
         km: Random.integer(1, 10),
         pick: Random.integer(10000000, 999999999),

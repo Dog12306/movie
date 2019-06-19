@@ -13,7 +13,6 @@
         <img class="add-icon" src="@assets/imgs/details/right.png" alt>
       </div>
       <p class="add-top">金水区中州大道建业置地</p>
-
       <!-- 轮播 -->
       <swiper
         class="banner"
@@ -24,6 +23,11 @@
       >
         <swiper-slide v-for="img in data" :key="img.id">
           <img :src="'https://images.weserv.nl/?url='+img.images.small">
+          <p class="title">{{img.title}}</p>
+          <p class="name">
+            {{img.year}} {{img.genres[0]}}
+            <span>{{img.casts[0].name}}</span>
+          </p>
         </swiper-slide>
       </swiper>
     </div>
@@ -89,7 +93,7 @@ export default {
 <style lang='scss' scoped>
 .bg {
   width: 375px;
-  height: 353px;
+  height: 430px;
   overflow: hidden;
   background: url("../../../assets/imgs/details/bg1.png") no-repeat;
   background-size: 375px;
@@ -149,6 +153,22 @@ export default {
     }
     .swiper-slide:not(.swiper-slide-active) {
       transform: scale(0.8);
+      p {
+        display: none;
+      }
+    }
+    .title {
+      width: 110px;
+      height: 25px;
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+      line-height: 25px;
+    }
+    .name {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
     }
   }
 }

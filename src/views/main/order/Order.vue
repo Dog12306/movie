@@ -6,34 +6,44 @@
       <p class="right">编辑</p>
     </div>
     <div class="nav">
-      <li :class="{ 'active': type === 'all'}" @click="alltype('all')">全部</li>
-      <li :class="{ 'active': type === 'fay'}">待付款</li>
-      <li :class="{ 'active': type === 'eva'}">待评价</li>
-      <li :class="{ 'active': type === 'ret'}">退款</li>
+      <li :class="{ 'active': type === 'all'}" @click="changeType('all')">
+        全部
+        <p class="border"></p>
+      </li>
+      <li :class="{ 'active': type === 'payment'}" @click="changeType('payment')">
+        待付款
+        <p class="border"></p>
+      </li>
+      <li :class="{ 'active': type === 'remain'}" @click="changeType('remain')">
+        待评价
+        <p class="border"></p>
+      </li>
+      <li :class="{ 'active': type === 'await'}" @click="changeType('await')">
+        退款
+        <p class="border"></p>
+      </li>
     </div>
-    <!-- <keep-alive include="tick"> -->
-      <router-link
-        tag="div"
-        class="tic"
-        v-for="tic in all"
-        :key="tic.id"
-        :to="{name:'tick',params:{id:tic.id}}"
-      >
-        <div class="tic-top">
-          <p class="cine">{{tic.cine}}</p>
-          <img class="right" src="@assets/imgs/order/right.png" alt>
-          <p class="inf">{{tic.Inf}}</p>
-        </div>
-        <div class="tic-cent">
-          <img class="imgs" :src="tic.url" alt>
-          <p class="tit">{{tic.title}}</p>
-          <p class="page">{{tic.page}}张</p>
-          <p class="data">{{tic.time}} {{tic.time1}}</p>
-          <p class="hall">{{tic.hall}}</p>
-        </div>
-        <div class="mosh">总价:{{tic.moth}}元</div>
-      </router-link>
-    <!-- </keep-alive> -->
+    <router-link
+      tag="div"
+      class="tic"
+      v-for="tic in getlist"
+      :key="tic.id"
+      :to="{name:'tick',params:{id:tic.id}}"
+    >
+      <div class="tic-top">
+        <p class="cine">{{tic.cine}}</p>
+        <img class="right" src="@assets/imgs/order/right.png" alt>
+        <p class="inf">{{tic.Inf}}</p>
+      </div>
+      <div class="tic-cent">
+        <img class="imgs" :src="tic.url" alt>
+        <p class="tit">{{tic.title}}</p>
+        <p class="page">{{tic.page}}张</p>
+        <p class="data">{{tic.time}} {{tic.time1}}</p>
+        <p class="hall">{{tic.hall}}</p>
+      </div>
+      <div class="mosh">总价:{{tic.moth}}元</div>
+    </router-link>
   </div>
 </template>
 
@@ -49,10 +59,29 @@ export default {
   },
 
   methods: {
-    alltype(type) {
+    changeType(type) {
       this.type = type;
+    },
+    getdata() {
+      var temp = [];
+      Object.assign(temp, this.all);
+      if (this.type == "all") {
+        return this.all;
+      } else if (this.type == "payment") {
+        return temp.filter(item => item.type == this.type);
+      } else if (this.type == "remain") {
+        return temp.filter(item => item.type == this.type);
+      } else if (this.type == "await") {
+        return temp.filter(item => item.type == this.type);
+      }
     }
   },
+  computed: {
+    getlist() {
+      return this.getdata();
+    }
+  },
+
   created() {
     this.all = this.$store.state.tick.tick;
   }
@@ -106,11 +135,8 @@ export default {
   .active {
     position: relative;
     color: #f9c34a;
-    &::before {
-      top: 20px;
-      position: absolute;
-      width: 26px;
-      content: "";
+    .border {
+      margin-top: 4px;
       height: 3px;
       background-color: #f9c34a;
     }
