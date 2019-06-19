@@ -1,13 +1,24 @@
 <template>
-    <div class="home-main">
-        <TopBackBar>
+  <div class="home-main">
+        <!-- <TopBackBar>
             电影列表
             <template v-slot:img-right>
-                  <!-- 具名插槽  这里实现相关右上角按钮  默认显示分享
-                  如需隐藏 设置空  span -->
+                具名插槽  这里实现相关右上角按钮  默认显示分享
+                  如需隐藏 设置空  span
             </template>
         </TopBackBar>
-           
+            -->
+        <div class="header-bar">
+            <div class="bar-nav">
+                <div class="bar-location">
+                    
+                </div>
+                <div class="nav-seek">
+                    
+                </div>
+
+            </div>
+        </div>
     </div>
     
 </template>
@@ -66,6 +77,13 @@ export default {
         height: 500px;
         margin-top: 200px;
         background-color: pink;
+    }
+
+    .home-main{
+        .header-bar{
+            width: 100%;
+            height: 40px; 
+        }
     }
 </style>
 
