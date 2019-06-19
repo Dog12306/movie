@@ -7,7 +7,8 @@
                   如需隐藏 设置空  span -->
             </template>
         </TopBackBar>
-           
+          <router-link tag="h2" to="/location">定位</router-link>
+          <router-link tag="h2" to="/comment">影评</router-link>
     </div>
     
 </template>
