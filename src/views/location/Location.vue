@@ -2,7 +2,7 @@
   <div class="location">
     <header>
       <div class="top">
-        <span class="close">关闭</span>选择城市
+        <span class="close" @click="$router.go(-1)">关闭</span>选择城市
       </div>
       <div class="search-form">
         <label for="search">
@@ -24,76 +24,69 @@
         <span :class="['city',isact==false?'active':'']" @click="isact = !isact">上海</span>
       </div>
     </header>
-    <div class="citys hot">
-      <p class="title">热门城市</p>
-      <ul class="hot-city">
-        <li class="city" v-for="c in hotCity" :key="c.id">{{c.name}}</li>
-      </ul>
-    </div>
-    <div class="citys other">
-      <ul class="all-city" v-for="m in allCitys" :key="m.id">
-        <li class="every-city" v-for="c in m" :key="c.id">{{c.name}}</li>
-      </ul>
+    <div class="wrapper" ref="wrapper">
+      <div class="box" ref="box">
+        <div class="citys hot">
+          <p class="title">热门城市</p>
+          <ul class="hot-city">
+            <li class="city" v-for="c in hotCity" :key="c.id">{{c.name}}</li>
+          </ul>
+        </div>
+        <div class="citys other">
+          <ul class="all-city" v-for="m in allCitys" :key="m.id" ref="myul">
+            <li class="every-city" v-for="c in m" :key="c.id">{{c.name}}</li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="side-nav">
       <p class="text">定位</p>
       <p class="text">历史</p>
-      <p class="text">热门</p>
+      <p class="text" @click="hot">热门</p>
       <ul class="ename">
-        <li class="ename-item">A</li>
-        <li class="ename-item">B</li>
-        <li class="ename-item">C</li>
-        <li class="ename-item">D</li>
-        <li class="ename-item">E</li>
-        <li class="ename-item">F</li>
-        <li class="ename-item">G</li>
-        <li class="ename-item">H</li>
-        <li class="ename-item">J</li>
-        <li class="ename-item">K</li>
-        <li class="ename-item">L</li>
-        <li class="ename-item">M</li>
-        <li class="ename-item">N</li>
-        <li class="ename-item">P</li>
-        <li class="ename-item">Q</li>
-        <li class="ename-item">S</li>
-        <li class="ename-item">T</li>
-        <li class="ename-item">W</li>
-        <li class="ename-item">X</li>
-        <li class="ename-item">Y</li>
-        <li class="ename-item">Z</li>
+        <li
+          v-for="(side,index) in sideList"
+          :class="['ename-item', isact2==index?'active':'']"
+          :key="index"
+          @click="skip(index)"
+        >{{side}}</li>
       </ul>
     </div>
   </div>
 </template>
 <script>
 import allCity from "../../../cityData.json";
-import Scroll from "./components/Scroll";
-import { setTimeout, clearInterval } from "timers";
+import BScroll from "better-scroll";
 export default {
   name: "location",
-  components: {
-    Scroll
-  },
+  components: {},
   data() {
     return {
       allCitys: [],
       isact: true,
       maybeList: [],
-      keywords: ""
+      keywords: "",
+      isact2: 0
     };
   },
   computed: {
     hotCity() {
       return this.$store.state.hotCity;
+    },
+    sideList() {
+      return this.$store.state.sideList;
     }
   },
   created() {
     this.allCitys = allCity;
     delete this.allCitys.hot;
-    // console.log(this.allCitys);
   },
   mounted() {
-    // console.log(this.$refs.input);
+    //    var wrapper = this.$refs.wrapper;
+    // let  scroll = new BScroll(wrapper);
+    setTimeout(() => {
+      this.scroll = new BScroll(this.$refs.wrapper);
+    }, 20);
   },
   watch: {
     keywords() {
@@ -101,7 +94,19 @@ export default {
     }
   },
   methods: {
+    hot() {
+      this.isact2 = 0;
+      this.$refs.box.style.top = 0;
+      this.$refs.box.style.transition = ".4s ease";
+    },
+    skip(index) {
+      this.isact2 = index;
+      // console.log(this.$refs.box.scrollTop);
+      this.$refs.box.style.top = -1 * this.$refs.myul[index].offsetTop + "px";
+      this.$refs.box.style.transition = ".4s ease";
+    },
     cancel() {
+      this.keywords = "";
       this.maybeList = "";
     },
     maybe() {
@@ -112,10 +117,10 @@ export default {
       var str = [];
       for (var key in this.allCitys) {
         var aaa = this.allCitys[key].filter(
-          item =>JSON.stringify(item.name).indexOf(this.keywords) != -1
+          item => JSON.stringify(item.name).indexOf(this.keywords) != -1
         );
         if (aaa.length != 0) {
-          str.push.apply(str,aaa);
+          str.push.apply(str, aaa);
         }
       }
       this.maybeList = str;
@@ -129,12 +134,18 @@ header {
   top: 0;
   left: 0;
   width: 100%;
+  height: 300px;
+  z-index: 999;
+  // padding-bottom:220px;
   background-color: #22262d;
+}
+.box {
+  position: relative;
 }
 .location {
   width: 100%;
   height: 100%;
-  padding-top: 280 px;
+  padding-top: 300px;
   .top {
     position: relative;
     width: 100%;
@@ -231,12 +242,13 @@ header {
   .history,
   .hot {
     margin-top: 10px;
+    background-color: #22262d;
+    z-index: 999;
   }
   .other {
     margin-top: 150px;
   }
   .all-city {
-    //   margin-top: 20px;
     .every-city {
       font-size: 14px;
       line-height: 40px;
@@ -248,6 +260,7 @@ header {
     right: 19px;
     top: 210px;
     width: 24px;
+    z-index: 9999;
     .text {
       font-size: 12px;
       line-height: 18px;
@@ -257,6 +270,9 @@ header {
       font-size: 12px;
       line-height: 17px;
       color: rgba($color: #fff, $alpha: 0.6);
+      &.active {
+        color: #f1a363;
+      }
     }
   }
 }

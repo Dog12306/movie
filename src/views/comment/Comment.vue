@@ -60,56 +60,66 @@
           <span class="info">
             <p class="username">{{p.username}}</p>
             <span class="hot">
-              <img src="@/assets/comment/images/xing1.png" alt>
-              <img src="@/assets/comment/images/xing1.png" alt>
-              <img src="@/assets/comment/images/xing1.png" alt>
-              <img src="@/assets/comment/images/xing1.png" alt>
-              <img src="@/assets/comment/images/xing2.png" alt> {{p.average}}
+              <img v-for="(star,index) in p.star" :key="index" src="@/assets/comment/images/xing1.png" alt>
+              <img src="@/assets/comment/images/xing2.png" alt>
+              <img v-for="(star2,index) in p.star2" :key="p.id+index" src="@/assets/comment/images/xing3.png" alt>
+              {{p.average}}
             </span>
           </span>
           <span class="tips">...</span>
-          <p class="text">{{p.text}}</p>   
+          <p class="text">{{p.text}}</p>
           <div class="comment-footer">
             <span class="time">{{p.time}}</span>
             <span class="praise">
-              <img src="@/assets/comment/images/praise.png" alt> &nbsp;{{p.praise}}
+              <img @click="p.praise++" src="@/assets/comment/images/praise.png" alt>
+              &nbsp;{{p.praise}}
             </span>
             <span class="comment">
-              <img src="@/assets/comment/images/comment.png" alt> &nbsp;{{p.comment}}
+              <img src="@/assets/comment/images/comment.png" alt>
+              &nbsp;{{p.comment}}
             </span>
           </div>
         </li>
       </ul>
     </div>
-    <div class="footer">
-      特惠选座
-    </div>
+    <div class="footer">特惠选座</div>
   </div>
 </template>
 <script>
 export default {
   name: "comment",
-  data(){
-    return{
-      list:[],
-    }
+  data() {
+    return {
+      list: [],
+      star: []
+    };
   },
- created(){
-   this.list = this.$store.state.list;
- },
-  methods:{
-      time(){
-        this.list =  this.$store.getters.time; 
-      },
-      all(){
-       this.list = this.$store.state.list;
-      },
-      good(){
-         this.list =  this.$store.getters.good; 
-      },
-      negative(){
-        this.list =  this.$store.getters.negative; 
-      }
+  created() {
+    this.list = this.$store.state.list;
+    this.getStar();
+  },
+  methods: {
+    getStar() {
+      this.list.map(item=>{
+        var num = Math.floor(item.average/2);
+        item.star = num;
+        if( 5 - num - 1 > 0){
+          item.star2= 5 - num - 1;
+        }
+      })
+    },
+    time() {
+      this.list = this.$store.getters.time;
+    },
+    all() {
+      this.list = this.$store.state.list;
+    },
+    good() {
+      this.list = this.$store.getters.good;
+    },
+    negative() {
+      this.list = this.$store.getters.negative;
+    }
   }
 };
 </script>
@@ -227,7 +237,7 @@ export default {
       display: flex;
       flex-flow: column;
       width: 100%;
-     
+
       .comment-item {
         position: relative;
         width: 100%;
@@ -298,7 +308,7 @@ export default {
       }
     }
   }
-  .footer{
+  .footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -306,8 +316,12 @@ export default {
     height: 48px;
     font-size: 18px;
     line-height: 48px;
-    background: linear-gradient(150deg,rgba(242,91,134,1) 0%,rgba(241,172,94,1) 100%);
-    box-shadow:0px 0px 4px 1px rgba(242,109,125,0.18);
+    background: linear-gradient(
+      150deg,
+      rgba(242, 91, 134, 1) 0%,
+      rgba(241, 172, 94, 1) 100%
+    );
+    box-shadow: 0px 0px 4px 1px rgba(242, 109, 125, 0.18);
     // border-radius:6px;
   }
 }
