@@ -1,9 +1,19 @@
 <template>
   <div id="app">
-    <keep-alive>
+
+ 
+
+
+    <keep-alive include="home,movie,ticket,cinema">
+
        <router-view class="router-view"></router-view>
+
+  
+     
+
     </keep-alive>
    
+
     <foot-bar v-show="$route.meta.footShow"></foot-bar>
   </div>
 </template>
