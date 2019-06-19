@@ -76,7 +76,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
     {
-      path: '/coupon',
+      path: '/main/coupon',
       name: 'coupon',
       meta:{
         footShow:false
@@ -84,7 +84,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "coupon" */ '@/views/main/coupon/coupon.vue'),
     },
     {
-      path: '/card',
+      path: '/mian/card',
       name: 'card',
       meta:{
         footShow:false
@@ -92,15 +92,15 @@ export default new Router({
       component: () => import(/* webpackChunkName: "card" */ '@/views/main/card/card.vue'),
     },
     {
-      path: '/buy',
+      path: '/main/card/buy',
       name: 'buy',
       meta:{
         footShow:false
       },
       component: () => import(/* webpackChunkName: "buy" */ '@/views/main/buy/buy.vue'),
-      path: '/mymessage',
-      name: 'mymessage',
-      component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
+      // path: '/mymessage',
+      // name: 'mymessage',
+      // component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
     },
     {
       path: '/set',
@@ -123,14 +123,14 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "comment" */ '@/views/comment/Comment.vue'),
     },
-    {
-      path: '/location',
-      name: 'location',
-      meta: {
-        footShow: false
-      },
-      component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
-    },
+    // {
+    //   path: '/location',
+    //   name: 'location',
+    //   meta: {
+    //     footShow: false
+    //   },
+    //   component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
+    // },
     {
       path: '*',
       redirect: '/home'
