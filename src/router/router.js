@@ -27,6 +27,38 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "movie" */ '@/views/movie/Movie.vue'),
     },
+	{
+		 path: '/movie/release',
+		 name: 'release',
+		 meta:{
+		   footShow:true
+		 },
+		 component: () => import(/* webpackChunkName: "release" */ '@/views/movie/release/release.vue'),
+	},
+	{
+		 path: '/movie/release/performer',
+		 name: 'performer',
+		 meta:{
+		   footShow:true
+		 },
+		 component: () => import(/* webpackChunkName: "performer" */ '@/views/movie/performer/performer.vue'),
+	},
+	{
+		 path: '/movie/release/score',
+		 name: 'score',
+		 meta:{
+		   footShow:false
+		 },
+		 component: () => import(/* webpackChunkName: "score" */ '@/views/movie/score/score.vue'),
+	},
+	{
+		 path: '/movie/release/boxOffice',
+		 name: 'boxOffice',
+		 meta:{
+		   footShow:false
+		 },
+		 component: () => import(/* webpackChunkName: "boxOffice" */ '@/views/movie/boxOffice/boxOffice.vue'),
+	},
     {
       path: '/ticket',
       name: 'ticket',
@@ -53,8 +85,9 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/home'
-    }
+      redirect: '/movie/release/performer'
+    },
+	
     
 
   ]

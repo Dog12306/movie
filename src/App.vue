@@ -10,6 +10,7 @@
 <script>
 import FootBar from '@components/FootBar.vue'
 export default {
+	name:'app',
   components:{
     FootBar
   }
