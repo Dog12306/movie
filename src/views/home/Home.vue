@@ -1,26 +1,5 @@
 <template>
   <div class="home-main">
-<<<<<<< HEAD
-        <!-- <TopBackBar>
-            电影列表
-            <template v-slot:img-right>
-                具名插槽  这里实现相关右上角按钮  默认显示分享
-                  如需隐藏 设置空  span
-            </template>
-        </TopBackBar>
-            -->
-        <div class="header-bar">
-            <div class="bar-nav">
-                <div class="bar-location">
-                    
-                </div>
-                <div class="nav-seek">
-                    
-                </div>
-
-            </div>
-        </div>
-=======
     <div class="header">
       <div class="location" :to="{}">
         <p>郑州</p>
@@ -153,7 +132,6 @@
           </swiper>
         </template>
       </div>
->>>>>>> a3741047d395f7d41f4b7b5705a8f804701ecca3
     </div>
     <div class="mask" v-show="isShow">
       <div class="search">
@@ -665,7 +643,6 @@ export default {
         font-size: 14px;
       }
     }
-<<<<<<< HEAD
 
     .home-main{
         .header-bar{
@@ -673,7 +650,6 @@ export default {
             height: 40px; 
         }
     }
-=======
     ul {
       float: left;
       font-size: 16px;
@@ -720,7 +696,6 @@ export default {
   margin-top: 200px;
   background-color: pink;
 }
->>>>>>> a3741047d395f7d41f4b7b5705a8f804701ecca3
 </style>
 
 
