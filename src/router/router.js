@@ -27,6 +27,38 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "movie" */ '@/views/movie/Movie.vue'),
     },
+	{
+		 path: '/movie/release',
+		 name: 'release',
+		 meta:{
+		   footShow:true
+		 },
+		 component: () => import(/* webpackChunkName: "release" */ '@/views/movie/release/release.vue'),
+	},
+	{
+		 path: '/movie/release/performer',
+		 name: 'performer',
+		 meta:{
+		   footShow:true
+		 },
+		 component: () => import(/* webpackChunkName: "performer" */ '@/views/movie/performer/performer.vue'),
+	},
+	{
+		 path: '/movie/release/score',
+		 name: 'score',
+		 meta:{
+		   footShow:false
+		 },
+		 component: () => import(/* webpackChunkName: "score" */ '@/views/movie/score/score.vue'),
+	},
+	{
+		 path: '/movie/release/boxOffice',
+		 name: 'boxOffice',
+		 meta:{
+		   footShow:false
+		 },
+		 component: () => import(/* webpackChunkName: "boxOffice" */ '@/views/movie/boxOffice/boxOffice.vue'),
+	},
     {
       path: '/ticket',
       name: 'ticket',
@@ -75,7 +107,61 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
+		{
+		  path: '/main/message',
+		  name: 'message',
+		  meta:{
+		    footShow:true
+		  },
+		  component: () => import(/* webpackChunkName: "message" */ '@/views/main/message/message.vue'),
+		},
+		{
+		  path: '/main/message/chat/:id',
+		  name: 'chat',
+		  meta:{
+		    footShow:false
+		  },
+		  component: () => import(/* webpackChunkName: "chat" */ '@/views/main/message/chat.vue'),
+		},
+// 		{
+// 		  path: '/myorder',
+// 		  name: 'myorder',
+// 		  meta:{
+// 		    footShow:false
+// 		  },
+// 		  component: () => import(/* webpackChunkName: "myorder" */ '@/views/main/myorder/myorder.vue'),
+// 		},
+// 		{
+// 		  path: '/myorder/tickets/:id',
+// 		  name: 'tickets',
+// 		  meta:{
+// 		    footShow:false
+// 		  },
+// 		  component: () => import(/* webpackChunkName: "tickets" */ '@/views/main/myorder/tickets.vue'),
+// 		},
     {
+      path: '/coupon',
+      name: 'coupon',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "coupon" */ '@/views/main/coupon/coupon.vue'),
+    },
+    {
+      path: '/card',
+      name: 'card',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "card" */ '@/views/main/card/card.vue'),
+    },
+    {
+      path: '/buy',
+      name: 'buy',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "buy" */ '@/views/main/buy/buy.vue'),
       path: '/mymessage',
       name: 'mymessage',
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
@@ -109,11 +195,7 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
     },
-    {
-      path: '*',
-      redirect: '/home'
-    }
-
+    
 
   ]
 })
