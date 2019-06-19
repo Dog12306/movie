@@ -1,102 +1,4 @@
 <template>
-<<<<<<< HEAD
-
-	<div class="main-main">
-		<div class="header-bar">
-			<div class="bar-box">
-				<router-link tag="div" to="/mymessage" class="head-portrait">
-					<img src="@/assets/imgs/main/mine/touxiangx.png" alt>
-				</router-link>
-				<p class="user-name">yujian1130</p>
-				<div class="box-vip">
-					<p>v1青铜会员</p>
-					<img src="@/assets/imgs/main/mine/zoujt.png" alt>
-				</div>
-
-				<div class="box-get">
-					<router-link tag="div" to="/set">
-						<img class="get-img" src="@/assets/imgs/main/mine/shezhix.png" alt>
-					</router-link>
-					<router-link tag="div" to="/message">
-						<img class="get-img" src="@/assets/imgs/main/mine/pl1.png" alt>
-					</router-link>
-				</div>
-
-
-				<router-link tag="div" to="/mymessage" class="box-img">
-					<img src="@/assets/imgs/main/mine/zoujt.png" alt>
-				</router-link>
-			</div>
-		</div>
-		<div class="containter">
-			<div class="content-member">
-				<div class="member-canter">
-					<a href="javescript:;">会员中心</a>
-					<span></span>
-				</div>
-				<div class="member-voucher">
-					<p class="voucher-p voucher-p1">会员中心</p>
-					<p class="voucher-p voucher-p2">50元通兑券天天送</p>
-					<div class="redpacket">
-						<img src="@/assets/imgs/main/mine/hongbaox.png" alt>
-					</div>
-				</div>
-			</div>
-			<div class="content-empty"></div>
-			<div class="my-indent">
-				<div class="indent-title">
-					<p class="title-p">我的订单</p>
-					<div class="title-all">
-						<p class="all-p">全部</p>
-						<img class="all-img" src="@/assets/imgs/main/mine/zoujtx.png" alt>
-					</div>
-				</div>
-				<div class="indent-nav">
-					<ul class="nav-item">
-						<li class="item-li">
-							<img class="li-img" src="@/assets/imgs/main/mine/bianji4.png" alt>
-							<p class="li-p">未消费</p>
-						</li>
-						<li class="item-li">
-							<img class="li-img" src="@/assets/imgs/main/mine/bianji.png" alt>
-							<p class="li-p">待付款</p>
-						</li>
-						<li class="item-li">
-							<img class="li-img" src="@/assets/imgs/main/mine/bianji2.png" alt>
-							<p class="li-p">待评价</p>
-						</li>
-						<li class="item-li">
-							<img class="li-img" src="@/assets/imgs/main/mine/bianji3.png" alt>
-							<p class="li-p">待评价</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="content-list">
-				<ul class="list-item">
-					<router-link tag="li" class="item-vip" :to="{name:'card'}">
-						<p class="vip-ka">影城会员卡</p>
-						<img class="vip-img" src="@/assets/imgs/main/mine/zoujtx.png" alt>
-					</router-link>
-					<router-link tag="li" class="item-vip" :to="{name:'coupon'}">
-						<p class="vip-ka">优惠卷</p>
-						<img class="vip-img" src="@/assets/imgs/main/mine/zoujtx.png" alt>
-					</router-link>
-
-					<li class="item-vip">
-						<p class="vip-ka">我的收藏</p>
-						<img class="vip-img" src="@/assets/imgs/main/mine/zoujtx.png" alt>
-					</li>
-					<li class="item-vip">
-						<p class="vip-ka">帮助与反馈</p>
-						<img class="vip-img" src="@/assets/imgs/main/mine/zoujtx.png" alt>
-					</li>
-				</ul>
-			</div>
-			<div class="empty-pure"></div>
-		</div>
-	</div>
-=======
   <div class="main-main">
     <div class="header-bar">
       <div class="bar-box">
@@ -191,7 +93,6 @@
       <div class="empty-pure"></div>
     </div>
   </div>
->>>>>>> 154798ec126bfa3f9e5770b897dbb0c11d59035b
 </template>
 <script>
 export default {

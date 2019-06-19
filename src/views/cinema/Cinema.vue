@@ -94,144 +94,6 @@
 		</div>
 
 	</div>
-<<<<<<< HEAD
-
-  </div>
-</template>
-
-<script>
-
-export default {	
-  name: 'Movie',
-  data () {
-    return {
-			users: {
-				
-			},
-			selected: '郑州',
-			arr:[],
-			acc:[],
-			hides: false,
-			n: 0,
-			liss:[],
-			qita:[],
-			aca:[
-				{
-					id:1,
-					title:'A'
-				},
-				{
-					id:2,
-					title:'B'
-				},
-				{
-					id:3,
-					title:'C'
-				},
-				{
-					id:4,
-					title:'D'
-				},
-				{
-					id:5,
-					title:'E'
-				},
-				{
-					id:6,
-					title:'F'
-				},
-				{
-					id:7,
-					title:'G'
-				},
-				{
-					id:8,
-					title:'H'
-				},
-				{
-					id:9,
-					title:'J'
-				},
-				{
-					id:10,
-					title:'K'
-				},
-				{
-					id:11,
-					title:'L'
-				},
-				{
-					id:12,
-					title:'M'
-				},
-				{
-					id:13,
-					title:'N'
-				},
-				{
-					id:14,
-					title:'P'
-				},
-				{
-					id:15,
-					title:'Q'
-				},
-				{
-					id:16,
-					title:'S'
-				},
-				{
-					id:17,
-					title:'T'
-				},
-				{
-					id:18,
-					title:'W'
-				},
-				{
-					id:19,
-					title:'X'
-				},
-				{
-					id:20,
-					title:'Y'
-				},
-				{
-					id:21,
-					title:'Z'
-				}
-			],
-			studios:[
-				{
-					id: 1,
-					name: '耀莱成龙影城(建业店)',
-					title: '金水区普惠路77号绿地之窗尚峰座正大乐城3楼',
-					hui: '千与千寻等6部影片特惠',
-					guan: '观影套餐限量特惠',
-					kai: '开卡特惠,每单两张立减2元',
-					price: '19.9元',
-					distance: '1.7km'
-				},
-				{
-					id: 2,
-					name: '五一影城',
-					title: '管城回族区东风南路商鼎路交汇处升龙广场4楼',
-					hui: '千与千寻等2部影片特惠',
-					guan: '观影套餐限量特惠',
-					kai: '开卡特惠,每单两张立减2元',
-					price: '19.9元',
-					distance: '1.9km'
-				},
-				{
-					id: 3,
-					name: '奥斯卡熙地港影城',
-					title: '金水区郑东新区农业东路和众意西路交叉口熙地港...',
-					hui: '黑衣人等6部影片特惠',
-					guan: '观影套餐限量特惠',
-					kai: '开卡特惠,每单两张立减2元',
-					price: '19.9元',
-					distance: '4.7km'
-=======
 </template>
 
 <script>
@@ -243,7 +105,6 @@ export default {
 			return {
 				users: {
 
->>>>>>> 154798ec126bfa3f9e5770b897dbb0c11d59035b
 				},
 				selected: '郑州',
 				arr: [],
@@ -479,8 +340,6 @@ export default {
 			//		}
 
 
-		}
-<<<<<<< HEAD
 	},
 	created(){
   　　this.users = city;
@@ -515,11 +374,6 @@ export default {
 };
 </script>
 
-=======
-
-	}
-</script>
->>>>>>> 154798ec126bfa3f9e5770b897dbb0c11d59035b
 
 <style lang="scss" scoped>
 	.clearfix:after {
@@ -819,8 +673,5 @@ export default {
 			}
 		}
 	}
-<<<<<<< HEAD
 	
-=======
->>>>>>> 154798ec126bfa3f9e5770b897dbb0c11d59035b
 </style>
