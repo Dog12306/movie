@@ -1,104 +1,109 @@
 <template>
-	<div class="movie-main">
-		<div class="header">
-			<span class="city" @click="shows">{{selected}} <img src="@assets/imgs/details/xia.png" alt=""></span>
-			<span class="title">影院</span>
-			<a href="#"><img class="icon icon-share" :src="require('@/assets/imgs/icons/share.png')" alt=""></a>
-		</div>
-		<div class="main" id="main">
-			<div class="shuju" v-show="hides">
-				<ul>
-					<span class="ding">定位城市</span>
-					<span class="wei" @click="zhengz">郑州</span>
-					<span class="hot">热门城市</span>
-					<li v-for="q in acc" value="" @click="hotcity(q.id,$event)">{{q.name}}</li>
+  <div class="movie-main">
+    <div class="header">
+      <span class="city" @click="shows">
+        {{selected}}
+        <img src="@assets/imgs/details/xia.png" alt>
+      </span>
+      <span class="title">影院</span>
+      <a href="#">
+        <img class="icon icon-share" :src="require('@/assets/imgs/icons/share.png')" alt>
+      </a>
+    </div>
+    <div class="main" id="main">
+      <div class="shuju" v-show="hides">
+        <ul>
+          <span class="ding">定位城市</span>
+          <span class="wei" @click="zhengz">郑州</span>
+          <span class="hot">热门城市</span>
+          <li v-for="q in acc" value @click="hotcity(q.id,$event)">{{q.name}}</li>
+        </ul>
 
-				</ul>
+        <ol class="ol clearfix">
+          <span class="qita" id="1">A</span>
+          <li v-for="m in users.A" :key="m.id" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="2">B</span>
+          <li v-for="m in users.B" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="3">C</span>
+          <li v-for="m in users.C" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="4">D</span>
+          <li v-for="m in users.D" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="5">E</span>
 
-				<ol class="ol clearfix">
-					<span class="qita" id="1">A</span>
-					<li v-for="m in users.A" :key="m.id" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="2">B</span>
-					<li v-for="m in users.B" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="3">C</span>
-					<li v-for="m in users.C" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="4">D</span>
-					<li v-for="m in users.D" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="5">E</span>
+          <li v-for="m in users.E" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="6">F</span>
+          <li v-for="m in users.F" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="7">G</span>
+          <li v-for="m in users.G" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="8">H</span>
+          <li v-for="m in users.H" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="9">J</span>
+          <li v-for="m in users.J" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="10">K</span>
+          <li v-for="m in users.K" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="11">L</span>
+          <li v-for="m in users.L" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="12">M</span>
+          <li v-for="m in users.M" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="13">N</span>
+          <li v-for="m in users.N" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="14">P</span>
+          <li v-for="m in users.P" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="15">Q</span>
+          <li v-for="m in users.Q" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="16">S</span>
+          <li v-for="m in users.S" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="17">T</span>
+          <li v-for="m in users.T" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="18">W</span>
+          <li v-for="m in users.W" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="19">X</span>
+          <li v-for="m in users.X" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="20">Y</span>
+          <li v-for="m in users.Y" @click="othercity(m.id,$event)">{{m.name}}</li>
+          <span class="qita" id="21">Z</span>
+          <li v-for="m in users.Z" @click="othercity(m.id,$event)">{{m.name}}</li>
+        </ol>
+        <div class="wrapper" ref="wrapper">
+          <span class="spone">当前</span>
+          <span class="sptwo">热门</span>
+          <span class="spthree">其他</span>
+          <ul class="content">
+            <li
+              class="lis"
+              @touchstart="gomove(z.id,$event)"
+              v-for="z in aca"
+              :key="z.id"
+            >{{z.title}}</li>
+          </ul>
 
-					<li v-for="m in users.E" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="6">F</span>
-					<li v-for="m in users.F" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="7">G</span>
-					<li v-for="m in users.G" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="8">H</span>
-					<li v-for="m in users.H" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="9">J</span>
-					<li v-for="m in users.J" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="10">K</span>
-					<li v-for="m in users.K" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="11">L</span>
-					<li v-for="m in users.L" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="12">M</span>
-					<li v-for="m in users.M" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="13">N</span>
-					<li v-for="m in users.N" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="14">P</span>
-					<li v-for="m in users.P" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="15">Q</span>
-					<li v-for="m in users.Q" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="16">S</span>
-					<li v-for="m in users.S" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="17">T</span>
-					<li v-for="m in users.T" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="18">W</span>
-					<li v-for="m in users.W" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="19">X</span>
-					<li v-for="m in users.X" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="20">Y</span>
-					<li v-for="m in users.Y" @click="othercity(m.id,$event)">{{m.name}}</li>
-					<span class="qita" id="21">Z</span>
-					<li v-for="m in users.Z" @click="othercity(m.id,$event)">{{m.name}}</li>
-				</ol>
-				<div class="wrapper" ref="wrapper">
-					<span class="spone">当前</span>
-					<span class="sptwo">热门</span>
-					<span class="spthree">其他</span>
-					<ul class="content">
-						<li class="lis" @touchstart="gomove(z.id,$event)" v-for="z in aca" :key="z.id">{{z.title}}</li>
-					</ul>
+          <div class="loading-wrapper"></div>
+        </div>
+      </div>
+    </div>
+    <div class="du">我在: 金水区绿地新都会</div>
+    <div class="movie-card">
+      <ul>
+        <li v-for="stu in studios" :key="stu.id">
+          <p class="pn">{{stu.name}}</p>
+          <p class="pt">{{stu.title}}</p>
+          <span class="ph-hui">惠</span>
+          <p class="ph">{{stu.hui}}</p>
+          <span class="pg-guan">观</span>
+          <p class="pg">{{stu.guan}}</p>
+          <span class="pk-kai">卡</span>
+          <p class="pk">{{stu.kai}}</p>
+          <span class="spj">{{stu.price}}起</span>
+          <span class="spdi">{{stu.distance}}</span>
+        </li>
+      </ul>
+    </div>
+    </div>
 
-					<div class="loading-wrapper"></div>
-				</div>
-			</div>
-		</div>
-		<div class="du">我在: 金水区绿地新都会</div>
-		<div class="movie-card">
-
-			<router-link tag="ul" to="/cinema/details">
-				<li v-for="stu in studios" :ket="stu.id">
-
-					<p class="pn">{{stu.name}}</p>
-					<p class="pt">{{stu.title}}</p>
-					<span class="ph-hui">惠</span>
-					<p class="ph">{{stu.hui}}</p>
-					<span class="pg-guan">观</span>
-					<p class="pg">{{stu.guan}}</p>
-					<span class="pk-kai">卡</span>
-					<p class="pk">{{stu.kai}}</p>
-					<span class="spj">{{stu.price}}起</span>
-					<span class="spdi">{{stu.distance}}</span>
-				</li>
-			</router-link>
-
-		</div>
-
-	</div>
 </template>
 
 <script>
 	import city from "../../../cityData.json"
-	import BScroll from 'better-scroll'
 	export default {
 		name: 'Cinema',
 		data() {
@@ -346,31 +351,30 @@
 		this.acc =  this.users.hot
 		this.loadData();
   },
-	mounted() {
-		
-		delete this.users.hot;
-		var arrs = [],that = this;
-		for(var j in that.acc){
-			that.acc.splice(j+6,10);
-		}	
-		for(var i in that.users){		
-			that.arr.push(...that.users[i]);
-		}	
-		
-// 		var lis = document.querySelectorAll('.lis');
-// 		var n = 0;
-// 		for(var i = 0; i< lis.length; i++){
-// 			lis[i].ontouchstart = function(){
-// 				 n++;
-// 				 if(lis[i].id == aca.id){
-// 					 console.log('aaa');
-// 				 }
-// 					 
-// 				 
-// 			}
-//		}
+  mounted() {
+    delete this.users.hot;
+    var arrs = [],
+      that = this;
+    for (var j in that.acc) {
+      that.acc.splice(j + 6, 10);
+    }
+    for (var i in that.users) {
+      that.arr.push(...that.users[i]);
+    }
 
-	}
+    // 		var lis = document.querySelectorAll('.lis');
+    // 		var n = 0;
+    // 		for(var i = 0; i< lis.length; i++){
+    // 			lis[i].ontouchstart = function(){
+    // 				 n++;
+    // 				 if(lis[i].id == aca.id){
+    // 					 console.log('aaa');
+    // 				 }
+    //
+    //
+    // 			}
+    //		}
+  }
 };
 </script>
 
