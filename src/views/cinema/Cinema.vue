@@ -533,11 +533,12 @@ export default {
 				.pn{
 					width: 180px;
 					line-height: 20px;
+					text-align: left;
 					height: 20px;
 					font-weight:500;
 					font-size: 14px;
 					color: white;
-					
+					margin-left: 20px;
 					opacity: 1;
 				}
 				.pt{

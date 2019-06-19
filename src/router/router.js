@@ -39,7 +39,7 @@ export default new Router({
 		 path: '/movie/release/performer',
 		 name: 'performer',
 		 meta:{
-		   footShow:true
+		   footShow:false
 		 },
 		 component: () => import(/* webpackChunkName: "performer" */ '@/views/movie/performer/performer.vue'),
 	},
@@ -195,7 +195,10 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
     },
-    
+    {
+    	path: '*',
+    	redirect: '/home'
+    }
 
   ]
 })
