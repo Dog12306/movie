@@ -7,8 +7,8 @@
     </div>
     <div class="content">
       <p class="p1">试试搜索影片</p>
-      <p class="p2">万达影城</p>
-      <div class="dw"></div>
+      <router-link tag="p" class="p2" :to="{name:'cinema'}">万达影城</router-link>
+      <router-link tag="span" :to="{name:'release'}"  class="dw" ></router-link>
       <p class="p3">
         5月9日
         <span>1:34pm</span>
@@ -97,7 +97,16 @@ export default {
       check2:false
     };
   },
-  methods: {},
+  methods: {
+        shows() {
+      this.n++;
+      if (this.n % 2 == 0) {
+        this.hides = false;
+      } else {
+        this.hides = true;
+      }
+    }
+  },
   components: {}
 };
 </script>
@@ -116,7 +125,9 @@ export default {
       height: 33px;
       background: url(../../../assets/imgs/kind/tx.png) no-repeat center;
       background-size: cover;
-      margin-left: 220px;
+      position: absolute;
+      right: 70px;
+      display: block;
     }
     p {
       font-size: 12px;
@@ -124,6 +135,8 @@ export default {
       font-weight: 500;
       color: rgba(255, 255, 255, 1);
       line-height: 17px;
+      position: absolute;
+      right: 17px;
       margin-left: 10px;
     }
     button {
