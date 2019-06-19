@@ -1,8 +1,11 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 7ef257b0eec565e77e7450f759c6603d18081737
+=======
+>>>>>>> 9e4d621bb52cc41c171c187420b73088ee327eaa
   <div class="movie-main">
     <div class="header">
       <span class="city" @click="shows">
@@ -92,8 +95,12 @@
         <li v-for="stu in studios" :key="stu.id">
 =======
       <ul>
+<<<<<<< HEAD
         <li v-for="stu in studios" :ket="stu.id">
 >>>>>>> 7ef257b0eec565e77e7450f759c6603d18081737
+=======
+        <li v-for="stu in studios" :key="stu.id">
+>>>>>>> 9e4d621bb52cc41c171c187420b73088ee327eaa
           <p class="pn">{{stu.name}}</p>
           <p class="pt">{{stu.title}}</p>
           <span class="ph-hui">惠</span>
@@ -111,6 +118,7 @@
 =======
       </ul>
     </div>
+<<<<<<< HEAD
 =======
 	<div class="movie-main">
 		<div class="header">
@@ -558,6 +566,21 @@ export default {
 					price: '19.9元',
 					distance: '4.7km'
 				}],
+=======
+    </div>
+
+</template>
+
+<script>
+	import city from "../../../cityData.json"
+	export default {
+		name: 'Cinema',
+		data() {
+			return {
+				users: {
+
+				},
+>>>>>>> 9e4d621bb52cc41c171c187420b73088ee327eaa
 				selected: '郑州',
 				arr: [],
 				acc: [],
@@ -792,12 +815,17 @@ export default {
 			//		}
 
 
+<<<<<<< HEAD
 		},
 	
+=======
+	},
+>>>>>>> 9e4d621bb52cc41c171c187420b73088ee327eaa
 	created(){
   　　this.users = city;
 		this.acc =  this.users.hot
 		this.loadData();
+<<<<<<< HEAD
 <<<<<<< HEAD
   	},
 	mounted() {
@@ -813,6 +841,8 @@ export default {
 		
 =======
 >>>>>>> 6ba6487e6ac49d6650152d21c7c595728de8a423
+=======
+>>>>>>> 9e4d621bb52cc41c171c187420b73088ee327eaa
   },
   mounted() {
     delete this.users.hot;
@@ -825,7 +855,6 @@ export default {
       that.arr.push(...that.users[i]);
     }
 
-<<<<<<< HEAD
     // 		var lis = document.querySelectorAll('.lis');
     // 		var n = 0;
     // 		for(var i = 0; i< lis.length; i++){
@@ -839,13 +868,11 @@ export default {
     // 			}
     //		}
   }
-=======
-	}
->>>>>>> 6ba6487e6ac49d6650152d21c7c595728de8a423
 };
 </script>
 >>>>>>> 7ef257b0eec565e77e7450f759c6603d18081737
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <style lang='scss' scoped>
@@ -1128,6 +1155,8 @@ body {
 }
 </script>
 
+=======
+>>>>>>> 9e4d621bb52cc41c171c187420b73088ee327eaa
 
 <style lang="scss" scoped>
 	.clearfix:after {
@@ -1428,6 +1457,7 @@ body {
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <<<<<<< HEAD
@@ -1436,4 +1466,7 @@ body {
 >>>>>>> 154798ec126bfa3f9e5770b897dbb0c11d59035b
 >>>>>>> 6ba6487e6ac49d6650152d21c7c595728de8a423
 >>>>>>> 7ef257b0eec565e77e7450f759c6603d18081737
+=======
+	
+>>>>>>> 9e4d621bb52cc41c171c187420b73088ee327eaa
 </style>
