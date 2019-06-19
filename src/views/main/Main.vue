@@ -95,7 +95,6 @@
 			<div class="empty-pure"></div>
 		</div>
 	</div>
->>>>>>> 5ffe1961f7931ee4c6652e753f9be6d3383b8010
 </template>
 <script>
 	export default {
