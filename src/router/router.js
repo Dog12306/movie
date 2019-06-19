@@ -76,6 +76,14 @@ export default new Router({
       component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/Cinema.vue'),
     },
     {
+      path: '/cinema/details/:id',
+      name: 'details',
+      meta: {
+        footShow: true
+      },
+      component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/details/Details.vue'),
+    },
+    {
       path: '/cinema/map/:id',
       name: 'cinemaMap',
       meta:{
@@ -140,7 +148,7 @@ export default new Router({
 // 		  component: () => import(/* webpackChunkName: "tickets" */ '@/views/main/myorder/tickets.vue'),
 // 		},
     {
-      path: '/coupon',
+      path: '/main/coupon',
       name: 'coupon',
       meta:{
         footShow:false
@@ -148,7 +156,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "coupon" */ '@/views/main/coupon/coupon.vue'),
     },
     {
-      path: '/card',
+      path: '/mian/card',
       name: 'card',
       meta:{
         footShow:false
@@ -156,15 +164,15 @@ export default new Router({
       component: () => import(/* webpackChunkName: "card" */ '@/views/main/card/card.vue'),
     },
     {
-      path: '/buy',
+      path: '/main/card/buy',
       name: 'buy',
       meta:{
         footShow:false
       },
       component: () => import(/* webpackChunkName: "buy" */ '@/views/main/buy/buy.vue'),
-      path: '/mymessage',
-      name: 'mymessage',
-      component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
+      // path: '/mymessage',
+      // name: 'mymessage',
+      // component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
     },
     {
       path: '/set',
@@ -187,18 +195,42 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "comment" */ '@/views/comment/Comment.vue'),
     },
+    // {
+    //   path: '/location',
+    //   name: 'location',
+    //   meta: {
+    //     footShow: false
+    //   },
+    //   component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
+    // },
     {
-      path: '/location',
-      name: 'location',
-      meta: {
-        footShow: false
+      path: '/movie/Details',
+      name: 'Details',
+      meta:{
+        footShow:false
       },
-      component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
+      component: () => import(/* webpackChunkName: "details" */ '@/views/movie/moviedetails/Details.vue'),
     },
     {
-    	path: '*',
-    	redirect: '/home'
-    }
-
+      path: '/main/order/Order',
+      name: 'order',
+      meta: {
+        footShow: true
+      },
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/order/Order.vue'),
+    },
+    {
+      path: '/main/order/Order/tick/:id',
+      name: 'tick',
+      meta: {
+        footShow: false,
+        keepAlive: false // 不需要缓存
+      },
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/tick/tick.vue'),
+    },
+    {
+      path: '*',
+      redirect: '/home'
+    },
   ]
 })

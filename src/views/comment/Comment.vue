@@ -95,7 +95,7 @@ export default {
     };
   },
   created() {
-    this.list = this.$store.state.list;
+    this.list = this.$store.state.location.list;
     this.getStar();
   },
   methods: {
@@ -109,16 +109,16 @@ export default {
       })
     },
     time() {
-      this.list = this.$store.getters.time;
+      this.list = this.$store.getters['location/time'];
     },
     all() {
-      this.list = this.$store.state.list;
+      this.list = this.$store.getters['location/list'];
     },
     good() {
-      this.list = this.$store.getters.good;
+      this.list = this.$store.getters['location/good'];
     },
     negative() {
-      this.list = this.$store.getters.negative;
+      this.list = this.$store.getters['location/negative'];
     }
   }
 };

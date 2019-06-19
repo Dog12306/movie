@@ -86,10 +86,18 @@
 			</li>
 		</ul>
 	</div>
+>>>>>>> 5ffe1961f7931ee4c6652e753f9be6d3383b8010
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
+export default {
+  name: "Movie",
+
+  data() {
+    return {};
+=======
 	import city from "../../../cityData.json"
 	import BScroll from 'better-scroll'
 export default {	
@@ -308,6 +316,7 @@ export default {
   　　this.users = city;
 		this.acc =  this.users.hot
 		this.loadData();
+>>>>>>> 5ffe1961f7931ee4c6652e753f9be6d3383b8010
   },
 	mounted() {
 		
@@ -333,6 +342,13 @@ export default {
 // 			}
 //		}
 
+<<<<<<< HEAD
+  methods: {}
+};
+</script>
+
+<style lang='scss' scoped>
+=======
 	},
 	
 }
@@ -606,4 +622,5 @@ export default {
 		}
 	}
 	
+>>>>>>> 5ffe1961f7931ee4c6652e753f9be6d3383b8010
 </style>

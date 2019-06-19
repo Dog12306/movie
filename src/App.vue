@@ -1,10 +1,12 @@
 <template>
   <div id="app">
 
+
  
 
 
     <keep-alive include="home,movie,ticket,cinema">
+
 
        <router-view class="router-view"></router-view>
 

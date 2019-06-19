@@ -11,15 +11,19 @@
       <p class="p1">电影专享代金券</p>
       <p class="p2">购票即可抵扣 快去购票</p>
       <p class="p3">有效期至: 2018-4-11</p>
+      <router-link tag='a' :to="{name:'buy'}" class="jump" >
       <p class="p4">五元</p>
       <p class="p5">购票</p>
+      </router-link>
     </div>
     <div class="content-1">
       <p class="p1">电影专享代金券</p>
       <p class="p2">购票即可抵扣 快去购票</p>
       <p class="p3">有效期至: 2018-4-11</p>
+      <router-link tag='a' :to="{name:'buy'}" class="jump" >
       <p class="p4">五元</p>
       <p class="p5">购票</p>
+      </router-link>
     </div>
     <div class="content-2">
       <p class="p1">电影专享代金券</p>

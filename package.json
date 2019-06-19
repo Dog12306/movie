@@ -9,8 +9,11 @@
   "dependencies": {
     "animate.css": "^3.7.1",
     "axios": "^0.18.1",
+<<<<<<< HEAD
+=======
  
     "better-scroll": "^1.15.2",
+>>>>>>> b612ea25cc2559bb6fb63e99512216d4a1d08a01
     "core-js": "^2.6.5",
     "lib-flexible": "^0.3.2",
     "mockjs": "^1.0.1-beta3",

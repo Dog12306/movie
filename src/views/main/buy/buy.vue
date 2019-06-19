@@ -14,14 +14,19 @@
         <span>1:34pm</span>
       </p>
       <p class="p4">更多场次</p>
-      <label class="check">
-        <input type="checkbox">
-        <span>特惠票</span>
-      </label>
-      <label class="check-2">
-        <input type="checkbox">
-        <span>推荐座位</span>
-      </label>
+      <div class="check" @click="check=!check">
+        <div>
+          <span class="c-1" v-show="check"></span>
+        </div>
+        <span class="c-2">特惠票</span>
+      </div>
+      <div class="check-2"  @click="check2=!check2">
+        <div>
+        <span class="c-1"  v-show="check2"></span>
+        </div>
+        <span class="c-2">推荐座位</span>
+      </div>
+
       <div class="sure">
         <p>购票</p>
       </div>
@@ -87,10 +92,13 @@ export default {
   name: "buy",
 
   data() {
-    return {};
+    return {
+      check: false,
+      check2:false
+    };
   },
-
-  methods: {}
+  methods: {},
+  components: {}
 };
 </script>
 
@@ -231,32 +239,59 @@ export default {
       display: flex;
       align-items: center;
       position: absolute;
-      top: 148px;
       left: 17px;
-      font-size: 12px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      input {
-        background: linear-gradient(
-          128deg,
-          rgba(241, 109, 125, 1) 0%,
-          rgba(242, 141, 109, 1) 100%
-        );
-        border-radius: 1px;
+      top: 148px;
+      div {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #979797;
+      .c-1 {
+        display: block;
+        width: 15px;
+        height: 15px;
+        background: url(../../../assets/imgs/kind/check.png) no-repeat center;
+        background-color: #f16d7d;
+        background-size: cover;
+      }
+      }
+      .c-2 {
+        margin-left: 5px;
+        font-size: 12px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 17px;
       }
     }
     .check-2 {
       display: flex;
       align-items: center;
       position: absolute;
-      top: 148px;
       right: 17px;
-      font-size: 12px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
+      top: 148px;
+      div{
+        width: 15px;
+        height: 15px;
+        border: 1px solid #979797;
+      .c-1 {
+        display: block;
+        width: 15px;
+        height: 15px;
+        background: url(../../../assets/imgs/kind/check.png) no-repeat center;
+        background-color: #f16d7d;
+        background-size: cover;
+      }
+      }
+      .c-2 {
+        margin-left: 5px;
+        font-size: 12px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 17px;
+      }
     }
+
     .sure {
       width: 302px;
       height: 40px;
