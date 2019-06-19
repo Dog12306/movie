@@ -52,10 +52,16 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue'),
     },
     {
+      path: '/movie/Details',
+      name: 'Details',
+      meta:{
+        footShow:false
+      },
+      component: () => import(/* webpackChunkName: "details" */ '@/views/movie/moviedetails/Details.vue'),
+    },
+    {
       path: '*',
       redirect: '/home'
-    }
-    
-
+    },
   ]
 })
