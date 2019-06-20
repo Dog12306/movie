@@ -1,7 +1,8 @@
 import cityList from "@/api/cityData";
 var state = {
     cityList,
-    currentCity: '郑州'
+    currentCity: '郑州',
+    history:["北京", "上海", "广州"],
 }
 var getters = {
 
@@ -11,6 +12,8 @@ var mutations = {
         if (!city) {
             city = state.currentCity
         }
+        state.history.push(city)
+        state.history.shift()
         state.currentCity = city
     }
 

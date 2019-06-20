@@ -19,12 +19,7 @@
           >
             <h2 class="city-title">{{item.title}}</h2>
             <ul>
-              <li
-                v-for="num in item.content"
-                :key="num.name"
-                
-                :class="{'active':actFlag==num}"
-              >
+              <li v-for="num in item.content" :key="num.name" :class="{'active':actFlag==num}">
                 <div @click="cancel(num)" class="city-cen">{{num}}</div>
               </li>
             </ul>
@@ -55,6 +50,7 @@ export default {
     return {
       cityList,
       otherArr: ["定位", "热门", "历史"],
+      
       myCityList: [],
 
       listLeft: [],
@@ -62,12 +58,19 @@ export default {
 
       listHeight: [],
       scrollY: 0, //实时获取当前y轴的高度
-      clickEvent: false,
+      clickEvent: false
       // actFlag: "world"
     };
   },
- 
+
   methods: {
+    // initData(flag) {
+    //   if (flag) {
+    //     this.addCityList();
+    //   }else{
+
+    //   }
+    // },
     addCityList() {
       for (var key in this.cityList) {
         var temp = {};
@@ -83,7 +86,7 @@ export default {
       this.myCityList.unshift(temptt[0]);
       this.myCityList.unshift({
         title: "历史",
-        content: ["北京", "上海", "广州"]
+        content: this.history
       });
       this.myCityList.unshift({
         title: "定位",
@@ -137,15 +140,13 @@ export default {
         this.lefts.scrollToElement(el, 300);
       }
     },
-    cancel(city){
-      console.log(city);
-      if(!city) {
+    cancel(city) {
+      if (!city) {
         this.$router.go(-1);
-
-        return
-        city = '郑州'
+        return;
+        city = "郑州";
       }
-      this.$store.commit('city/changeCity',city)
+      this.$store.commit("city/changeCity", city);
       this.$router.go(-1);
     }
   },
@@ -156,6 +157,7 @@ export default {
     });
   },
   created() {
+    // this.initData(true);
     this.addCityList();
     this.getListRight();
     this.getListLeft();
@@ -185,8 +187,12 @@ export default {
       //如果this.listHeight没有的话，就返回0
       return 0;
     },
-    actFlag(){
+    actFlag() {
       return this.$store.state.city.currentCity;
+    },
+    history(){
+      return this.$store.state.city.history;
+
     }
   }
 };
