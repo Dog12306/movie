@@ -84,7 +84,7 @@
     <div class="du">我在: 金水区绿地新都会</div>
     <div class="movie-card">
       <ul>
-		  <router-link tag="li" v-for="stu in studios" :key="stu.id"  @click.native="getGoods(stu.id)" to="/cinema/details">
+		  <router-link tag="li" v-for="stu in studios" :key="stu.id" :to="{name:'details',params:{id:stu.id}}" >
 			  <p class="pn">{{stu.name}}</p>
 			  <p class="pt">{{stu.title}}</p>
 			  <span class="ph-hui">惠</span>

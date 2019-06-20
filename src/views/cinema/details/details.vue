@@ -4,15 +4,15 @@
     <div class="bg">
       <div class="head">
         <img src="@assets/imgs/details/Left.png" alt class="left" @click="$router.go(-1)">
-        <p class="cent">{{cinename.name}}</p>
+        <p class="cent">{{cinemass.name}}</p>
         <img src="@assets/imgs/details/icon1.png" alt class="right">
       </div>
       <div class="add">
         <img class="add-icon" src="@assets/imgs/details/map.png" alt>
-        <p class="add-cent">耀莱成龙影城（建业店）</p>
+        <p class="add-cent">{{cinemass.name}}</p>
         <img class="add-icon" src="@assets/imgs/details/right.png" alt>
       </div>
-      <p class="add-top">金水区中州大道建业置地</p>
+      <p class="add-top">{{cinemass.title}}</p>
       <!-- 轮播 -->
       <swiper
         class="banner"
@@ -70,24 +70,37 @@ export default {
           modifier: 6,
           slideShadows: false
         }
-      }
+      },
+			cinemas: [],
+			cinb:[],
+			ids: ''
     };
   },
   created() {
     axios.get(this.url).then(res => {
       this.data = res.data.data;
-      
+    
     });
+		
   },
+	mounted() {
+		
+		this.ids = this.$route.params.id;
+		this.gotos();
+		this.cinemas = this.$store.state.cinemas.temp;
+	},
   updated() {
   },
   methods: {
-    callback() {}
+    callback() {},
+		gotos(){
+			this.$store.commit('cinemas/getGoods',this.ids)
+		} 
   },
 
   computed: {
-		cinename(){
-			return  this.$store.state.cinemas.temp;	
+		cinemass(){
+			return this.cinemas;
 		}
 	}
 };
