@@ -29,40 +29,41 @@ export default {
       Now: true,
       Hot: "Hot",
       Coming: "Coming",
-      currentView: "Hot" // 默认第一个组件
+      currentView: "Hot" // 默认第2个组件,
+      // hotorcoming:""
     };
   },
   methods: {
     
     tabChange(tabItem) {
-      if(tabItem == "Hot"){
-        this.Now = true
-      }else{
-        this.Now = false
+      if (tabItem == "Hot") {
+        this.Now = true;
+      } else {
+        this.Now = false;
       }
       this.currentView = tabItem;
     }
   },
-  computed:{
-    
-    },
-  activated(){
-    console.log(this.$route.params.type)  
-      if(this.$route.params.type==1){
-        this.tabChange("Coming")
-      }else{
-        this.tabChange("Hot")
-      }
+  activated() {
+    // console.log(this.$route.params.type)
+    if (this.$route.params.type == 1) {
+      this.tabChange("Coming");
+    } else {
+      this.tabChange("Hot");
+    }
   }
 };
 </script>
 
 <style lang='scss' scoped>
 .main-header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 375px;
   height: 44px;
   background: rgba(51, 54, 61, 1);
+  z-index: 99;
   .main-header-address {
     position: absolute;
     top: 20px;
@@ -95,8 +96,9 @@ export default {
       border-radius: 5px 0px 0px 5px;
       box-shadow: 0px 0px 4px 1px rgba(242, 109, 125, 0.18);
     }
-    .title1.active,.title2.active{
-            background: linear-gradient(
+    .title1.active,
+    .title2.active {
+      background: linear-gradient(
         150deg,
         rgba(242, 91, 134, 1) 0%,
         rgba(241, 172, 94, 1) 100%
