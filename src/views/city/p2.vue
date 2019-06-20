@@ -211,7 +211,7 @@ export default {
     float: left;
     width: 298px;
     height: 36px;
-    background: rgba(51, 54, 61, 1) url("../../../assets/imgs/icons/搜索.png")
+    background: rgba(51, 54, 61, 1) url("../../assets/imgs/icons/搜索.png")
       no-repeat 20px;
     border-radius: 18px;
     outline: none;
