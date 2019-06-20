@@ -22,7 +22,7 @@
               <li
                 v-for="num in item.content"
                 :key="num.name"
-                @click="actFlag=num"
+                
                 :class="{'active':actFlag==num}"
               >
                 <div @click="cancel(num)" class="city-cen">{{num}}</div>
@@ -63,9 +63,10 @@ export default {
       listHeight: [],
       scrollY: 0, //实时获取当前y轴的高度
       clickEvent: false,
-      actFlag: "world"
+      // actFlag: "world"
     };
   },
+ 
   methods: {
     addCityList() {
       for (var key in this.cityList) {
@@ -86,7 +87,7 @@ export default {
       });
       this.myCityList.unshift({
         title: "定位",
-        content: ["郑州"]
+        content: [this.actFlag]
       });
     },
     getListRight() {
@@ -183,6 +184,9 @@ export default {
       }
       //如果this.listHeight没有的话，就返回0
       return 0;
+    },
+    actFlag(){
+      return this.$store.state.city.currentCity;
     }
   }
 };
