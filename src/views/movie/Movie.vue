@@ -2,7 +2,7 @@
   <div class="movie-main">
     <!-- 头部 -->
     <div class="main-header">
-      <div class="main-header-address">郑州</div>
+      <div class="main-header-address">{{currentCity}}</div>
       <div class="main-header-title">
         <span class="title1" @click="tabChange(Hot)" :class="{'active':Now}">正在热映</span>
         <span class="title2" @click="tabChange(Coming)" :class="{'active':!Now}">即将上映</span>
@@ -23,6 +23,11 @@ export default {
   components: {
     Hot,
     Coming
+  },
+  computed:{
+     currentCity() {
+      return this.$store.state.city.currentCity;
+    }
   },
   data() {
     return {
