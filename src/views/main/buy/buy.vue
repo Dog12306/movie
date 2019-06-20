@@ -30,7 +30,10 @@
       <div class="sure">
         <p>购票</p>
       </div>
-      <p class="p5">一条狗的使命 我是药神 清除历史</p>
+      <div class="clear">
+
+      <p class="p5" v-if="clearTitle">一条狗的使命 我是药神  </p><span @click="clearTitle=false" class="s1">清除历史</span>
+      </div>
     </div>
     <p class="title">
       特惠票
@@ -94,7 +97,8 @@ export default {
   data() {
     return {
       check: false,
-      check2:false
+      check2:false,
+      clearTitle:true
     };
   },
   methods: {
@@ -332,15 +336,28 @@ export default {
         margin: auto 0;
       }
     }
+    .clear{
+            position: absolute;
+      top: 261px;
+      left: 17px;
+      display: flex;
+      align-items: center;
     .p5 {
       font-size: 12px;
       font-family: PingFangSC-Regular;
       font-weight: 400;
       color: rgba(255, 255, 255, 1);
       line-height: 17px;
-      position: absolute;
-      top: 261px;
-      left: 17px;
+
+    }
+    .s1{
+            font-size: 12px;
+      font-family: PingFangSC-Regular;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 1);
+      line-height: 17px;
+      margin-left: 5px;
+    }
     }
   }
   .title {
