@@ -47,10 +47,13 @@ export default {
 
 <style lang='scss' scoped>
 .main-header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 375px;
   height: 44px;
   background: rgba(51, 54, 61, 1);
+  z-index: 99;
   .main-header-address {
     position: absolute;
     top: 20px;

@@ -42,7 +42,7 @@
       </swiper-slide>
     </swiper>
     <ul class="coming-item">
-      <li class="coming-list" v-for="movie in movieListCom" :key="movie.id">
+      <router-link tag="li" :to="{name:'Details'}" class="coming-list" v-for="movie in movieListCom" :key="movie.id">
         <img class="cover-img" :src="movie.coverImg" alt>
         <img class="play" src="@/assets/imgs/icons/play.png" alt>
         <div class="detail">
@@ -54,7 +54,7 @@
           <p class="p4">主演：{{movie.castsStr}}</p>
           <router-link tag="div" :to="{name:'cinema'}" class="presale">预售</router-link>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -131,6 +131,7 @@ export default {
 <style lang='scss' scoped>
 @import "@/assets/style/common/common.scss";
 .coming-main {
+  margin-top: 40px;
   position: relative;
   overflow: hidden;
   .hot {
