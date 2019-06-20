@@ -41,7 +41,6 @@ import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import axios from "axios";
 import List from "@/views/cinema/components/List.vue";
-
 export default {
   name: "details",
   components: {
@@ -80,7 +79,7 @@ export default {
     });
   },
   updated() {
-    console.log("App.vue finish re-render");
+    console.log("App.vue finish re-render");   
   },
   methods: {
     callback() {}
