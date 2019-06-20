@@ -1,10 +1,10 @@
 <template>
   <div class="home-main">
     <div class="header">
-      <div class="location" :to="{}">
+      <router-link class="location" :to="{path: '/cinema'}">
         <p>郑州</p>
         <img class="down" src="@/assets/imgs/icons/down-arr.png" alt>
-      </div>
+      </router-link>
       <div>
         <div class="search" @click="goMask">
           <label for>
@@ -49,7 +49,7 @@
             <span class="line"></span>
             <p>热门影片</p>
           </div>
-          <p :to="{path:''}">全部 ></p>
+          <router-link tag="p" :to="{path:'/movie',params:{type:0}}">全部 ></router-link>
         </div>
         <template>
           <swiper
@@ -61,11 +61,11 @@
             <!-- slides -->
             <swiper-slide class="slide" v-for="m in hot" :key="m.id">
               <div class="movie">
-                <router-link tag="div" :to="{path:'',params:{id:m.id}}">
+                <router-link tag="div" :to="{path:'/movie/Details',params:{id:m.id}}">
                   <img :src="'https://images.weserv.nl/?url='+m.images.small" alt>
                 </router-link>
                 <p>{{m.original_title}}</p>
-                <router-link tag="p" class="buy" :to="{path:'',params:{id:m.id}}">购票</router-link>
+                <router-link tag="p" class="buy" :to="{name: 'details',params:{id:m.id,name:m.title}}">购票</router-link>
               </div>
             </swiper-slide>
           </swiper>
@@ -77,7 +77,7 @@
             <span class="line"></span>
             <p>即将上映</p>
           </div>
-          <p :to="{path:''}">全部 ></p>
+          <p :to="{path:'/movie',params:{type:1}}">全部 ></p>
         </div>
         <template>
           <swiper
@@ -87,7 +87,7 @@
             @someSwiperEvent="callback"
           >
             <swiper-slide class="slide" v-for="n in comming" :key="n.id">
-              <router-link tag="div" :to="{path:'',params:{id:n.id}}" class="movie">
+              <router-link tag="div" :to="{path:'/movie/Details',params:{id:n.id}}" class="movie">
                 <img :src="'https://images.weserv.nl/?url='+n.images.small" alt>
                 <p>{{n.original_title}}</p>
                 <p>{{n.year}}</p>
@@ -152,9 +152,9 @@
       <router-link
         class="tog"
         tag="p"
-        @click="btn(searchValue)"
+        @click="btn"
         v-show="searchValue.length!=0"
-        :to="{path:'',params:{}}"
+        :to="{path:'/movie/Details',params:{name:searchValue}}"
       >搜索</router-link>
       <ul class="results">
         <router-link
@@ -163,7 +163,7 @@
           class="search-list"
           v-for="(t,index) in temp"
           :key="index"
-          :to="{params:{id:t.id}}"
+          :to="{path:'/movie/Details',params:{id:t.id}}"
         >{{t.title}}</router-link>
       </ul>
       <div v-show="temp.length==0" class="hot-list">
@@ -173,7 +173,7 @@
         </div>
         <ul class="list-l">
           <li v-for="movie in hot" :key="movie.id" @click="thisMovie(movie.id)">{{movie.title}}</li>
-          <router-link tag="li" :to="{}" class="more">更多热搜 ></router-link>
+          <router-link tag="li" :to="{path:'/movie'}" class="more">更多热搜 ></router-link>
         </ul>
         
       </div>
@@ -281,11 +281,11 @@ export default {
       search.style.transform = "translateX(30px);";
     },
     btn() {
-      this.isShow = false;
-      this.searchValue = "";
+        this.isShow = false;
+        this.searchValue = "";
     },
     thisMovie(id){
-      router.push({ name: '', params: { id: id }})
+      this.$router.push({ path: '/movie/Details', params: { id: id }})
     }
   },
   watch: {
@@ -643,7 +643,6 @@ export default {
         font-size: 14px;
       }
     }
-
     .home-main{
         .header-bar{
             width: 100%;
