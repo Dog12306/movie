@@ -48,7 +48,7 @@ export default new Router({
 	},
 	{
 		 path: '/movie/release/performer',
-		 name: 'performer',
+		 name: 'performer', // 演员详情
 		 meta:{
 		   footShow:false
 		 },
@@ -56,7 +56,7 @@ export default new Router({
 	},
 	{
 		 path: '/movie/release/score',
-		 name: 'score',
+		 name: 'score', // 评分
 		 meta:{
 		   footShow:false
 		 },
@@ -64,7 +64,7 @@ export default new Router({
 	},
 	{
 		 path: '/movie/release/boxOffice',
-		 name: 'boxOffice',
+		 name: 'boxOffice', // 票房
 		 meta:{
 		   footShow:false
 		 },
@@ -95,7 +95,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/details/Details.vue'),
     },
     {
-      path: '/cinema/map/:id',
+      path: '/cinema/map',
       name: 'cinemaMap',
       meta:{
         footShow:false
@@ -181,9 +181,14 @@ export default new Router({
         footShow:false
       },
       component: () => import(/* webpackChunkName: "buy" */ '@/views/main/buy/buy.vue'),
-      // path: '/mymessage',
-      // name: 'mymessage',
-      // component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
+			},
+			{
+      path: '/main/mymessage',
+      name: 'mymessage',
+			 meta:{
+			  footShow:false
+			},
+      component: () => import(/* webpackChunkName: "main" */ '@/views/main/mymessage/Mymessage.vue'),
     },
     {
       path: '/set',
@@ -220,7 +225,7 @@ export default new Router({
       meta:{
         footShow:false
       },
-      component: () => import(/* webpackChunkName: "details" */ '@/views/movie/moviedetails/Details.vue'),
+      component: () => import(/* webpackChunkName: "Details" */ '@/views/movie/moviedetails/Details.vue'),
     },
     //ddd
     {

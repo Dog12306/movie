@@ -65,7 +65,11 @@
                   <img :src="'https://images.weserv.nl/?url='+m.images.small" alt>
                 </router-link>
                 <p>{{m.original_title}}</p>
-                <router-link tag="p" class="buy" :to="{name: 'details',params:{id:m.id,name:m.title}}">购票</router-link>
+                <router-link
+                  tag="p"
+                  class="buy"
+                  :to="{name: 'details',params:{id:m.id,name:m.title}}"
+                >购票</router-link>
               </div>
             </swiper-slide>
           </swiper>
@@ -175,7 +179,6 @@
           <li v-for="movie in hot" :key="movie.id" @click="thisMovie(movie.id)">{{movie.title}}</li>
           <router-link tag="li" :to="{path:'/movie'}" class="more">更多热搜 ></router-link>
         </ul>
-        
       </div>
     </div>
     <!-- <TopBackBar>
@@ -281,11 +284,11 @@ export default {
       search.style.transform = "translateX(30px);";
     },
     btn() {
-        this.isShow = false;
-        this.searchValue = "";
+      this.isShow = false;
+      this.searchValue = "";
     },
-    thisMovie(id){
-      this.$router.push({ path: '/movie/Details', params: { id: id }})
+    thisMovie(id) {
+      this.$router.push({ path: "/movie/Details", params: { id: id } });
     }
   },
   watch: {
@@ -643,6 +646,13 @@ export default {
         font-size: 14px;
       }
     }
+
+    .home-main {
+      .header-bar {
+        width: 100%;
+        height: 40px;
+      }
+    }
     ul {
       float: left;
       font-size: 16px;
@@ -661,7 +671,7 @@ export default {
         line-height: 16px;
         // text-indent: 20px;
       }
-      
+
       .more {
         color: #f1a363;
       }

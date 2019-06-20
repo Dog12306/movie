@@ -4,15 +4,15 @@
     <div class="bg">
       <div class="head">
         <img src="@assets/imgs/details/Left.png" alt class="left" @click="$router.go(-1)">
-        <p class="cent">{{cinemass.name}}</p>
+        <p class="cent">{{cinename.name}}</p>
         <img src="@assets/imgs/details/icon1.png" alt class="right">
       </div>
       <div class="add">
         <img class="add-icon" src="@assets/imgs/details/map.png" alt>
-        <p class="add-cent">{{cinemass.name}}</p>
+        <p class="add-cent">{{cinename.name}}</p>
         <img class="add-icon" src="@assets/imgs/details/right.png" alt>
       </div>
-      <p class="add-top">{{cinemass.title}}</p>
+      <p class="add-top">{{cinename.title}}</p>
       <!-- 轮播 -->
       <swiper
         class="banner"
@@ -41,7 +41,6 @@ import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import axios from "axios";
 import List from "@/views/cinema/components/List.vue";
-
 export default {
   name: "details",
   components: {
@@ -79,18 +78,14 @@ export default {
   created() {
     axios.get(this.url).then(res => {
       this.data = res.data.data;
-    
     });
 		
   },
-	mounted() {
-		
+	mounted() {	
 		this.ids = this.$route.params.id;
 		this.gotos();
-		this.cinemas = this.$store.state.cinemas.temp;
+		
 	},
-  updated() {
-  },
   methods: {
     callback() {},
 		gotos(){
@@ -99,10 +94,11 @@ export default {
   },
 
   computed: {
-		cinemass(){
-			return this.cinemas;
-		}
-	}
+		
+    cinename() {
+      return this.$store.state.cinemas.temp;
+    }
+  }
 };
 </script>
 
@@ -157,8 +153,9 @@ export default {
     }
   }
   .add-top {
-    text-align: left;
-    margin-left: 97px;
+    width: 375px;
+    text-align: center;
+    margin-top: 10px;
   }
   .banner {
     width: 297px;

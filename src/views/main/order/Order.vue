@@ -54,7 +54,8 @@ export default {
   data() {
     return {
       type: "all",
-      all: []
+      all: [],
+			types:this.$route.params.type
     };
   },
 
@@ -74,7 +75,20 @@ export default {
       } else if (this.type == "await") {
         return temp.filter(item => item.type == this.type);
       }
-    }
+    },
+		alter(){
+			if(!this.types){
+				this.type;
+			}else{
+				this.type=this.types;
+				console.log(this.type);
+			}
+// 			if(this.types){
+// 				this.type=this.types;
+// 			}else{
+// 				this.type;
+// 			}
+		}
   },
   computed: {
     getlist() {
@@ -84,6 +98,7 @@ export default {
 
   created() {
     this.all = this.$store.state.tick.tick;
+		this.alter();
   }
 };
 </script>

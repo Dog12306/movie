@@ -9,24 +9,26 @@
       <span class="cname">傲慢与偏见 (2005)</span>
       <span class="min">120min</span>
       <span class="ename">Pride & Prejudice</span>
-      <ul class="score-icon">
+      <router-link tag="ul" class="score-icon" :to="{name:'score'}">
         <li></li>
         <li></li>
         <li></li>
         <li></li>
         <li></li>
-      </ul>
-      <span class="score">
+      </router-link>
+      <router-link tag="span" class="score" :to="{name:'score'}">
         9.0
         <span>/10</span>
-      </span>
+      </router-link>
       <div class="icon-two">
         <span class="comment"></span>
         <span class="start"></span>
       </div>
       <ul class="list">
         <li>简介</li>
-        <li>影评</li>
+        <li>
+          <a href="javascript:void(0)" @click="goAnchor('#pinglun')">影评</a>
+        </li>
         <li>讨论</li>
         <li>更多</li>
       </ul>
@@ -46,22 +48,30 @@
       >
         <!-- slides -->
         <swiper-slide class="swiper-list">
-          <img class="actor-img" src="@/assets/imgs/movie/actor1.png" alt>
+          <router-link :to="{name:'performer'}">
+            <img class="actor-img" src="@/assets/imgs/movie/actor1.png" alt>
+          </router-link>
           <span class="cname">凯拉·奈特莉</span>
           <span class="shiyan">饰伊丽莎…</span>
         </swiper-slide>
         <swiper-slide class="swiper-list">
-          <img class="actor-img" src="@/assets/imgs/movie/actor2.png" alt>
+          <router-link :to="{name:'performer'}">
+            <img class="actor-img" src="@/assets/imgs/movie/actor2.png" alt>
+          </router-link>
           <span class="cname">马修·麦克菲迪恩</span>
           <span class="shiyan">饰达西</span>
         </swiper-slide>
         <swiper-slide class="swiper-list">
-          <img class="actor-img" src="@/assets/imgs/movie/actor3.png" alt>
+          <router-link :to="{name:'performer'}">
+            <img class="actor-img" src="@/assets/imgs/movie/actor3.png" alt>
+          </router-link>
           <span class="cname">裴淳华</span>
           <span class="shiyan">饰珍·班内特</span>
         </swiper-slide>
         <swiper-slide class="swiper-list">
-          <img class="actor-img" src="@/assets/imgs/movie/actor4.png" alt>
+          <router-link :to="{name:'performer'}">
+            <img class="actor-img" src="@/assets/imgs/movie/actor4.png" alt>
+          </router-link>
           <span class="cname">西蒙·伍兹</span>
           <span class="shiyan">饰查尔斯…</span>
         </swiper-slide>
@@ -77,24 +87,31 @@
         <!-- slides -->
         <swiper-slide class="swiper-list">
           <img class="video-img" src="@/assets/imgs/movie/video1.png" alt>
+          <img class="juxing" src="@/assets/imgs/movie/矩形.png" alt="">
+          <img class="juxing2" src="@/assets/imgs/movie/矩形2.png" alt="">
+          <span class="time">03:34</span>
           <span class="jianjie">《傲慢与偏见》：百年经典的绝美呈现， 一次现实与理想的爱情碰撞</span>
         </swiper-slide>
         <swiper-slide class="swiper-list">
           <img class="video-img" src="@/assets/imgs/movie/video2.png" alt>
+          <img class="juxing" src="@/assets/imgs/movie/矩形.png" alt="">
+          <img class="juxing2" src="@/assets/imgs/movie/矩形2.png" alt="">
+          <span class="time">03:34</span>
           <span class="jianjie">借了不朽经典的光，拍了一 部沦为普通的爱情故事</span>
         </swiper-slide>
       </swiper>
       <span class="all-video">全部10个视频</span>
       <span class="piaofang">票房</span>
-      <span class="ranking-1">2</span>
-      <span class="first">暂无</span>
-      <span class="ranking-2">2660</span>
+      <router-link tag="span" :to="{name:'boxOffice'}" class="ranking-1">2</router-link>
+      <router-link tag="span" :to="{name:'boxOffice'}" class="first">暂无</router-link>
+      <router-link tag="span" :to="{name:'boxOffice'}" class="ranking-2">2660</router-link>
       <span class="ranking-title">今日票房排行</span>
       <span class="ranking-main">首周票房（万）</span>
       <span class="ranking-title2">今日票房排行</span>
-      <span class="ranking-detail">票房详情</span>
+      <router-link tag="span" :to="{name:'boxOffice'}" class="ranking-detail">票房详情</router-link>
+      <Comment id="pinglun"></Comment>
     </div>
-    <div class="foot">特惠选票</div>
+    <router-link tag="div" :to="{name:'coupon'}" class="foot">特惠选票</router-link>
   </div>
 </template>
 
@@ -103,26 +120,38 @@
 import "swiper/dist/css/swiper.css";
 // swiper 组件
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+// 导入影评组件
+import Comment from "../../comment/Comment";
 export default {
   name: "Details",
   data() {
     return {
       swiperOption1: {
         slidesPerView: 3.2,
-        spaceBetween: 15
+        spaceBetween: 16
       },
       swiperOption2: {
         slidesPerView: 1.5,
         spaceBetween: 15
-      }
+      },
+      Comment: "Comment"
     };
   },
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    Comment
   },
   methods: {
-    callback() {}
+    callback() {},
+    // 跳转到评论
+    goAnchor: function(type) {
+      var anchor = this.$el.querySelector("#pinglun");
+      // chrome
+      document.body.scrollTop = anchor.offsetTop;
+      // firefox
+      document.documentElement.scrollTop = anchor.offsetTop;
+    }
   }
 };
 </script>
@@ -158,7 +187,7 @@ export default {
   left: 23px;
   width: 20px;
   height: 20px;
-  z-index: -1;
+  z-index: 9;
   background: url("../../../assets/imgs/icons/return.png") no-repeat center;
   background-size: cover;
 }
@@ -168,7 +197,7 @@ export default {
   right: 21px;
   width: 20px;
   height: 20px;
-  z-index: -1;
+  z-index: 9;
   background: url("../../../assets/imgs/movie/share.png") no-repeat center;
   background-size: cover;
 }
@@ -276,6 +305,9 @@ export default {
       font-weight: 400;
       color: #979797;
       line-height: 14px;
+      a {
+        color: #979797;
+      }
       &:first-child {
         &:after {
           margin: 0 auto;
@@ -372,19 +404,42 @@ export default {
   }
   .video-swiper {
     margin-top: 14px;
-    .video-img {
+    .swiper-list {
+      position: relative;
+      top: 0;
+      left: 0;
       width: 200px;
-      height: 120px;
-    }
-    .jianjie {
-      display: block;
-      margin-top: 10px;
-      text-align: left;
-      font-size: 12px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      line-height: 18px;
+      height: 200px;
+      .juxing{
+        position: absolute;
+        top: 10px;
+        left: 20px;
+      }
+      .juxing2{
+        position: absolute;
+        top: 100px;
+        left: 20px;
+      }
+      .time{
+        position: absolute;
+        top:100px;
+        left: 32px;
+        transform: scale(0.8);
+      }
+      .video-img {
+        width: 200px;
+        height: 120px;
+      }
+      .jianjie {
+        display: block;
+        margin-top: 10px;
+        text-align: left;
+        font-size: 12px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 18px;
+      }
     }
   }
   .all-video {
