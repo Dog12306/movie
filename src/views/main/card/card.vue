@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="footer">
-      <router-link tag='a' :to="{name:'buy'}" class="jump" >
+      <router-link tag='a' :to="{name:'cinema'}" class="jump" >
       <p>去购票</p>
       <img src="@/assets/imgs/kind/go.png" alt>
       </router-link>

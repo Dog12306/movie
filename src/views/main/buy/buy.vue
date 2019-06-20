@@ -14,7 +14,7 @@
         <p class="p2">万达影城</p>
         <span></span>
       </router-link>
-      <router-link tag="span" :to="{name:'release'}" class="dw"></router-link>
+      <router-link tag="span" :to="{name:'CinemaMap'}" class="dw"></router-link>
       <router-link class="d3" tag="div" :to="{name:'details'}">
         <p class="p3">
           5月9日
@@ -120,6 +120,7 @@ export default {
         this.hides = true;
       }
     }
+
   },
   components: {}
 };
