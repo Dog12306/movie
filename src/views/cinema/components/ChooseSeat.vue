@@ -59,8 +59,8 @@
       </div>
       <div class="commit" :class="{'active':commitst===1}">
         <span v-show="commitst===0">请先选座</span>
-        <router-link :to="{name:'confirmOrder',params:{id:123}}" tag="span">
-          <span v-show="commitst===1">确认选座</span>
+        <router-link :to="{name:'confirmOrder',params:{id:message.id},path:'/order/confirm/' + message.id,query:{seats:seats,people:people}}" tag="span" v-show="commitst===1">
+          确认选座
         </router-link>    
       </div>
       <div class="footer-line"></div>
@@ -81,6 +81,8 @@ export default {
     return {
       choosed: 0,
       commitst: 0,
+      people: 0,
+      seats: ''
     };
   },
   computed: {
@@ -92,7 +94,7 @@ export default {
           return this.$store.state.detail.tick[i];
         }
       }
-    }
+    },
   },
   methods: {
     checkseat: function(e) {
@@ -107,7 +109,8 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.state.detail.tick)
+    console.log(this.$store.state.detail.tick);
+    console.log(this.$refs.seats.people);
   }
 };
 </script>

@@ -112,7 +112,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/components/ChooseSeat.vue'),
     },
     {
-      path: '/order/confirm',
+      path: '/order/confirm/:id',
       name: 'confirmOrder',
       meta:{
         footShow:false

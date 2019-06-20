@@ -163,6 +163,28 @@ export default {
         }
       }
       return 0;
+    },
+    people(){
+      var a = 0;
+      for(var u in this.seatArr){
+        for(var y in this.seatArr[u]){
+          if(this.seatArr[u][y].choosest===2){
+            a ++;
+          }
+        }
+      }
+      return a;
+    },
+    seats(){
+      var s = "";
+      for(var uu in this.seatArr){
+        for(var yy in this.seatArr[uu]){
+          if(this.seatArr[uu][yy].choosest===2){
+            s += (Number(uu) + 1) + "排" + yy + "座"
+          }
+        }
+      };
+      return s
     }
   },
   methods: {
@@ -181,6 +203,8 @@ export default {
       }
       this.$parent.choosed = 0;
       this.$parent.commitst = this.commitst;
+      this.$parent.people = this.people;
+      this.$parent.seats = this.seats;
     },
     checkseat: function(num) {
       var ok = 0;
@@ -213,6 +237,8 @@ export default {
         }
       }
       this.$parent.commitst = this.commitst;
+      this.$parent.people = this.people;
+      this.$parent.seats = this.seats;
     }
   }
 };

@@ -4,29 +4,29 @@
       <div class="header-top">
         <img src="@/assets/imgs/icons/arr-left.png" alt class="back-arr" @click="$router.go(-1)">
       </div>
-      <p class="movie-name">{{movieData.moviename}}</p>
-      <p class="time">{{movieData.time}}</p>
-      <p class="cinema-site">{{movieData.cinemasite}}</p>
-      <p class="seat">{{movieData.seat}}</p>
+      <p class="movie-name">{{dataMovie.title}}</p>
+      <p class="time">今天6月21日 {{dataMovie.time}} {{dataMovie.title1}}</p>
+      <p class="cinema-site">{{dataMovie.cine}}</p>
+      <p class="seat">{{dataMovie.hall}} {{this.$route.query.seats}}</p>
     </div>
     <div class="order-message">
       <div class="coupon">
         <span class="text">电影优惠券</span>
-        <div class="right">
+          <router-link tag="div" :to="{name:'coupon'}" class="right">
           <span class="amount">{{usermessage.coupon}}张优惠券可用</span>
           <img src="@/assets/imgs/icons/arr-right.png" alt>
-        </div>
+          </router-link>
       </div>
       <div class="club-card">
         <span class="text">会员卡</span>
-        <div class="right">
+        <router-link tag="div" :to="{name:'card'}" class="right">
           <span class="use">去使用</span>
           <img src="@/assets/imgs/icons/arr-right.png" alt>
-        </div>
+        </router-link>
       </div>
       <div class="fares">
         <span class="text">票价总计</span>
-        <span class="price">{{usermessage.fares}}元</span>
+        <span class="price">{{dataMovie.moth*this.$route.query.people}}元</span>
       </div>
       <div class="tel">
         <p class="text">手机号</p>
@@ -44,12 +44,14 @@
         </div>
         <div class="cprice">
           <span>还需支付：</span>
-          <span class="num">{{usermessage.fares}}元</span>
+          <span class="num">{{dataMovie.moth*this.$route.query.people}}元</span>
           <img src="@/assets/imgs/icons/arr-top.png" alt>
         </div>
       </div>
       <div class="confirm-order">
-        <span>确认订单</span>
+        <router-link tag="span" :to="{name:'order'}">
+          确认订单
+        </router-link>
       </div>
       <div class="footer-line"></div>
     </div>
@@ -78,7 +80,19 @@ export default {
     };
   },
 
-  methods: {}
+  methods: {},
+  computed:{
+    dataMovie(){
+      for (var i in this.$store.state.detail.tick){
+        if(this.$store.state.detail.tick[i].id === this.$route.params.id){
+          return this.$store.state.detail.tick[i];
+        };
+      }
+    }
+  },
+  mounted(){
+    console.log(this.$store.state.detail.tick)
+  }
 };
 </script>
 
@@ -103,12 +117,16 @@ export default {
   p {
     text-align: left;
     margin-left: 20px;
+    width: 100%;
     font-size: 14px;
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
     line-height: 20px;
     margin-bottom: 10px;
+    white-space: nowrap;
+    word-wrap: break-all;
+    text-overflow: ellipsis;
   }
   .movie-name {
     font-size: 24px;
