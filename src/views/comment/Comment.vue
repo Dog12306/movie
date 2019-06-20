@@ -101,7 +101,7 @@ export default {
       this.list = this.$store.getters['location/time'];
     },
     all() {
-      this.list = this.$store.getters['location/list'];
+      this.list = this.$store.state.location.list;
     },
     good() {
       this.list = this.$store.getters['location/good'];
