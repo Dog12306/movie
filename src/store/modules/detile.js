@@ -1,7 +1,6 @@
-import list from '@/api/list.js'
+import list from '@/mock/list.js'
 var api1;
 api1 = list.lylist();
-
 
 
 var state = {
@@ -9,7 +8,7 @@ var state = {
     getone: {}
 }
 var getters = {
-
+    
 }
 var mutations = {
     getOne(state, id) {

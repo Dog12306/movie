@@ -4,6 +4,10 @@ const Random = Mock.Random
 function lylist() {
     var list = [{
         id: Random.id(),
+        add: '地址: 云龙广场',
+        cine: '万达国际影城',
+        title: '后来的我们',
+        hall: '五号厅 5排14座 5排15座',
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -12,6 +16,10 @@ function lylist() {
     },
     {
         id: Random.id(),
+        add: '地址: 二七万达',
+        cine: '长城国际影城',
+        title: '傲慢与偏见',
+        hall: '六号厅 1排15座',
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -20,6 +28,10 @@ function lylist() {
     },
     {
         id: Random.id(),
+        add: '地址: 国贸大厦',
+        cine: '郑州国际影城',
+        title: '大鱼海棠',
+        hall: '一号厅  2排1座',
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -28,6 +40,10 @@ function lylist() {
     },
     {
         id: Random.id(),
+        add: '地址: 二七万达',
+        cine: '长城国际影城',
+        title: '傲慢与偏见',
+        hall: '六号厅 1排15座',
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -36,6 +52,10 @@ function lylist() {
     },
     {
         id: Random.id(),
+        add: '地址: 云龙广场',
+        cine: '万达国际影城',
+        title: '后来的我们',
+        hall: '五号厅 5排14座 5排15座',
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
@@ -44,6 +64,10 @@ function lylist() {
     },
     {
         id: Random.id(),
+        add: '地址: 国贸大厦',
+        cine: '郑州国际影城',
+        title: '大鱼海棠',
+        hall: '一号厅  2排1座',
         time: Random.time('HH:mm'),
         time1: Random.time('HH:mm'),
         title: '原版3D',
