@@ -73,15 +73,15 @@ export default {
 <style lang='scss' scoped>
 .coupon {
   height: 100%;
-  width: 100%;
   background-color: #22262d;
   .header {
     position: relative;
-    width: 100%;
     height: 44px;
     background-color: #22262d;
     display: flex;
     align-items: center;
+    justify-content:flex-start;
+    
     p {
       font-size: 16px;
       margin-left: 134px;
