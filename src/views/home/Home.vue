@@ -49,7 +49,7 @@
             <span class="line"></span>
             <p>热门影片</p>
           </div>
-          <router-link tag="p" :to="{path:'/movie',params:{type:0}}">全部 ></router-link>
+          <router-link tag="p" :to="{name:'movie',params:{type:0}}">全部 ></router-link>
         </div>
         <template>
           <swiper
@@ -77,7 +77,7 @@
             <span class="line"></span>
             <p>即将上映</p>
           </div>
-          <p :to="{path:'/movie',params:{type:1}}">全部 ></p>
+          <router-link tag="p" :to="{name:'movie',params:{type:1}}">全部 ></router-link>
         </div>
         <template>
           <swiper
