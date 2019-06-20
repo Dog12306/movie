@@ -1,12 +1,14 @@
 <template>
   <div class="details-main">
     <div class="bgi"></div>
-    <div class="cover"></div>
+    <div class="cover">
+      <img :src="'https://images.weserv.nl/?url='+a.images.small" alt v-if="ok">
+    </div>
     <div class="play"></div>
     <div class="details-c">
       <button class="return" @click="$router.go(-1)"></button>
       <button class="share"></button>
-      <span class="cname">傲慢与偏见 (2005)</span>
+      <span class="cname" v-if="ok">{{a.title}}({{a.year}})</span>
       <span class="min">120min</span>
       <span class="ename">Pride & Prejudice</span>
       <router-link tag="ul" class="score-icon" :to="{name:'score'}">
@@ -16,8 +18,8 @@
         <li></li>
         <li></li>
       </router-link>
-      <router-link tag="span" class="score" :to="{name:'score'}">
-        9.0
+      <router-link tag="span" class="score" :to="{name:'score'}" v-if="ok">
+        {{a.rating.average}}
         <span>/10</span>
       </router-link>
       <div class="icon-two">
@@ -45,16 +47,16 @@
         :options="swiperOption1"
         ref="mySwiper"
         @someSwiperEvent="callback"
-      >
+       v-if="ok">
         <!-- slides -->
-        <swiper-slide class="swiper-list">
+        <swiper-slide class="swiper-list" v-for="(s,index) in a.casts" :key="index" >
           <router-link :to="{name:'performer'}">
-            <img class="actor-img" src="@/assets/imgs/movie/actor1.png" alt>
+            <img v-if="ok" class="actor-img" :src="'https://images.weserv.nl/?url='+s.avatars.small" alt>
           </router-link>
-          <span class="cname">凯拉·奈特莉</span>
+          <span v-if="ok" class="cname">{{s.name}}</span>
           <span class="shiyan">饰伊丽莎…</span>
         </swiper-slide>
-        <swiper-slide class="swiper-list">
+        <!-- <swiper-slide class="swiper-list">
           <router-link :to="{name:'performer'}">
             <img class="actor-img" src="@/assets/imgs/movie/actor2.png" alt>
           </router-link>
@@ -74,9 +76,9 @@
           </router-link>
           <span class="cname">西蒙·伍兹</span>
           <span class="shiyan">饰查尔斯…</span>
-        </swiper-slide>
+        </swiper-slide> -->
       </swiper>
-      <span class="all-actor">全部32位演员</span>
+      <span class="all-actor" v-if="ok">全部{{a.casts.length}}位演员</span>
       <span class="video">视频</span>
       <swiper
         class="video-swiper"
@@ -87,15 +89,15 @@
         <!-- slides -->
         <swiper-slide class="swiper-list">
           <img class="video-img" src="@/assets/imgs/movie/video1.png" alt>
-          <img class="juxing" src="@/assets/imgs/movie/矩形.png" alt="">
-          <img class="juxing2" src="@/assets/imgs/movie/矩形2.png" alt="">
+          <img class="juxing" src="@/assets/imgs/movie/矩形.png" alt>
+          <img class="juxing2" src="@/assets/imgs/movie/矩形2.png" alt>
           <span class="time">03:34</span>
           <span class="jianjie">《傲慢与偏见》：百年经典的绝美呈现， 一次现实与理想的爱情碰撞</span>
         </swiper-slide>
         <swiper-slide class="swiper-list">
           <img class="video-img" src="@/assets/imgs/movie/video2.png" alt>
-          <img class="juxing" src="@/assets/imgs/movie/矩形.png" alt="">
-          <img class="juxing2" src="@/assets/imgs/movie/矩形2.png" alt="">
+          <img class="juxing" src="@/assets/imgs/movie/矩形.png" alt>
+          <img class="juxing2" src="@/assets/imgs/movie/矩形2.png" alt>
           <span class="time">03:34</span>
           <span class="jianjie">借了不朽经典的光，拍了一 部沦为普通的爱情故事</span>
         </swiper-slide>
@@ -122,6 +124,11 @@ import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 // 导入影评组件
 import Comment from "../../comment/Comment";
+import Axios from "axios";
+// 热门
+const in_theaters = "http://59.110.138.169/api/douban/movie/in_theaters";
+// 即将
+const coming_soon = "http://59.110.138.169/api/douban/movie/coming_soon";
 export default {
   name: "Details",
   data() {
@@ -134,8 +141,14 @@ export default {
         slidesPerView: 1.5,
         spaceBetween: 15
       },
-      Comment: "Comment"
+      Comment: "Comment",
+      HotMovies: [],
+      ComingMovies: [],
+      ok : false
     };
+  },
+  created() {
+    this.getMovie();
   },
   components: {
     swiper,
@@ -143,6 +156,10 @@ export default {
     Comment
   },
   methods: {
+    b() {
+      console.log(this.$route.params.id);
+      console.log(this.a);
+    },
     callback() {},
     // 跳转到评论
     goAnchor: function(type) {
@@ -151,8 +168,47 @@ export default {
       document.body.scrollTop = anchor.offsetTop;
       // firefox
       document.documentElement.scrollTop = anchor.offsetTop;
+    },
+    getMovie() {
+      // 热门
+      var url = in_theaters;
+      Axios.get(url).then(res => {
+        // res.data axios的结果
+        // this.Hotmovies = res.data.data;
+        // console.log(this.Hotmovies);
+        this.HotMovies = res.data.data;
+        // console.log(res.data.data,this.HotMovies);
+        this.ok = true;
+        // console.log(res.data.data);
+      });
+      // 即将
+      var url = coming_soon;
+      Axios.get(url).then(res => {
+        // res.data axios的结果
+        this.ComingMovies = res.data.data;
+        // console.log(this.ComingMovies);
+        this.ok = true;
+      });
     }
-  }
+  },
+  computed: {
+    a() {
+      if (this.$route.query.type == 0) {
+        if (this.HotMovies) {
+          console.log(this.HotMovies,"aaa");
+          return this.HotMovies.find(item => item.id == this.$route.params.id);
+        }
+      }
+      if (this.$route.query.type == 1) {
+        if (this.ComingMovies) {
+          return this.ComingMovies.find(
+            item => item.id == this.$route.params.id
+          );
+        }
+      }
+    }
+  },
+  activated() {}
 };
 </script>
 
@@ -171,7 +227,10 @@ export default {
   width: 96px;
   height: 131px;
   margin-left: 17.5px;
-  background: url("../../../assets/imgs/movie/傲慢与偏见.png") no-repeat center;
+  img {
+    width: 96px;
+    height: 131px;
+  }
 }
 .play {
   margin-top: -90px;
@@ -360,6 +419,10 @@ export default {
     .swiper-list {
       margin-top: 15px;
       width: 100px;
+      .actor-img{
+        width: 100px;
+        height: 140px;
+      }
       .cname {
         text-align: left;
         display: block;
@@ -410,19 +473,19 @@ export default {
       left: 0;
       width: 200px;
       height: 200px;
-      .juxing{
+      .juxing {
         position: absolute;
         top: 10px;
         left: 20px;
       }
-      .juxing2{
+      .juxing2 {
         position: absolute;
         top: 100px;
         left: 20px;
       }
-      .time{
+      .time {
         position: absolute;
-        top:100px;
+        top: 100px;
         left: 32px;
         transform: scale(0.8);
       }

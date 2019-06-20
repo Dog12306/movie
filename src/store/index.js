@@ -7,6 +7,7 @@ import mess from './modules/mess'
 import order from './modules/order'
 import location from './modules/location'
 import detail from './modules/detile'
+import city from './modules/city'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -17,7 +18,7 @@ const store = new Vuex.Store({
     tick,
     signIn,
     cinemas,
-    detail
+    detail,city
   }
 })
 

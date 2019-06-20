@@ -42,7 +42,7 @@
       </swiper-slide>
     </swiper>
     <ul class="coming-item">
-      <router-link tag="li" :to="{name:'Details'}" class="coming-list" v-for="movie in movieListCom" :key="movie.id">
+      <router-link tag="li" :to="{name:'Details',params:{id:movie.id},query:{type:0}}" class="coming-list" v-for="movie in movieListCom" :key="movie.id">
         <img class="cover-img" :src="movie.coverImg" alt>
         <img class="play" src="@/assets/imgs/icons/play.png" alt>
         <div class="detail">

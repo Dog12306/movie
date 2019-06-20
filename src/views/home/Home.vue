@@ -1,8 +1,8 @@
 <template>
   <div class="home-main">
     <div class="header">
-      <router-link class="location" :to="{path: '/cinema'}">
-        <p>郑州</p>
+      <router-link class="location" :to="{name: 'city'}">
+        <p>{{currentCity}}</p>
         <img class="down" src="@/assets/imgs/icons/down-arr.png" alt>
       </router-link>
       <div>
@@ -61,7 +61,7 @@
             <!-- slides -->
             <swiper-slide class="slide" v-for="m in hot" :key="m.id">
               <div class="movie">
-                <router-link tag="div" :to="{path:'/movie/Details',params:{id:m.id}}">
+                <router-link tag="div" :to="{name:'Details',params:{id:m.id},query:{type:0}}">
                   <img :src="'https://images.weserv.nl/?url='+m.images.small" alt>
                 </router-link>
                 <p>{{m.original_title}}</p>
@@ -91,7 +91,7 @@
             @someSwiperEvent="callback"
           >
             <swiper-slide class="slide" v-for="n in comming" :key="n.id">
-              <router-link tag="div" :to="{path:'/movie/Details',params:{id:n.id}}" class="movie">
+              <router-link tag="div" :to="{name:'Details',params:{id:n.id},query:{type:1}}" class="movie">
                 <img :src="'https://images.weserv.nl/?url='+n.images.small" alt>
                 <p>{{n.original_title}}</p>
                 <p>{{n.year}}</p>
@@ -158,7 +158,7 @@
         tag="p"
         @click="btn"
         v-show="searchValue.length!=0"
-        :to="{path:'/movie/Details',params:{name:searchValue}}"
+        :to="{name:'Details',params:{name:searchValue}}"
       >搜索</router-link>
       <ul class="results">
         <router-link
@@ -167,7 +167,7 @@
           class="search-list"
           v-for="(t,index) in temp"
           :key="index"
-          :to="{path:'/movie/Details',params:{id:t.id}}"
+          :to="{name:'Details',params:{id:t.id}}"
         >{{t.title}}</router-link>
       </ul>
       <div v-show="temp.length==0" class="hot-list">
@@ -219,7 +219,6 @@ export default {
       type: "",
       searchValue: "",
       temp: [],
-
       fourthSwiperOption: {
         slidesPerView: 1.2,
         // centeredSlides: true,
@@ -245,7 +244,7 @@ export default {
     };
   },
   created() {
-    axios.get(this.url + "in_theaters?start=5&limit=5").then(res => {
+    axios.get(this.url + "in_theaters?start=2&limit=5").then(res => {
       this.hot = res.data.data;
       // console.log(this.hot);
     });
@@ -253,7 +252,7 @@ export default {
       this.all = res.data.data;
       // console.log(this.all);
     });
-    axios.get(this.url + "coming_soon?limit=5").then(res => {
+    axios.get(this.url + "coming_soon?start=2&limit=5").then(res => {
       this.comming = res.data.data;
       // console.log(this.comming);
     });
@@ -261,6 +260,9 @@ export default {
   computed: {
     newList() {
       // return this.all.filter(item=>item.title.includes(ipt.value))
+    },
+    currentCity() {
+      return this.$store.state.city.currentCity;
     }
   },
   methods: {
@@ -288,7 +290,7 @@ export default {
       this.searchValue = "";
     },
     thisMovie(id) {
-      this.$router.push({ path: "/movie/Details", params: { id: id } });
+      this.$router.push({ name: "Details", params: { id: id } });
     }
   },
   watch: {
@@ -389,19 +391,19 @@ export default {
       height: 145px;
     }
   }
- ::v-deep .swiper-pagination {
+  ::v-deep .swiper-pagination {
     position: absolute;
     bottom: 0px;
     margin-top: 8px;
   }
- ::v-deep .swiper-pagination-bullet {
+  ::v-deep .swiper-pagination-bullet {
     width: 4px;
     height: 4px;
     background: rgba(178, 178, 178, 1);
     border-radius: 2px;
   }
 
- ::v-deep .swiper-pagination-bullet-active {
+  ::v-deep .swiper-pagination-bullet-active {
     width: 14px;
     height: 3px;
     background-color: #fff;
