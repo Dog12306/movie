@@ -69,7 +69,6 @@ export default {
   }
   .lit-cent {
     .cent-p1 {
-      width: 40px;
       height: 17px;
       line-height: 17px;
       font-size: 12px;

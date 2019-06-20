@@ -65,7 +65,7 @@
 			<router-link tag="li" :to="{name:'order',params:{type:'await'}}" class="item-li">
             <!-- <li class="item-li"> -->
               <img class="li-img" src="@/assets/imgs/main/mine/bianji3.png" alt>
-              <p class="li-p">待评价</p>
+              <p class="li-p">退款</p>
 			</router-link>  
           </ul>
         </div>
