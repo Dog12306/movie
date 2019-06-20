@@ -92,7 +92,7 @@ export default new Router({
       meta: {
         footShow: true
       },
-      component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/details/Details.vue'),
+      component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/details/details.vue'),
     },
     {
       path: '/cinema/map',
@@ -225,7 +225,7 @@ export default new Router({
       meta:{
         footShow:false
       },
-      component: () => import(/* webpackChunkName: "details" */ '@/views/movie/moviedetails/Details.vue'),
+      component: () => import(/* webpackChunkName: "Details" */ '@/views/movie/moviedetails/Details.vue'),
     },
     //ddd
     {
