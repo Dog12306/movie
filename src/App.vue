@@ -1,16 +1,7 @@
 <template>
   <div id="app">
-
- 
-
-
-    <keep-alive include="home,movie,ticket,cinema">
-
+    <keep-alive include="Home,Movie,Ticket,Cinema">
        <router-view class="router-view"></router-view>
-
-  
-     
-
     </keep-alive>
    
 
