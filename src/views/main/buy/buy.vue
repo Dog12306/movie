@@ -2,27 +2,36 @@
   <div class="buy">
     <div class="header">
       <button @click="$router.go(-1)"></button>
-      <div class="tx"></div>
+      <router-link tag="div" :to="{name:'set'}" class="tx"></router-link>
       <p>hi,znkk!</p>
     </div>
     <div class="content">
-      <router-link tag="p" class="p1" :to="{name:'home'}">试试搜索影片</router-link>
-      <router-link tag="p" class="p2" :to="{name:'cinema'}">万达影城</router-link>
-      <router-link tag="span" :to="{name:'release'}"  class="dw" ></router-link>
-      <p class="p3">
-        5月9日
-        <span>1:34pm</span>
-      </p>
-      <router-link tag="p" class="p4" :to="{name:'details'}">更多场次</router-link>
+      <router-link class="d1" tag="div" :to="{name:'home'}">
+        <p class="p1">试试搜索影片</p>
+        <span></span>
+      </router-link>
+      <router-link class="d2" tag="div" :to="{name:'cinema'}">
+        <p class="p2">万达影城</p>
+        <span></span>
+      </router-link>
+      <router-link tag="span" :to="{name:'release'}" class="dw"></router-link>
+      <router-link class="d3" tag="div" :to="{name:'details'}">
+        <p class="p3">
+          5月9日
+          <span class="s1">1:34pm</span>
+        </p>
+        <span class="s2"></span>
+        <p class="p4">更多场次</p>
+      </router-link>
       <div class="check" @click="check=!check">
         <div>
           <span class="c-1" v-show="check"></span>
         </div>
-        <span class="c-2">特惠票</span>`
+        <span class="c-2">特惠票</span>
       </div>
-      <div class="check-2"  @click="check2=!check2">
+      <div class="check-2" @click="check2=!check2">
         <div>
-        <span class="c-1"  v-show="check2"></span>
+          <span class="c-1" v-show="check2"></span>
         </div>
         <span class="c-2">推荐座位</span>
       </div>
@@ -31,13 +40,13 @@
         <p>购票</p>
       </div>
       <div class="clear">
-
-      <p class="p5" v-if="clearTitle">一条狗的使命 我是药神  </p><span @click="clearTitle=false" class="s1">清除历史</span>
+        <p class="p5" v-if="clearTitle">一条狗的使命 我是药神</p>
+        <span @click="clearTitle=false" class="s1">清除历史</span>
       </div>
     </div>
     <p class="title">
       特惠票
-      <span>更多优惠</span>
+      <router-link tag="span" :to="{name:'coupon'}">更多优惠</router-link>
     </p>
     <div class="ticket">
       <div class="time">
@@ -97,12 +106,12 @@ export default {
   data() {
     return {
       check: false,
-      check2:false,
-      clearTitle:true
+      check2: false,
+      clearTitle: true
     };
   },
   methods: {
-        shows() {
+    shows() {
       this.n++;
       if (this.n % 2 == 0) {
         this.hides = false;
@@ -123,7 +132,7 @@ export default {
     background-color: #22262d;
     display: flex;
     align-items: center;
-    
+
     button {
       display: block;
       width: 10px;
@@ -135,8 +144,7 @@ export default {
       background: url(../../../assets/imgs/kind/back.png) no-repeat center;
       background-size: cover;
       position: absolute;
-      left:20px;
-
+      left: 20px;
     }
     .tx {
       width: 33px;
@@ -165,47 +173,51 @@ export default {
     margin-top: 25px;
     background: rgba(51, 54, 61, 1);
     border-radius: 6px;
-    .p1 {
-      font-size: 12px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      line-height: 17px;
+    .d1 {
+      width: 100%;
+      display: flex;
+      align-items: center;
       position: absolute;
+      left: 17px;
       top: 22px;
+      .p1 {
+        display: block;
+        font-size: 12px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 17px;
+      }
+      span {
+        width: 15px;
+        height: 17px;
+        background: url(../../../assets/imgs/kind/go.png) no-repeat center;
+        background-size: cover;
+        margin-left: 158px;
+      }
+    }
+    .d2 {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      position: absolute;
       left: 17px;
-    }
-    .p1::after {
-      content: "";
-      display: block;
-      width: 15px;
-      height: 17px;
-      background: url(../../../assets/imgs/kind/go.png) no-repeat center;
-      background-size: cover;
-      position: absolute;
-      top: 0px;
-      left: 220px;
-    }
-    .p2 {
-      font-size: 16px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      line-height: 22px;
-      position: absolute;
       top: 59px;
-      left: 17px;
-    }
-    .p2::after {
-      content: "";
-      display: block;
-      width: 15px;
-      height: 17px;
-      background: url(../../../assets/imgs/kind/go.png) no-repeat center;
-      background-size: cover;
-      position: absolute;
-      top: 0px;
-      left: 220px;
+      .p2 {
+        font-size: 16px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 22px;
+      }
+      span {
+        display: block;
+        width: 15px;
+        height: 17px;
+        background: url(../../../assets/imgs/kind/go.png) no-repeat center;
+        background-size: cover;
+        margin-left: 166px;
+      }
     }
     .dw {
       width: 15px;
@@ -216,43 +228,44 @@ export default {
       top: 60px;
       right: 33px;
     }
-    .p3 {
-      font-size: 16px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      line-height: 22px;
+    .d3 {
+      width: 100%;
+      display: flex;
+      align-items: center;
       position: absolute;
-      top: 107px;
       left: 17px;
-      span {
-        font-size: 11px;
+      top: 101px;
+      .p3 {
+        font-size: 16px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 22px;
+        .s1 {
+          font-size: 11px;
+          font-family: PingFangSC-Regular;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+          line-height: 17px;
+          margin-left: 10px;
+        }
+      }
+      .s2 {
+        display: block;
+        width: 15px;
+        height: 17px;
+        background: url(../../../assets/imgs/kind/go.png) no-repeat center;
+        background-size: cover;
+        margin-left: 120px;
+      }
+      .p4 {
+        font-size: 12px;
         font-family: PingFangSC-Regular;
         font-weight: 400;
         color: rgba(255, 255, 255, 1);
         line-height: 17px;
+        margin-left: 18px;
       }
-    }
-    .p3::after {
-      content: "";
-      display: block;
-      width: 15px;
-      height: 17px;
-      background: url(../../../assets/imgs/kind/go.png) no-repeat center;
-      background-size: cover;
-      position: absolute;
-      top: 0px;
-      left: 220px;
-    }
-    .p4 {
-      font-size: 12px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      line-height: 17px;
-      position: absolute;
-      right: 17px;
-      top: 101px;
     }
     .check {
       display: flex;
@@ -264,14 +277,14 @@ export default {
         width: 15px;
         height: 15px;
         border: 1px solid #979797;
-      .c-1 {
-        display: block;
-        width: 15px;
-        height: 15px;
-        background: url(../../../assets/imgs/kind/check.png) no-repeat center;
-        background-color: #f16d7d;
-        background-size: cover;
-      }
+        .c-1 {
+          display: block;
+          width: 15px;
+          height: 15px;
+          background: url(../../../assets/imgs/kind/check.png) no-repeat center;
+          background-color: #f16d7d;
+          background-size: cover;
+        }
       }
       .c-2 {
         margin-left: 5px;
@@ -288,18 +301,18 @@ export default {
       position: absolute;
       right: 17px;
       top: 148px;
-      div{
+      div {
         width: 15px;
         height: 15px;
         border: 1px solid #979797;
-      .c-1 {
-        display: block;
-        width: 15px;
-        height: 15px;
-        background: url(../../../assets/imgs/kind/check.png) no-repeat center;
-        background-color: #f16d7d;
-        background-size: cover;
-      }
+        .c-1 {
+          display: block;
+          width: 15px;
+          height: 15px;
+          background: url(../../../assets/imgs/kind/check.png) no-repeat center;
+          background-color: #f16d7d;
+          background-size: cover;
+        }
       }
       .c-2 {
         margin-left: 5px;
@@ -336,28 +349,27 @@ export default {
         margin: auto 0;
       }
     }
-    .clear{
-            position: absolute;
+    .clear {
+      position: absolute;
       top: 261px;
       left: 17px;
       display: flex;
       align-items: center;
-    .p5 {
-      font-size: 12px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      line-height: 17px;
-
-    }
-    .s1{
-            font-size: 12px;
-      font-family: PingFangSC-Regular;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 1);
-      line-height: 17px;
-      margin-left: 5px;
-    }
+      .p5 {
+        font-size: 12px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 17px;
+      }
+      .s1 {
+        font-size: 12px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        line-height: 17px;
+        margin-left: 5px;
+      }
     }
   }
   .title {
