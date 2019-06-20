@@ -1,7 +1,7 @@
 <template>
   <section class="position">
     <div class="heard">
-      <p @click="cancel" class="close-btn">关闭</p>
+      <p @click="cancel()" class="close-btn">关闭</p>
       <p class="heard-title">选择城市</p>
     </div>
     <div class="search">
@@ -137,11 +137,15 @@ export default {
       }
     },
     cancel(city){
+      console.log(city);
       if(!city) {
+        this.$router.go(-1);
+
+        return
         city = '郑州'
       }
-      this.$router.go(-1);
       this.$store.commit('city/changeCity',city)
+      this.$router.go(-1);
     }
   },
   mounted() {

@@ -1,13 +1,16 @@
 import cityList from "@/api/cityData";
 var state = {
     cityList,
-    currentCity: ''
+    currentCity: '郑州'
 }
 var getters = {
 
 }
 var mutations = {
     changeCity(state, city) {
+        if (!city) {
+            city = state.currentCity
+        }
         state.currentCity = city
     }
 

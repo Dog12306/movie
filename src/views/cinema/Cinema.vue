@@ -1,10 +1,10 @@
 <template>
   <div class="movie-main">
     <div class="header">
-      <span class="city" @click="shows">
-        {{selected}}
+      <router-link tag="span" class="city" @click="shows" :to="{name: 'city'}">
+        {{currentCity}}
         <img src="@assets/imgs/details/xia.png" alt>
-      </span>
+      </router-link>
       <span class="title">影院</span>
       <a href="#">
         <img class="icon icon-share" :src="require('@/assets/imgs/icons/share.png')" alt>
@@ -84,18 +84,23 @@
     <div class="du">我在: 金水区绿地新都会</div>
     <div class="movie-card">
       <ul>
-		  <router-link tag="li" v-for="stu in studios" :key="stu.id" :to="{name:'details',params:{id:stu.id}}" >
-			  <p class="pn">{{stu.name}}</p>
-			  <p class="pt">{{stu.title}}</p>
-			  <span class="ph-hui">惠</span>
-			  <p class="ph">{{stu.hui}}</p>
-			  <span class="pg-guan">观</span>
-			  <p class="pg">{{stu.guan}}</p>
-			  <span class="pk-kai">卡</span>
-			  <p class="pk">{{stu.kai}}</p>
-			  <span class="spj">{{stu.price}}起</span>
-			  <span class="spdi">{{stu.distance}}</span>
-		  </router-link>
+        <router-link
+          tag="li"
+          v-for="stu in studios"
+          :key="stu.id"
+          :to="{name:'details',params:{id:stu.id}}"
+        >
+          <p class="pn">{{stu.name}}</p>
+          <p class="pt">{{stu.title}}</p>
+          <span class="ph-hui">惠</span>
+          <p class="ph">{{stu.hui}}</p>
+          <span class="pg-guan">观</span>
+          <p class="pg">{{stu.guan}}</p>
+          <span class="pk-kai">卡</span>
+          <p class="pk">{{stu.kai}}</p>
+          <span class="spj">{{stu.price}}起</span>
+          <span class="spdi">{{stu.distance}}</span>
+        </router-link>
       </ul>
     </div>
   </div>
@@ -108,7 +113,6 @@ export default {
   data() {
     return {
       users: {},
-      selected: "郑州",
       arr: [],
       acc: [],
       hides: false,
@@ -304,6 +308,12 @@ export default {
     this.users = city;
     this.acc = this.users.hot;
     this.loadData();
+  },
+  computed:{
+     currentCity() {
+      return this.$store.state.city.currentCity;
+    }
+    
   },
   mounted() {
     delete this.users.hot;

@@ -2,7 +2,7 @@
   <div class="home-main">
     <div class="header">
       <router-link class="location" :to="{name: 'city'}">
-        <p>郑州</p>
+        <p>{{currentCity}}</p>
         <img class="down" src="@/assets/imgs/icons/down-arr.png" alt>
       </router-link>
       <div>
@@ -219,7 +219,6 @@ export default {
       type: "",
       searchValue: "",
       temp: [],
-
       fourthSwiperOption: {
         slidesPerView: 1.2,
         // centeredSlides: true,
@@ -261,6 +260,9 @@ export default {
   computed: {
     newList() {
       // return this.all.filter(item=>item.title.includes(ipt.value))
+    },
+    currentCity() {
+      return this.$store.state.city.currentCity;
     }
   },
   methods: {
@@ -389,19 +391,19 @@ export default {
       height: 145px;
     }
   }
- ::v-deep .swiper-pagination {
+  ::v-deep .swiper-pagination {
     position: absolute;
     bottom: 0px;
     margin-top: 8px;
   }
- ::v-deep .swiper-pagination-bullet {
+  ::v-deep .swiper-pagination-bullet {
     width: 4px;
     height: 4px;
     background: rgba(178, 178, 178, 1);
     border-radius: 2px;
   }
 
- ::v-deep .swiper-pagination-bullet-active {
+  ::v-deep .swiper-pagination-bullet-active {
     width: 14px;
     height: 3px;
     background-color: #fff;
