@@ -83,19 +83,21 @@
     </div>
     <div class="du">我在: 金水区绿地新都会</div>
     <div class="movie-card">
-      <ul>
-        <li v-for="stu in studios" :key="stu.id">
-          <p class="pn">{{stu.name}}</p>
-          <p class="pt">{{stu.title}}</p>
-          <span class="ph-hui">惠</span>
-          <p class="ph">{{stu.hui}}</p>
-          <span class="pg-guan">观</span>
-          <p class="pg">{{stu.guan}}</p>
-          <span class="pk-kai">卡</span>
-          <p class="pk">{{stu.kai}}</p>
-          <span class="spj">{{stu.price}}起</span>
-          <span class="spdi">{{stu.distance}}</span>
-        </li>
+      <router-link tag="ul" to="/cinema/details">
+		  <li v-for="stu in studios" :key="stu.id">
+			  <p class="pn">{{stu.name}}</p>
+			  <p class="pt">{{stu.title}}</p>
+			  <span class="ph-hui">惠</span>
+			  <p class="ph">{{stu.hui}}</p>
+			  <span class="pg-guan">观</span>
+			  <p class="pg">{{stu.guan}}</p>
+			  <span class="pk-kai">卡</span>
+			  <p class="pk">{{stu.kai}}</p>
+			  <span class="spj">{{stu.price}}起</span>
+			  <span class="spdi">{{stu.distance}}</span>
+			</li>
+	  </router-link>
+        
       </ul>
     </div>
     </div>
