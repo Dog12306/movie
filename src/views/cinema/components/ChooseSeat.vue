@@ -73,7 +73,7 @@ import seat from "./components/Seat";
 export default {
   name: "ChooseSeat",
   components: {
-    seat
+    seat,
   },
   computed: {},
 

@@ -1,15 +1,15 @@
 <template>
   <div class="hot-main">
     <ul class="hot-item">
-      <li class="hot-list" v-for="movie in movieListCom" :key="movie.id">
+      <router-link tag="li" :to="{name:'Details'}" class="hot-list" v-for="movie in movieListCom" :key="movie.id">
         <img class="cover-img" :src="movie.coverImg" alt>
         <img class="play" src="@/assets/imgs/icons/play.png" alt="">
         <div class="detail">
           <p class="p1">{{movie.title}}</p>
-          <router-link tag='p' class="p2" :to="{name:'Details'}">
+          <p class="p2">
             影火虫评分：
             <span>{{movie.rating.average}}</span>
-          </router-link>
+          </p>
           <p class="p3">导演：{{movie.directorsStr}}</p>
           <p class="p4">主演：{{movie.castsStr}}</p>
           <router-link tag="div" class="buy" :to="{name:'buy'}">购买</router-link>
@@ -20,7 +20,7 @@
             <span>口碑最佳</span>
           </div>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -77,7 +77,7 @@ export default {
 @import "@/assets/style/common/common.scss";
 .hot-main {
   width: 100%;
-  margin-top: 8px;
+  margin-top: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -8,7 +8,7 @@
         <img src="@assets/imgs/details/icon1.png" alt class="right">
       </div>
       <div class="add">
-        <router-link tag="p":to="{name:'cinemaMap',params:{name:cinename.name}}">
+        <router-link tag="p" :to="{name:'cinemaMap',params:{name:cinename.name}}">
         <img class="add-icon" src="@assets/imgs/details/map.png" alt>
         </router-link>
         <p class="add-cent">{{cinename.name}}</p>
