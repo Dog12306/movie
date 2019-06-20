@@ -88,7 +88,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "cinema" */ '@/views/cinema/Cinema.vue'),
     },
     {
-      path: '/cinema/details',
+      path: '/cinema/details/:id',
       name: 'details',
       meta: {
         footShow: true

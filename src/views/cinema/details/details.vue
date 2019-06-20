@@ -69,19 +69,32 @@ export default {
           modifier: 6,
           slideShadows: false
         }
-      }
+      },
+			cinemas: [],
+			cinb:[],
+			ids: ''
     };
   },
   created() {
     axios.get(this.url).then(res => {
       this.data = res.data.data;
     });
+		
   },
+	mounted() {	
+		this.ids = this.$route.params.id;
+		this.gotos();
+		
+	},
   methods: {
-    callback() {}
+    callback() {},
+		gotos(){
+			this.$store.commit('cinemas/getGoods',this.ids)
+		} 
   },
 
   computed: {
+		
     cinename() {
       return this.$store.state.cinemas.temp;
     }
