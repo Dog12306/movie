@@ -62,6 +62,8 @@ var createMap = function (st, searchv) {
             renderOptions: { map: map ,panel: "results"}
         });
         local.search(searchv)
+    }else if(st === 2){
+        
     }
 
     console.log(map);

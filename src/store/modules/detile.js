@@ -1,4 +1,4 @@
-import list from '@/api/list.js'
+import list from '@/mock/list.js'
 var api1;
 api1 = list.lylist();
 
