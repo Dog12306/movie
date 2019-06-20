@@ -1,11 +1,18 @@
 <template>
   <div class="CinemaMap-main">
     <div class="header">
-      <img src="@/assets/imgs/icons/arr-left.png" alt class="back-arr">
+      <img src="@/assets/imgs/icons/arr-left.png" alt class="back-arr" @click="$router.go(-1)">
       <span class="header-title">影院地图</span>
-      <img src="@/assets/imgs/icons/search.png" alt class="search">
+      <img src="@/assets/imgs/icons/search.png" @click="searchst=!searchst" alt class="search">
+      <div class="search-input" v-show="searchst">
+        <input type="text" placeholder="请输入影院名称" id="suggestId" name="address_detail" v-model="searchv">
+        <div id="results">
+
+        </div>
+        <span @click="find">确认</span>
+      </div>
     </div>
-    <div id="container"></div>
+    <div id="allmap"></div>
     <div class="mySwiper-box">
       <template>
         <swiper
@@ -28,7 +35,7 @@
                     <span class="time">45min</span>
                   </div>
                 </div>
-                <span class="look">查找</span>
+                <span class="look" @click="findonly('耀莱成龙影城（建业店）')">查找</span>
               </div>
             </div>
           </swiper-slide>
@@ -72,58 +79,6 @@
       </template>
     </div>
     <div class="footer">
-      <!-- <ul class="cinema-item">
-        <li class="cinema-list">
-          <img src="@assets/imgs/cinema/cinema.png" alt class="cinemaImg">
-          <div class="cinema-list-down">
-            <div class="cinema-explain">
-              <p class="cinema-name">耀莱成龙影城（建业店）</p>
-              <div class="widget-time">
-                <div class="widget">
-                  <img src="@assets/imgs/icons/share.png" alt class="share">
-                  <img src="@assets/imgs/icons/phone.png" alt class="phone">
-                </div>
-                <span class="time">45min</span>
-              </div>
-            </div>
-            <span class="look">查找</span>
-          </div>
-        </li>
-        <li class="cinema-list">
-          <img src="@assets/imgs/cinema/cinema.png" alt class="cinemaImg">
-          <div class="cinema-list-down">
-            <div class="cinema-explain">
-              <p class="cinema-name">耀莱成龙影城（建业店）</p>
-              <div class="widget-time">
-                <div class="widget">
-                  <img src="@assets/imgs/icons/share.png" alt class="share">
-                  <img src="@assets/imgs/icons/phone.png" alt class="phone">
-                </div>
-                <span class="time">45min</span>
-              </div>
-            </div>
-            <span class="look">查找</span>
-          </div>
-        </li>
-        <li class="cinema-list">
-          <img src="@assets/imgs/cinema/cinema.png" alt class="cinemaImg">
-          <div class="cinema-list-down">
-            <div class="cinema-explain">
-              <p class="cinema-name">耀莱成龙影城（建业店）</p>
-              <div class="widget-time">
-                <div class="widget">
-                  <img src="@assets/imgs/icons/share.png" alt class="share">
-                  <img src="@assets/imgs/icons/phone.png" alt class="phone">
-                </div>
-                <span class="time">45min</span>
-              </div>
-            </div>
-            <span class="look">查找</span>
-          </div>
-        </li>
-        <li class="cinemaMap-list"></li>
-        <li class="cinemaMap-list"></li>
-      </ul>-->
       <div class="footer-line"></div>
     </div>
   </div>
@@ -131,7 +86,7 @@
 
 
 <script>
-import createMap from "@assets/map";
+import myMap from "@assets/map";
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
@@ -142,12 +97,22 @@ export default {
       mySwiperOption: {
         slidesPerView: 1.5
         // loop: true
-      }
+      },
+      searchst: false,
+      searchv: ''
     };
   },
 
   methods: {
-    callback() {}
+    callback() {},
+    find() {
+      // console.log(myMap);
+      // myMap.findCinema();
+      myMap.createMap(1,this.searchv);
+    },
+    findonly(name){
+      myMap.createMap(1,name);
+    }
   },
 
   components: {
@@ -156,7 +121,7 @@ export default {
   },
   created() {},
   mounted() {
-    createMap.createMap();
+    myMap.createMap(0);
   }
 };
 </script>
@@ -171,6 +136,7 @@ export default {
   align-items: center;
   padding: 0 20px;
   background: rgba(51, 54, 61, 1);
+  position: relative;
   .back-arr {
     height: 17px;
     width: 17px;
@@ -188,12 +154,45 @@ export default {
     height: 17px;
     width: 17px;
   }
+  .search-input{
+    display: flex;
+    align-items: center;
+    background-color: #00000050;
+    position: absolute;
+    bottom: 0px;
+    transform: translate(0,100%);
+    right: 20px;
+    z-index: 200;
+    
+    input{
+      height: 30px;
+      border-radius: 20px;
+      text-indent: 10px;
+      outline: none;
+      width: 200px;
+    }
+    span{
+      color: lightgreen;
+      font-size: 15px;
+      margin-right: 10px;
+      margin-left: 5px;
+    }
+  }
 }
-#container {
+#allmap {
   height: 584px;
   width: 100%;
   background: rgba(34, 38, 45, 1);
   border-radius: 22px;
+}
+#results{
+  max-height: 400px;
+  border-radius: 20px;
+  overflow: auto;
+  width: 200px;
+  position: absolute;
+  top: 30px;
+  box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.19);
 }
 .mySwiper-box {
   width: 100%;
@@ -242,6 +241,7 @@ export default {
       }
       .look {
         width: 45px;
+        margin-right: 6px;
         height: 25px;
         background: linear-gradient(
           150deg,

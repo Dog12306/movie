@@ -1,16 +1,6 @@
 <template>
   <div class="comment-main">
-    <div class="top">
-      <img class="back" @click="$router.go(-1)" src="@/assets/comment/images/back.png" alt>
-      <img class="share" src="@/assets/comment/images/share.png" alt>
-    </div>
     <div class="content">
-      <ul class="title-list">
-        <li class="title">简介</li>
-        <li class="title active">影评</li>
-        <li class="title">讨论</li>
-        <li class="title">更多</li>
-      </ul>
       <div class="unity">
         <span class="hot-comment">观众热评</span>
         <span class="write-comment">写影评</span>
@@ -82,7 +72,6 @@
         </li>
       </ul>
     </div>
-    <div class="footer">特惠选座</div>
   </div>
 </template>
 <script>
@@ -189,7 +178,7 @@ export default {
       .write-comment {
         position: absolute;
         top: 10px;
-        left: 301px;
+        left: 280px;
         width: 54px;
         height: 25px;
         font-size: 12px;
@@ -296,13 +285,13 @@ export default {
           }
           .praise {
             position: absolute;
-            left: 272px;
+            left: 252px;
             top: 5px;
           }
           .comment {
             position: absolute;
-            left: 320px;
-            top: 5px;
+            left: 300px;
+            top: 6px;
           }
         }
       }

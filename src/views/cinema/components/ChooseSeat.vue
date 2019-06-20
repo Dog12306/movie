@@ -3,13 +3,13 @@
     <div class="header">
       <div class="header-top">
         <img src="@assets/imgs/icons/arr-left.png" alt class="back-arr" @click="$router.go(-1)">
-        <span class="header-title">耀莱成龙影城（建业店）</span>
+        <span class="header-title">{{message.cine}}</span>
         <img src="@assets/imgs/icons/share.png" alt class="share">
       </div>
-      <p class="movie-name">后来的我们</p>
+      <p class="movie-name">{{message.title}}</p>
       <div class="movie-detail">
-        <span class="movie-time">15:30—17:14</span>
-        <span class="movie-type">原版3D</span>
+        <span class="movie-time">{{message.time1}}—{{message.time}}</span>
+        <span class="movie-type">{{message.title1}}</span>
       </div>
       <div class="seat-status">
         <div class="choosable">
@@ -80,10 +80,20 @@ export default {
   data() {
     return {
       choosed: 0,
-      commitst: 0
+      commitst: 0,
     };
   },
-
+  computed: {
+    message(){
+      for(var i in this.$store.state.detail.tick){
+        console.log(this.$store.state.detail.tick[i].id,this.$route.params.id);
+        if(this.$store.state.detail.tick[i].id === this.$route.params.id){
+          console.log(i);
+          return this.$store.state.detail.tick[i];
+        }
+      }
+    }
+  },
   methods: {
     checkseat: function(e) {
       e = event || window.event;
@@ -94,10 +104,11 @@ export default {
         this.choosed = 0;
         this.$refs.seats.checkseat(this.choosed);
       }
-      console.log(this.commitst);
     }
   },
-  mounted() {}
+  mounted() {
+    console.log(this.$store.state.detail.tick)
+  }
 };
 </script>
 
