@@ -116,54 +116,9 @@ export default {
 .comment-main {
   width: 100%;
   height: 100%;
-  .top {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    .back {
-      position: absolute;
-      top: 13px;
-      left: 23px;
-      width: 14px;
-      height: 14px;
-      color: rgba($color: #fff, $alpha: 0.6);
-    }
-    .share {
-      position: absolute;
-      top: 21px;
-      left: 335px;
-      width: 23px;
-      height: 23px;
-      color: rgba($color: #fff, $alpha: 0.6);
-    }
-  }
   .content {
     width: 100%;
     overflow: hidden;
-    .title-list {
-      width: 100%;
-      height: 50px;
-      margin: 30px 0 0 8px;
-      .title {
-        float: left;
-        font-size: 14px;
-        color: rgba($color: #fff, $alpha: 0.5);
-        padding: 0 15px;
-        box-sizing: border-box;
-        &.active::after {
-          display: block;
-          width: 29px;
-          height: 3px;
-          content: "";
-          margin-top: 3px;
-          background: linear-gradient(
-            135deg,
-            rgba(241, 100, 129, 1) 0%,
-            rgba(241, 144, 108, 1) 100%
-          );
-        }
-      }
-    }
     .unity {
       position: relative;
       width: 100%;
@@ -196,7 +151,7 @@ export default {
       display: flex;
       flex-flow: wrap;
       width: 100%;
-      padding: 10px 80px 0 0;
+      padding: 10px 50px 0 0;
       box-sizing: border-box;
       .item {
         height: 22px;
