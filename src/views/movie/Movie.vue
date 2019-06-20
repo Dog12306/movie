@@ -33,6 +33,7 @@ export default {
     };
   },
   methods: {
+    
     tabChange(tabItem) {
       if(tabItem == "Hot"){
         this.Now = true
@@ -41,6 +42,17 @@ export default {
       }
       this.currentView = tabItem;
     }
+  },
+  computed:{
+    
+    },
+  activated(){
+    console.log(this.$route.params.type)  
+      if(this.$route.params.type==1){
+        this.tabChange("Coming")
+      }else{
+        this.tabChange("Hot")
+      }
   }
 };
 </script>
