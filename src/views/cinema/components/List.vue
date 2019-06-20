@@ -1,7 +1,7 @@
 <template>
   <!-- 购票子组件 -->
   <div class="list">
-    <div class="lit" v-for="list in data">
+    <div class="lit" v-for="list in data" :key="list.id">
       <div class="lit-left">
         <p class="left-p1">{{list.time}}</p>
         <p class="left-p2">{{list.time1}}散场</p>
@@ -11,7 +11,7 @@
         <p class="cent-p2">{{list.hall}}</p>
       </div>
       <div class="moth">{{list.moth}}元</div>
-      <div class="btn">购票</div>
+      <router-link tag="div" class="btn" :to="{name:'chooseSeat',params:{id:list.id}}">购票</router-link>
     </div>
   </div>
 </template>
@@ -49,7 +49,7 @@ export default {
   margin: 10px auto;
   display: flex;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
   .lit-left {
     .left-p1 {
       width: 45px;
