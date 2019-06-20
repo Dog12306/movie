@@ -52,7 +52,7 @@
           </p>
           <p class="p3">导演：{{movie.directorsStr}}</p>
           <p class="p4">主演：{{movie.castsStr}}</p>
-          <div class="presale">预售</div>
+          <router-link tag="div" :to="{name:'cinema'}" class="presale">预售</router-link>
         </div>
       </li>
     </ul>
@@ -99,7 +99,7 @@ export default {
         this.movies = res.data.data;
         // console.log(this.movies);
       });
-    }
+    },
   },
   computed: {
     movieListCom() {

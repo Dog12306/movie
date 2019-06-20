@@ -37,7 +37,7 @@ export default new Router({
 	},
 	{
 		 path: '/movie/release/performer',
-		 name: 'performer',
+		 name: 'performer', // 演员详情
 		 meta:{
 		   footShow:true
 		 },
@@ -45,7 +45,7 @@ export default new Router({
 	},
 	{
 		 path: '/movie/release/score',
-		 name: 'score',
+		 name: 'score', // 评分
 		 meta:{
 		   footShow:false
 		 },
@@ -53,7 +53,7 @@ export default new Router({
 	},
 	{
 		 path: '/movie/release/boxOffice',
-		 name: 'boxOffice',
+		 name: 'boxOffice', // 票房
 		 meta:{
 		   footShow:false
 		 },

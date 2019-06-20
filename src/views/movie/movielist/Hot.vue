@@ -12,7 +12,7 @@
           </router-link>
           <p class="p3">导演：{{movie.directorsStr}}</p>
           <p class="p4">主演：{{movie.castsStr}}</p>
-          <div class="buy">购买</div>
+          <router-link tag="div" class="buy" :to="{name:'buy'}">购买</router-link>
           <div class="tag1">
             <span>一周最热</span>
           </div>

@@ -46,7 +46,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-<<<<<<< HEAD
 .main-header {
   position: relative;
   width: 375px;
@@ -54,15 +53,14 @@ export default {
   background: rgba(51, 54, 61, 1);
   .main-header-address {
     position: absolute;
-    top: 15px;
+    top: 20px;
     left: 20px;
     width: 28px;
     height: 14px;
     font-size: 14px;
     font-family: PingFangSC-Regular;
     font-weight: 400;
-    color: rgba(223, 223, 223, 1);
-    line-height: 14px;
+    color: #979797;
   }
   .main-header-title {
     position: absolute;
@@ -97,10 +95,5 @@ export default {
       background: rgba(51, 54, 61, 1);
     }
   }
-=======
-a{
-	color: red;
-	font-size: 20px;
->>>>>>> b612ea25cc2559bb6fb63e99512216d4a1d08a01
 }
 </style>
