@@ -54,15 +54,15 @@
               <img class="li-img" src="@/assets/imgs/main/mine/bianji4.png" alt>
               <p class="li-p">未消费</p>
             </li>
-			<router-link tag="li" :to="{name:'order'}" class="item-li">
+			<router-link tag="li" :to="{name:'order',params:{type:'payment'}}" class="item-li">
               <img class="li-img" src="@/assets/imgs/main/mine/bianji.png" alt>
               <p class="li-p">待付款</p>
 			</router-link>
-			<router-link tag="li" :to="{name:'order'}" class="item-li">
+			<router-link tag="li" :to="{name:'order',params:{type:'remain'}}" class="item-li">
               <img class="li-img" src="@/assets/imgs/main/mine/bianji2.png" alt>
               <p class="li-p">待评价</p>
             </router-link>
-			<router-link tag="li" :to="{name:'order'}" class="item-li">
+			<router-link tag="li" :to="{name:'order',params:{type:'await'}}" class="item-li">
             <!-- <li class="item-li"> -->
               <img class="li-img" src="@/assets/imgs/main/mine/bianji3.png" alt>
               <p class="li-p">待评价</p>
@@ -98,7 +98,16 @@
 <script>
 export default {
   name: "Main",
-  components: {}
+  data(){
+	return{
+		all:[]
+	}  
+  },
+  components: {},
+  created() {
+  	this.all=this.$store.state.tick.tick;
+	console.log(this.all);
+  }
 };
 </script>
 <style scoped lang="scss">
