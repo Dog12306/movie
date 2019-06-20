@@ -95,13 +95,8 @@
 			  <p class="pk">{{stu.kai}}</p>
 			  <span class="spj">{{stu.price}}起</span>
 			  <span class="spdi">{{stu.distance}}</span>
-<<<<<<< HEAD
-			</li>
-	  </router-link>
-=======
 		  </router-link>
       </ul>
->>>>>>> 8224d4804e77b863d374b10dd0907875d76ca4c8
     </div>
   </div>
 </template>
