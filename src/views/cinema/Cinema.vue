@@ -97,8 +97,6 @@
 			  <span class="spdi">{{stu.distance}}</span>
 			</li>
 	  </router-link>
-        
-      </ul>
     </div>
     </div>
 

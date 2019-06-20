@@ -49,7 +49,7 @@
             <span class="line"></span>
             <p>热门影片</p>
           </div>
-          <router-link tag="p" :to="{path:'/movie',params:{type:0}}">全部 ></router-link>
+          <router-link tag="p" :to="{name:'movie',params:{type:0}}">全部 ></router-link>
         </div>
         <template>
           <swiper
@@ -77,7 +77,7 @@
             <span class="line"></span>
             <p>即将上映</p>
           </div>
-          <p :to="{path:'/movie',params:{type:1}}">全部 ></p>
+          <router-link tag="p" :to="{name:'movie',params:{type:1}}">全部 ></router-link>
         </div>
         <template>
           <swiper
@@ -301,9 +301,12 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/style/common/common.scss";
 .header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -356,7 +359,7 @@ export default {
 
 .firstSwiper {
   position: relative;
-  margin-top: 12px;
+  margin-top: 56px;
   .swiper-slide:not(.swiper-slide-active) {
     transform: scale(0.8);
   }
@@ -383,19 +386,19 @@ export default {
       height: 145px;
     }
   }
-  .swiper-pagination {
+ ::v-deep .swiper-pagination {
     position: absolute;
     bottom: 0px;
     margin-top: 8px;
   }
-  .swiper-pagination-bullet {
+ ::v-deep .swiper-pagination-bullet {
     width: 4px;
     height: 4px;
     background: rgba(178, 178, 178, 1);
     border-radius: 2px;
   }
 
-  .swiper-pagination-bullet-active {
+ ::v-deep .swiper-pagination-bullet-active {
     width: 14px;
     height: 3px;
     background-color: #fff;
@@ -588,7 +591,7 @@ export default {
 .mask {
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 99;
   width: 375px;
   height: 812px;
   background: rgba(35, 38, 45, 1);
@@ -670,7 +673,7 @@ export default {
 }
 .results {
   width: 300px;
-  margin: 0 auto;
+  margin: 20px auto;
   background-color: #696767;
   color: #313030;
   .search-list {
@@ -679,8 +682,8 @@ export default {
     line-height: 20px;
     text-align: left;
     text-indent: 35px;
-    margin-top: 20px;
-    background-color: #cecece;
+    border-bottom: 1px solid #4d4d4d;
+    background-color: #e4e4e4;
   }
 }
 .monday-goods {

@@ -41,6 +41,15 @@ export default {
       }
       this.currentView = tabItem;
     }
+  },
+  computed:{
+    
+    },
+  mounted(){
+    console.log(this.$route.params.type)  
+      if(this.$route.params.type==1){
+        this.tabChange("Coming")
+      }
   }
 };
 </script>
