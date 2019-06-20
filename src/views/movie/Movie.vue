@@ -34,6 +34,7 @@ export default {
     };
   },
   methods: {
+    
     tabChange(tabItem) {
       if (tabItem == "Hot") {
         this.Now = true;
