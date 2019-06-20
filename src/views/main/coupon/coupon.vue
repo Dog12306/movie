@@ -7,29 +7,34 @@
     <div class="title">
       <div>您有两张优惠券可用</div>
     </div>
-    <div class="content-1">
+    <div class="content-1" v-for="(i,index) in coupon" :key="index">
       <p class="p1">电影专享代金券</p>
       <p class="p2">购票即可抵扣 快去购票</p>
       <p class="p3">有效期至: 2018-4-11</p>
-      <router-link tag='a' :to="{name:'buy'}" class="jump" >
-      <p class="p4">五元</p>
-      <p class="p5">购票</p>
-      </router-link>
+      <a href="javascript:;" class="jump">
+          <p class="p4">{{i}}元</p>
+          <router-link tag="p" :to="{name:'buy'}" class="p5" v-show="st!=0">
+            购票
+          </router-link>
+          <router-link tag="p" :to="{name:'confirmOrder',params:{id:$route.query.id},query:{people:$route.query.people,num:i}}" class="p5" v-show="st==0">
+            使用
+          </router-link>
+      </a>
     </div>
-    <div class="content-1">
+    <!-- <div class="content-1">
       <p class="p1">电影专享代金券</p>
       <p class="p2">购票即可抵扣 快去购票</p>
       <p class="p3">有效期至: 2018-4-11</p>
-      <router-link tag='a' :to="{name:'buy'}" class="jump" >
-      <p class="p4">五元</p>
-      <p class="p5">购票</p>
+      <router-link tag="a" :to="{name:'buy'}" class="jump">
+        <p class="p4">五元</p>
+        <p class="p5">购票</p>
       </router-link>
-    </div>
+    </div> -->
     <div class="content-2">
       <p class="p1">电影专享代金券</p>
       <p class="p2">购票即可抵扣 快去购票</p>
       <p class="p3">有效期至: 2018-4-11</p>
-      <p class="p4">五元</p>
+      <p class="p4">5元</p>
       <p class="p5">购票</p>
       <div></div>
     </div>
@@ -37,7 +42,7 @@
       <p class="p1">电影专享代金券</p>
       <p class="p2">购票即可抵扣 快去购票</p>
       <p class="p3">有效期至: 2018-4-11</p>
-      <p class="p4">五元</p>
+      <p class="p4">5元</p>
       <p class="p5">购票</p>
       <div></div>
     </div>
@@ -45,7 +50,7 @@
       <p class="p1">电影专享代金券</p>
       <p class="p2">购票即可抵扣 快去购票</p>
       <p class="p3">有效期至: 2018-4-11</p>
-      <p class="p4">五元</p>
+      <p class="p4">5元</p>
       <p class="p5">购票</p>
       <div></div>
     </div>
@@ -63,10 +68,19 @@ export default {
   name: "coupon",
 
   data() {
-    return {};
+    return {
+      coupon:[
+        5,10,5,10,10,10,10,10,
+      ]
+    };
   },
 
-  methods: {}
+  methods: {},
+  computed: {
+    st() {
+      return this.$route.query.st;
+    }
+  }
 };
 </script>
 
@@ -80,8 +94,8 @@ export default {
     background-color: #22262d;
     display: flex;
     align-items: center;
-    justify-content:flex-start;
-    
+    justify-content: flex-start;
+
     p {
       font-size: 16px;
       margin-left: 134px;

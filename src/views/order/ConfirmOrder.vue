@@ -12,14 +12,15 @@
     <div class="order-message">
       <div class="coupon">
         <span class="text">电影优惠券</span>
-          <router-link tag="div" :to="{name:'coupon'}" class="right">
-          <span class="amount">{{usermessage.coupon}}张优惠券可用</span>
+          <router-link tag="div" :to="{name:'coupon',path:'main/coupon',query:{st:0,id:this.$route.params.id,people:$route.query.people}}" class="right">
+          <span class="amount" v-show="coupon>0">{{coupon}}元优惠券</span>
+          <span class="amount" v-show="coupon==0">{{usermessage.coupon}}张优惠券可用</span>
           <img src="@/assets/imgs/icons/arr-right.png" alt>
           </router-link>
       </div>
       <div class="club-card">
         <span class="text">会员卡</span>
-        <router-link tag="div" :to="{name:'card'}" class="right">
+        <router-link tag="div" :to="{name:'card',path:'main/card',query:{st:0}}" class="right">
           <span class="use">去使用</span>
           <img src="@/assets/imgs/icons/arr-right.png" alt>
         </router-link>
@@ -44,8 +45,13 @@
         </div>
         <div class="cprice">
           <span>还需支付：</span>
-          <span class="num">{{dataMovie.moth*this.$route.query.people}}元</span>
-          <img src="@/assets/imgs/icons/arr-top.png" alt>
+          <span class="num">{{dataMovie.moth*this.$route.query.people-coupon}}元</span>
+          <img src="@/assets/imgs/icons/arr-top.png" alt @click="detailst=!detailst">
+        </div>
+        <div class="detail" v-show="detailst">
+          <p>票价: {{dataMovie.moth*this.$route.query.people}}元</p>
+          <p>优惠券: {{coupon}}元</p>
+          <p>会员优惠: 0元</p>
         </div>
       </div>
       <div class="confirm-order">
@@ -76,11 +82,14 @@ export default {
         club: true,
         fares: 55,
         tel: 12345678900
-      }
+      },
+      detailst: false
     };
   },
 
-  methods: {},
+  methods: {
+
+  },
   computed:{
     dataMovie(){
       for (var i in this.$store.state.detail.tick){
@@ -88,10 +97,17 @@ export default {
           return this.$store.state.detail.tick[i];
         };
       }
+    },
+    coupon(){
+      if(this.$route.query.num){
+        return this.$route.query.num
+      }else{
+        return 0
+      }
     }
   },
   mounted(){
-    console.log(this.$store.state.detail.tick)
+
   }
 };
 </script>
@@ -208,6 +224,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
     div {
       display: flex;
       align-items: center;
@@ -241,6 +258,22 @@ export default {
       }
       img {
         margin-left: 14px;
+      }
+    }
+    .detail{
+      background-color: cornflowerblue;
+      position: absolute;
+      font-size: 18px;
+      top: 0;
+      right: 20px;
+      padding: 10px 30px;
+      transform: translate(0,-100%);
+      display: flex;
+      flex-direction: column;
+      p{
+        text-align: left;
+        width: 100%;
+        margin-bottom: 10px;
       }
     }
   }
