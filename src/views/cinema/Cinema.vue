@@ -245,6 +245,9 @@ export default {
         this.hides = true;
       }
     },
+    getGoods(id){
+				this.$store.commit('cinemas/getGoods',id)
+			},
     zhengz() {
       this.n = 1;
       this.shows();

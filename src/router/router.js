@@ -73,6 +73,7 @@ export default new Router({
     {
       path: '/ticket',
       name: 'ticket',
+      redirect: '/home',
       meta: {
         footShow: true
       },
