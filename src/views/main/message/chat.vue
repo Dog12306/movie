@@ -115,8 +115,7 @@ export default {
 				top: 52px;
 			}
 			.right-1{
-				width: 74px;
-				height: 32px;
+				max-width: 50%;
 				position: absolute;
 				top: 140px;
 				right: 35px;
@@ -124,14 +123,15 @@ export default {
 					margin-top: 0;
 				}
 				.right-2{
-					width: 74px;
-					height: 32px;
+					max-width: 100%;
 					background-color: #F8C24D;
 					margin-top: 35px;
 					font-size: 12px;
-					line-height: 30px;
+					line-height: 20px;
 					position: relative;
 					z-index: 99;
+					text-align: left;
+					padding: 15px;
 					&::before{
 						content: '';
 						width:0;

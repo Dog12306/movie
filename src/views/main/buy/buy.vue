@@ -6,9 +6,9 @@
       <p>hi,znkk!</p>
     </div>
     <div class="content">
-      <p class="p1">试试搜索影片</p>
-      <p class="p2">万达影城</p>
-      <div class="dw"></div>
+      <router-link tag="p" class="p1" :to="{name:'home'}">试试搜索影片</router-link>
+      <router-link tag="p" class="p2" :to="{name:'cinema'}">万达影城</router-link>
+      <router-link tag="span" :to="{name:'release'}"  class="dw" ></router-link>
       <p class="p3">
         5月9日
         <span>1:34pm</span>
@@ -18,7 +18,7 @@
         <div>
           <span class="c-1" v-show="check"></span>
         </div>
-        <span class="c-2">特惠票</span>
+        <span class="c-2">特惠票</span>`
       </div>
       <div class="check-2"  @click="check2=!check2">
         <div>
@@ -97,7 +97,16 @@ export default {
       check2:false
     };
   },
-  methods: {},
+  methods: {
+        shows() {
+      this.n++;
+      if (this.n % 2 == 0) {
+        this.hides = false;
+      } else {
+        this.hides = true;
+      }
+    }
+  },
   components: {}
 };
 </script>
@@ -106,26 +115,11 @@ export default {
 .buy {
   .header {
     position: relative;
-    width: 100%;
     height: 44px;
     background-color: #22262d;
     display: flex;
     align-items: center;
-    .tx {
-      width: 33px;
-      height: 33px;
-      background: url(../../../assets/imgs/kind/tx.png) no-repeat center;
-      background-size: cover;
-      margin-left: 220px;
-    }
-    p {
-      font-size: 12px;
-      font-family: PingFangSC-Medium;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 1);
-      line-height: 17px;
-      margin-left: 10px;
-    }
+    
     button {
       display: block;
       width: 10px;
@@ -136,6 +130,27 @@ export default {
       font-size: 18px;
       background: url(../../../assets/imgs/kind/back.png) no-repeat center;
       background-size: cover;
+      position: absolute;
+      left:20px;
+
+    }
+    .tx {
+      width: 33px;
+      height: 33px;
+      background: url(../../../assets/imgs/kind/tx.png) no-repeat center;
+      background-size: cover;
+      position: absolute;
+      right: 80px;
+      display: block;
+    }
+    p {
+      font-size: 12px;
+      font-family: PingFangSC-Medium;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+      line-height: 17px;
+      position: absolute;
+      right: 17px;
     }
   }
   .content {

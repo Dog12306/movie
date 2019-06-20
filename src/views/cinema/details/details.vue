@@ -4,15 +4,15 @@
     <div class="bg">
       <div class="head">
         <img src="@assets/imgs/details/Left.png" alt class="left" @click="$router.go(-1)">
-        <p class="cent">耀莱成龙影城（建业店）</p>
+        <p class="cent">{{cinename.name}}</p>
         <img src="@assets/imgs/details/icon1.png" alt class="right">
       </div>
       <div class="add">
         <img class="add-icon" src="@assets/imgs/details/map.png" alt>
-        <p class="add-cent">耀莱成龙影城（建业店）</p>
+        <p class="add-cent">{{cinename.name}}</p>
         <img class="add-icon" src="@assets/imgs/details/right.png" alt>
       </div>
-      <p class="add-top">金水区中州大道建业置地</p>
+      <p class="add-top">{{cinename.title}}</p>
       <!-- 轮播 -->
       <swiper
         class="banner"
@@ -75,17 +75,17 @@ export default {
   created() {
     axios.get(this.url).then(res => {
       this.data = res.data.data;
-      console.log(this.data);
     });
-  },
-  updated() {
-    console.log("App.vue finish re-render");   
   },
   methods: {
     callback() {}
   },
 
-  computed: {}
+  computed: {
+    cinename() {
+      return this.$store.state.cinemas.temp;
+    }
+  }
 };
 </script>
 
@@ -140,8 +140,9 @@ export default {
     }
   }
   .add-top {
-    text-align: left;
-    margin-left: 97px;
+    width: 375px;
+    text-align: center;
+    margin-top: 10px;
   }
   .banner {
     width: 297px;

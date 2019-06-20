@@ -32,7 +32,7 @@
         </swiper>
       </template>
       <div class="handle">
-        <router-link tag="div" :to="{path:'',params:{id:now}}">
+        <router-link tag="div" :to="{path:'/movie/Details',params:{id:now}}">
           <img src="@assets/imgs/signin/play.png" alt>
         </router-link>
         <div class="share" @click.stop="share">
@@ -45,7 +45,7 @@
           </div>
           
         </div>
-        <router-link tag="div" :to="{}">
+        <router-link tag="div" :to="{path: '/comment'}">
           <img src="@assets/imgs/signin/comments.png" alt>
         </router-link>
       </div>
