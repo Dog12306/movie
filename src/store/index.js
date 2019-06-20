@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import signIn from './modules/signIn'
 import tick from './modules/tick';
-
+import cinemas from './modules/cinemas'
 import mess from './modules/mess'
 import order from './modules/order'
 import location from './modules/location'
@@ -14,7 +14,8 @@ const store = new Vuex.Store({
     order,
     location,
     tick,
-    signIn
+    signIn,
+		cinemas
   }
 })
 

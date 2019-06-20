@@ -4,7 +4,7 @@
     <div class="bg">
       <div class="head">
         <img src="@assets/imgs/details/Left.png" alt class="left" @click="$router.go(-1)">
-        <p class="cent">耀莱成龙影城（建业店）</p>
+        <p class="cent">{{cinename.name}}</p>
         <img src="@assets/imgs/details/icon1.png" alt class="right">
       </div>
       <div class="add">
@@ -77,17 +77,20 @@ export default {
   created() {
     axios.get(this.url).then(res => {
       this.data = res.data.data;
-      console.log(this.data);
+      
     });
   },
   updated() {
-    console.log("App.vue finish re-render");
   },
   methods: {
     callback() {}
   },
 
-  computed: {}
+  computed: {
+		cinename(){
+			return  this.$store.state.cinemas.temp;	
+		}
+	}
 };
 </script>
 
