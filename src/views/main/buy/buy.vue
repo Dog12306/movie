@@ -13,7 +13,7 @@
         5月9日
         <span>1:34pm</span>
       </p>
-      <p class="p4">更多场次</p>
+      <router-link tag="p" class="p4" :to="{name:'details'}">更多场次</router-link>
       <div class="check" @click="check=!check">
         <div>
           <span class="c-1" v-show="check"></span>
