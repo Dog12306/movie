@@ -36,7 +36,7 @@
         <span class="c-2">推荐座位</span>
       </div>
 
-      <router-link tag="div" class="sure" :to="{name:'chooseSeat',prams:1}">
+      <router-link tag="div" class="sure" :to="{path:'/cinema/detail/a1/seat/a1'}">
         <p>购票</p>
       </router-link>
       <div class="clear">
@@ -60,9 +60,9 @@
         <p class="p2">万达影城6号激光厅</p>
       </div>
       <p class="price">40.9元</p>
-      <div class="enter">
+      <router-link tag="div" class="enter" :to="{path:'/cinema/detail/a1/seat/a1'}">
         <p>购票</p>
-      </div>
+      </router-link>
     </div>
     <div class="ticket">
       <div class="time">
@@ -76,9 +76,9 @@
         <p class="p2">万达影城6号激光厅</p>
       </div>
       <p class="price">40.9元</p>
-      <div class="enter">
+      <router-link tag="div" class="enter" :to="{path:'/cinema/detail/a2/seat/a2'}">
         <p>购票</p>
-      </div>
+      </router-link>
     </div>
     <div class="ticket">
       <div class="time">
@@ -92,9 +92,9 @@
         <p class="p2">万达影城6号激光厅</p>
       </div>
       <p class="price">40.9元</p>
-      <div class="enter">
+      <router-link tag="div" class="enter" :to="{path:'/cinema/detail/a3/seat/a3'}">
         <p>购票</p>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -107,7 +107,8 @@ export default {
     return {
       check: false,
       check2: false,
-      clearTitle: true
+      clearTitle: true,
+      id:''
     };
   },
   methods: {

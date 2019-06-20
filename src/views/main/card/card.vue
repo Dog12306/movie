@@ -80,14 +80,14 @@ export default {
       border-radius: 5px;
       margin: 0 auto;
       margin-top: 20px;
-        background: linear-gradient(45deg, #009fff, #ec2f4b);
+        background: linear-gradient(45deg, #F26084, #F2A065);
         box-shadow:10px 10px 15px black;
       .p1{
           position: absolute;
           left: 10px;
           top: 15px;
           font-size: 15px;
-          color: silver;
+          color: white;
 
       }
       .p2{
@@ -95,14 +95,14 @@ export default {
           right: 5px;
           top: 15px;
           font-size: 15px;
-         color: silver;
+         color: white;
       }
       .p3{
           position: absolute;
           top: 100px;
           left: 75px;
           font-size: 15px;
-          color: silver;
+          color: white;
       }
       .inner{
           position: absolute;
@@ -112,7 +112,7 @@ export default {
           background-color:rgba(255,255,255,0.2);
           opacity: 50%;
           p{
-            color: silver;
+            color: white;
             font-size: 15px;
             position: absolute;
             left: 10px;
