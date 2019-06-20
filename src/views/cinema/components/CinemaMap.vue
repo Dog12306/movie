@@ -1,12 +1,15 @@
 <template>
   <div class="CinemaMap-main">
     <div class="header">
-      <img src="@/assets/imgs/icons/arr-left.png" alt class="back-arr">
+      <img src="@/assets/imgs/icons/arr-left.png" alt class="back-arr" @click="$router.go(-1)">
       <span class="header-title">影院地图</span>
       <img src="@/assets/imgs/icons/search.png" @click="searchst=!searchst" alt class="search">
       <div class="search-input" v-show="searchst">
-        <input type="text" placeholder="请输入影院名称" id="suggestId" name="address_detail">
-        <span>确认</span>
+        <input type="text" placeholder="请输入影院名称" id="suggestId" name="address_detail" v-model="searchv">
+        <div id="results">
+
+        </div>
+        <span @click="find">确认</span>
       </div>
     </div>
     <div id="allmap"></div>
@@ -32,7 +35,7 @@
                     <span class="time">45min</span>
                   </div>
                 </div>
-                <span class="look" @click="find">查找</span>
+                <span class="look" @click="findonly('耀莱成龙影城（建业店）')">查找</span>
               </div>
             </div>
           </swiper-slide>
@@ -95,7 +98,8 @@ export default {
         slidesPerView: 1.5
         // loop: true
       },
-      searchst: false
+      searchst: false,
+      searchv: ''
     };
   },
 
@@ -104,6 +108,10 @@ export default {
     find() {
       // console.log(myMap);
       // myMap.findCinema();
+      myMap.createMap(1,this.searchv);
+    },
+    findonly(name){
+      myMap.createMap(1,name);
     }
   },
 
@@ -113,7 +121,7 @@ export default {
   },
   created() {},
   mounted() {
-    myMap.createMap();
+    myMap.createMap(0);
   }
 };
 </script>
@@ -155,11 +163,13 @@ export default {
     transform: translate(0,100%);
     right: 20px;
     z-index: 200;
+    
     input{
       height: 30px;
       border-radius: 20px;
       text-indent: 10px;
       outline: none;
+      width: 200px;
     }
     span{
       color: lightgreen;
@@ -174,6 +184,15 @@ export default {
   width: 100%;
   background: rgba(34, 38, 45, 1);
   border-radius: 22px;
+}
+#results{
+  max-height: 400px;
+  border-radius: 20px;
+  overflow: auto;
+  width: 200px;
+  position: absolute;
+  top: 30px;
+  box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.19);
 }
 .mySwiper-box {
   width: 100%;

@@ -1,82 +1,69 @@
 var map;
-var createMap = function () {
-    var th = this;
-    map = new BMap.Map("allmap");          // 创建地图实例  
-    var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
-    var geolocation = new BMap.Geolocation();   //定位
-    geolocation.getCurrentPosition(function (r) {
-        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-            var mk = new BMap.Marker(r.point);
-            map.addOverlay(mk);
-            map.panTo(r.point);
-            map.centerAndZoom(r.point, 11);
-        }
-        else {
-            alert('failed' + this.getStatus());
-        }
-    }, { enableHighAccuracy: true })
-    // map.centerAndZoom(point, 12);                 // 初始化地图，设置中心点坐标和地图级别  
-    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-    var myValue;
-    myValue = this.province + this.city + "" + "" + this.name; //传入相应参数 省、市、区、街道、名称 （内容可以为空）
-    var ac = new BMap.Autocomplete({
-        //建立一个自动完成的对象
-        input: "suggestId",
-        location: map
-    });
-    var myValue;
-    ac.addEventListener("onconfirm", function (e) {
-        //鼠标点击下拉列表后的事件
-        var _value = e.item.value;
-        myValue =
-            _value.province +
-            _value.city +
-            _value.district +
-            _value.street +
-            _value.business;
-        this.address_detail = myValue;
-    });
-    // function setPlace() {
-    //     map.clearOverlays(); //清除地图上所有覆盖物
-    //     function myFun() {
-    //         th.userlocation = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
-    //         map.centerAndZoom(th.userlocation, 16);
-    //         map.addOverlay(new BMap.Marker(th.userlocation)); //添加标注
-    //     }
-    //     var local = new BMap.LocalSearch(map, {
-    //         //智能搜索
-    //         onSearchComplete: myFun
-    //     });
-    //     local.search(myValue);
-    //     //测试输出坐标（指的是输入框最后确定地点的经纬度）
-    //     map.addEventListener("click", function (e) {
-    //         //经度
-    //         console.log(th.userlocation.lng);
-    //         //维度
-    //         console.log(th.userlocation.lat);
-    //     });
-    // }
-    // setPlace();
+var createMap = function (st, searchv) {
+    if (st == 0) {
+        map = new BMap.Map("allmap");          // 创建地图实例  
+        var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
+        var myIcon = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/fox.gif", new BMap.Size(300, 157));
+        var geolocation = new BMap.Geolocation();   //定位
+        geolocation.getCurrentPosition(function (r) {
+            if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                var mk = new BMap.Marker(r.point);
+                var marker2 = new BMap.Marker(r.point, { icon: myIcon });  // 创建标注
+                map.addOverlay(marker2);
+                map.panTo(r.point);
+                map.centerAndZoom(r.point, 16);
+                var local = new BMap.LocalSearch(map, {
+                    renderOptions: { map: map }
+                });
+                local.search("影院")
+            }
+            else {
+                alert('failed' + this.getStatus());
+            }
+        }, { enableHighAccuracy: true })
+        map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+        // ========添加控件
+        // 添加带有定位的导航控件
+        var navigationControl = new BMap.NavigationControl({
+            // 靠左上角位置
+            anchor: BMAP_ANCHOR_TOP_LEFT,
+            // LARGE类型
+            type: BMAP_NAVIGATION_CONTROL_LARGE,
+            // 启用显示定位
+            enableGeolocation: true
+        });
+        map.addControl(navigationControl);
+        // 添加定位控件
+        var geolocationControl = new BMap.GeolocationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT });
+        geolocationControl.addEventListener("locationSuccess", function (e) {
+            // 定位成功事件
+            var address = '';
+            address += e.addressComponent.province;
+            address += e.addressComponent.city;
+            address += e.addressComponent.district;
+            address += e.addressComponent.street;
+            address += e.addressComponent.streetNumber;
+            var local = new BMap.LocalSearch(map, {
+                renderOptions: { map: map }
+            });
+            local.search("影院")
+        });
+        geolocationControl.addEventListener("locationError", function (e) {
+            // 定位失败事件
+            alert(e.message);
+        });
+        map.addControl(geolocationControl);
+        // map.addControl(new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT}));        //缩放比例
+        map.addControl(new BMap.OverviewMapControl()); //缩放按钮
+        // map.addControl(new BMap.MapTypeControl()); //卫星图
+        map.setCurrentCity("北京"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+    } else if (st === 1) {
+        var local = new BMap.LocalSearch(map, {
+            renderOptions: { map: map ,panel: "results"}
+        });
+        local.search(searchv)
+    }
 
-
-
-
-
-    // ========添加控件
-    map.addControl(new BMap.GeolocationControl({
-        // 靠左上角位置
-        anchor: BMAP_ANCHOR_TOP_RIGHT,
-        // LARGE类型
-        type: BMAP_NAVIGATION_CONTROL_LARGE,
-        // 启用显示定位
-        enableGeolocation: true
-    })); //定位
-
-    map.addControl(new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_SMALL }));  //缩放
-    // map.addControl(new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT}));        //缩放比例
-    map.addControl(new BMap.OverviewMapControl()); //缩放按钮
-    // map.addControl(new BMap.MapTypeControl()); //卫星图
-    map.setCurrentCity("北京"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
     console.log(map);
 
 }
