@@ -55,7 +55,7 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss' scoped>  
 .main-header {
   position: fixed;
   top: 0;

@@ -61,7 +61,7 @@
             <!-- slides -->
             <swiper-slide class="slide" v-for="m in hot" :key="m.id">
               <div class="movie">
-                <router-link tag="div" :to="{path:'/movie/Details',params:{id:m.id}}">
+                <router-link tag="div" :to="{name:'Details',params:{id:m.id},query:{type:0}}">
                   <img :src="'https://images.weserv.nl/?url='+m.images.small" alt>
                 </router-link>
                 <p>{{m.original_title}}</p>
@@ -91,7 +91,7 @@
             @someSwiperEvent="callback"
           >
             <swiper-slide class="slide" v-for="n in comming" :key="n.id">
-              <router-link tag="div" :to="{path:'/movie/Details',params:{id:n.id}}" class="movie">
+              <router-link tag="div" :to="{name:'Details',params:{id:n.id},query:{type:1}}" class="movie">
                 <img :src="'https://images.weserv.nl/?url='+n.images.small" alt>
                 <p>{{n.original_title}}</p>
                 <p>{{n.year}}</p>
@@ -158,7 +158,7 @@
         tag="p"
         @click="btn"
         v-show="searchValue.length!=0"
-        :to="{path:'/movie/Details',params:{name:searchValue}}"
+        :to="{name:'Details',params:{name:searchValue}}"
       >搜索</router-link>
       <ul class="results">
         <router-link
@@ -167,7 +167,7 @@
           class="search-list"
           v-for="(t,index) in temp"
           :key="index"
-          :to="{path:'/movie/Details',params:{id:t.id}}"
+          :to="{name:'Details',params:{id:t.id}}"
         >{{t.title}}</router-link>
       </ul>
       <div v-show="temp.length==0" class="hot-list">
@@ -245,7 +245,7 @@ export default {
     };
   },
   created() {
-    axios.get(this.url + "in_theaters?start=5&limit=5").then(res => {
+    axios.get(this.url + "in_theaters?start=2&limit=5").then(res => {
       this.hot = res.data.data;
       // console.log(this.hot);
     });
@@ -253,7 +253,7 @@ export default {
       this.all = res.data.data;
       // console.log(this.all);
     });
-    axios.get(this.url + "coming_soon?limit=5").then(res => {
+    axios.get(this.url + "coming_soon?start=2&limit=5").then(res => {
       this.comming = res.data.data;
       // console.log(this.comming);
     });
@@ -288,7 +288,7 @@ export default {
       this.searchValue = "";
     },
     thisMovie(id) {
-      this.$router.push({ path: "/movie/Details", params: { id: id } });
+      this.$router.push({ name: "Details", params: { id: id } });
     }
   },
   watch: {

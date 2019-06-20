@@ -221,7 +221,7 @@ export default new Router({
     //   component: () => import(/* webpackChunkName: "location" */ '@/views/location/Location.vue'),
     // },
     {
-      path: '/movie/Details',
+      path: '/movie/Details/:id',
       name: 'Details',
       meta:{
         footShow:false
