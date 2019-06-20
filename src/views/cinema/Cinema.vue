@@ -83,8 +83,8 @@
     </div>
     <div class="du">我在: 金水区绿地新都会</div>
     <div class="movie-card">
-      <router-link tag="ul" to="/cinema/details">
-		  <li v-for="stu in studios" :key="stu.id">
+      <ul>
+		  <router-link tag="li" v-for="stu in studios" :key="stu.id"  @click.native="getGoods(stu.id)" to="/cinema/details">
 			  <p class="pn">{{stu.name}}</p>
 			  <p class="pt">{{stu.title}}</p>
 			  <span class="ph-hui">惠</span>
@@ -95,9 +95,7 @@
 			  <p class="pk">{{stu.kai}}</p>
 			  <span class="spj">{{stu.price}}起</span>
 			  <span class="spdi">{{stu.distance}}</span>
-			</li>
-	  </router-link>
-        
+		  </router-link>
       </ul>
     </div>
     </div>
@@ -256,6 +254,10 @@
 				} else {
 					this.hides = true;
 				}
+			},
+			getGoods(id){
+				this.$store.commit('cinemas/getGoods',id)
+				console.log(id)
 			},
 			zhengz() {
 				this.n = 1;
