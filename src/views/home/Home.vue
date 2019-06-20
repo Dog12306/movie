@@ -1,7 +1,7 @@
 <template>
   <div class="home-main">
     <div class="header">
-      <router-link class="location" :to="{path: '/cinema'}">
+      <router-link class="location" :to="{name: 'city'}">
         <p>郑州</p>
         <img class="down" src="@/assets/imgs/icons/down-arr.png" alt>
       </router-link>
