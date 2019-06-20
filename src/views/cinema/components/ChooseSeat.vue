@@ -94,7 +94,6 @@ export default {
         this.choosed = 0;
         this.$refs.seats.checkseat(this.choosed);
       }
-      console.log(this.commitst);
     }
   },
   mounted() {}
