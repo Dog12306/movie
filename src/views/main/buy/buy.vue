@@ -36,9 +36,9 @@
         <span class="c-2">推荐座位</span>
       </div>
 
-      <div class="sure">
+      <router-link tag="div" class="sure" :to="{name:'chooseSeat',prams:1}">
         <p>购票</p>
-      </div>
+      </router-link>
       <div class="clear">
         <p class="p5" v-if="clearTitle">一条狗的使命 我是药神</p>
         <span @click="clearTitle=false" class="s1">清除历史</span>
